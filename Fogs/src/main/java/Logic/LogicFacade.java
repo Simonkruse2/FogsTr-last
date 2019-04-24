@@ -5,16 +5,10 @@
  */
 package Logic;
 
-import Data.Items;
-import java.util.ArrayList;
-
 /**
  *
  * @author simon
  */
-public class CarportCalc {
-    public ArrayList<Items> carportCalculator(int length, int width){
-        ArrayList<Items> partsList = new ArrayList<>();
-        return partsList;
-    }
+public class LogicFacade {
+    
 }
