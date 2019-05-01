@@ -5,6 +5,8 @@
  */
 package Presentation;
 
+import Logic.LogicFacade;
+import Logic.LogicFacadeMOCK;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "FrontController", urlPatterns = {"/FrontController"})
 public class FrontController extends HttpServlet {
-
+    LogicFacade logic = new LogicFacadeMOCK();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -30,7 +32,9 @@ public class FrontController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Command c = Command.from(request);
-        c.execute(request, response);
+        String target = c.execute(request, logic);
+        System.out.println(target);
+        request.getRequestDispatcher(target).forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

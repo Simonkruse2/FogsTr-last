@@ -9,7 +9,11 @@ package Logic;
  *
  * @author simon
  */
-public interface LogicFacade {
+public class LogicFacadeMOCK implements LogicFacade {
+
+    @Override
+    public Carport createSimpleCarport(int length, int width) {
+        return new Carport(false, false, length, width);
+    }
     
-    Carport createSimpleCarport(int length, int width);
 }

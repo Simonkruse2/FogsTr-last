@@ -1,10 +1,11 @@
 package Presentation;
 
+import Logic.LogicFacade;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 /**
  *
@@ -12,16 +13,22 @@ import javax.servlet.http.HttpServletResponse;
  */
 public abstract class Command {
 
-    public abstract void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+    private final static Command UNKNOWN = new CommandUnknown();
+    private static Map<String, Command> commands;
+
+    public abstract String execute(
+            HttpServletRequest request,
+            LogicFacade logic)
+            throws ServletException, IOException;
 
     public static Command from(HttpServletRequest request) {
-        Command c;
+        if (commands == null) {
+            commands = new HashMap();
+            commands.put("CarportSimpleDrawing", new CommandCarportSimpleDrawing());
+            // commands.put("login", new CommandLogin());
+        }
         String origin = request.getParameter("command");
-        HashMap<String, Command> commands;
-        commands = new HashMap<>();
-        commands.put("login.jsp", new CommandLogin());
-        c = commands.getOrDefault(origin, new CommandUnknown());
 
-        return c;
+        return commands.getOrDefault(origin, UNKNOWN);
     }
 }

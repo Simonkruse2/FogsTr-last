@@ -12,6 +12,13 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <form action="FrontController" method="post">
+            Length:<br>
+            <input type="text" name="length"><br><br>
+            Width:<br>
+            <input type="text" name="width"><br><br>
+            <input type="hidden" name="command" value="CarportSimpleDrawing"/>
+            <input type="submit" value="calculate"/>  
+           </form>
     </body>
 </html>
