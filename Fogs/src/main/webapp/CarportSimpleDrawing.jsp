@@ -9,7 +9,7 @@
     </head>
 
     <body>
-        <h1>Length is <%=carport.getLengthOuter()%></h1>
+        <h1>Carport drawing</h1>
         <svg height="25000" width="25000" viewBox="-1000 0 200000 200000">
         
         <defs>
@@ -41,7 +41,7 @@
           marker-end: url(#endArrow);"
           stroke-width="<%=carport.getLengthOuter() / 250%>"/>
  
-        <rect y="0mm" width="<%=carport.getLengthOuter() + 10%>mm" height="<%=carport.getWidthOuter()%>mm"
+        <rect y="0mm" width="<%=carport.getLengthOuter() %>mm" height="<%=carport.getWidthOuter()%>mm"
           style="stroke: #000000; fill:#ffffff;"
           stroke-width="<%=carport.getLengthOuter()/50%>"/>
 
@@ -56,6 +56,8 @@
     <rect y="0mm" width="10mm" height="<%=carport.getWidthOuter()%>mm"
           style="stroke: #000000; fill:#ffffff;"/>
     
+    
+    --POLES
     
     <rect x="100mm" y="<%=carport.getWidthOuter()*0.05%>mm" width="13mm" height="13mm"
           stroke-width="<%=carport.getWidthOuter() / 150%>"
@@ -73,7 +75,7 @@
           stroke-width="<%=carport.getWidthOuter() / 150%>"
           />    
     
-    <% int numRaft = (int) Math.ceil((carport.getLengthOuter()/60));
+    <% double numRaft = (double) Math.ceil(((carport.getLengthOuter())/60)+1);
        double distance = carport.getLengthOuter()/(numRaft);
     %>
     <% for (int i = 0; i <= numRaft; i++) { %>
