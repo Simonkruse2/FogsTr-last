@@ -19,7 +19,7 @@ public class OrderMapper {
         public void createOrder( Order order ) throws SQLException, ClassNotFoundException {
             Connection con = DBConnector.connection();
             String SQL = "insert into `orders` (status, order_width, order_length, incline, id_customer, id_employee, price) values (?, ?, ?, ?, ?, ?, ?);";
-            PreparedStatement ps = con.prepareStatement( SQL, Statement.RETURN_GENERATED_KEYS );
+            PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS );
             ps.setString( 1, order.getStatus());
             ps.setInt( 2, order.getOrder_width());
             ps.setInt( 3, order.getOrder_length());

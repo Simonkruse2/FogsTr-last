@@ -10,6 +10,7 @@ package Data;
  * @author simon
  */
 public class Order {
+
     private String status;
     private int order_width;
     private int order_length;

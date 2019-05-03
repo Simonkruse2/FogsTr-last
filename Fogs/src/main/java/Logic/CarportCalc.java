@@ -114,7 +114,7 @@ public class CarportCalc {
          mat.setAmount(lamount + wamount);
          return mat;
     }
-        /**
+    /**
      *
      * @param length the outer length of the carport
      * @param width the outer width of the carport
