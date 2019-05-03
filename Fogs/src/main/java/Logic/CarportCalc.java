@@ -13,19 +13,19 @@ import Data.Material;
  */
 public class CarportCalc {
 
-    public static void main(String[] args) {
-        CarportCalc cc = new CarportCalc();
-        System.out.println(cc.poles(780, 600));
-        System.out.println(cc.beamsLength(780));
-        System.out.println(cc.rafts(780, 600));
-        System.out.println(cc.portFittings(780, 600));
-        System.out.println(cc.screwFittings(780, 600));
-        System.out.println(cc.frameWidth(780, 600));
-        System.out.println(cc.frameLength(780, 600));
-        System.out.println(cc.screwFrame(780, 600));
-        System.out.println(cc.plastmoShort(780, 600));
-        System.out.println(cc.plastmoLong(780, 600));
-    }
+//    public static void main(String[] args) {
+//        CarportCalc cc = new CarportCalc();
+//        System.out.println(cc.poles(780, 600));
+//        System.out.println(cc.beamsLength(780));
+//        System.out.println(cc.rafts(780, 600));
+//        System.out.println(cc.portFittings(780, 600));
+//        System.out.println(cc.screwFittings(780, 600));
+//        System.out.println(cc.frameWidth(780, 600));
+//        System.out.println(cc.frameLength(780, 600));
+//        System.out.println(cc.screwFrame(780, 600));
+//        System.out.println(cc.plastmoShort(780, 600));
+//        System.out.println(cc.plastmoLong(780, 600));
+//    }
 
     public Material poles(int length, int width) {
         
@@ -37,14 +37,26 @@ public class CarportCalc {
         if (innerLength < 310) {
             extraamount = 0;
         } else {
-            extraamount = ((innerLength / 300) - 1) * 2;
+            extraamount = ((innerLength / 310) - 1) * 2;
 
         }
         amount += extraamount;
         mat.setAmount(amount);
         return mat;
     }
+    
+    public double polesDrawing(int length){
+        return (double) ((length-130)/310);
+        
+    }
+    
+    public double poleDist(int length){
+        return (length-130) / polesDrawing(length);
+    }
 
+
+    
+    
     public Material beamsLength(int length) {
         Material mat = new Material("beam", 500);
         mat.setAmount(2);
@@ -55,9 +67,14 @@ public class CarportCalc {
     public Material rafts(int length, int width) { //spær
         Material mat = new Material("raft", 500);
         mat.setLength(width);
-        int amount = (length / 60) + 1; //cm cm cm!
-        mat.setAmount(amount);
+        int numRafts = (int) Math.ceil((length / 60) + 1); //cm cm cm!
+        mat.setAmount(numRafts);
         return mat;
+    }
+    
+    public double raftDistance(int length, int width){
+        double distance = (double) (length/rafts(length, width).getAmount());
+        return distance;
     }
 
     public Material portFittings(int length, int width) { //corport beslag (til stolper og spær)

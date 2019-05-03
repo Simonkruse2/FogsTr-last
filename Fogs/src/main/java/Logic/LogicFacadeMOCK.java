@@ -15,5 +15,10 @@ public class LogicFacadeMOCK implements LogicFacade {
     public Carport createSimpleCarport(int length, int width) {
         return new Carport(false, false, length, width);
     }
-    
+
+    @Override
+    public CarportCalc createSimpleCarportCalc(int length, int width) {
+        return new CarportCalc();
+    }
+
 }

@@ -1,4 +1,5 @@
 <%@page import="Logic.Carport"%>
+<%@page import="Logic.CarportCalc"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -6,6 +7,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <% Carport carport = (Carport) (request.getAttribute("carport"));%>
+        <% CarportCalc carpCalc = (CarportCalc) (request.getAttribute("carpCalc")); %>
     </head>
 
     <body>
@@ -56,9 +58,10 @@
     <rect y="0mm" width="10mm" height="<%=carport.getWidthOuter()%>mm"
           style="stroke: #000000; fill:#ffffff;"/>
     
-        <% 
-        double numPoles = (double) (carport.getLengthOuter() - 130) / 310;
-        double distPoles = (carport.getLengthOuter() - 130) / numPoles;  
+         <% 
+        double numPoles = carpCalc.polesDrawing(carport.getLengthOuter());
+        
+        double distPoles = carpCalc.poleDist(carport.getLengthOuter());  
     %> 
     
     <%
@@ -91,9 +94,10 @@
    
 
     --Rafts
-    <% double numRaft = (double) Math.ceil(((carport.getLengthOuter())/60)+1);
-       double distance = carport.getLengthOuter()/(numRaft);
+    <% double numRaft = carpCalc.rafts(carport.getLengthOuter(), carport.getWidthOuter()).getAmount();
+       double distance = carpCalc.raftDistance(carport.getLengthOuter(), carport.getWidthOuter());
     %>
+   
     
     <% for (int i = 0; i <= numRaft; i++) { %>
     <rect x="<%=distance * i %>mm" y="0mm" width="10mm" height="<%=carport.getWidthOuter()%>mm"

@@ -12,4 +12,5 @@ package Logic;
 public interface LogicFacade {
     
     Carport createSimpleCarport(int length, int width);
+    CarportCalc createSimpleCarportCalc(int length, int width);
 }
