@@ -5,6 +5,12 @@
  */
 package Logic;
 
+import Data.User;
+import Data.UserMapper;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author simon
@@ -19,6 +25,32 @@ public class LogicFacadeMOCK implements LogicFacade {
     @Override
     public CarportCalc createSimpleCarportCalc(int length, int width) {
         return new CarportCalc();
+    }
+
+    @Override
+    public User createCustomer(User u) {
+        UserMapper um = new UserMapper();
+        try {
+            um.createCustomer(u);
+        } catch (SQLException ex) {
+            Logger.getLogger(LogicFacadeMOCK.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(LogicFacadeMOCK.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return u;
+    }
+
+    @Override
+    public User createEmployee(User u) {
+           UserMapper um = new UserMapper();
+        try {
+            um.createEmployee(u);
+        } catch (SQLException ex) {
+            Logger.getLogger(LogicFacadeMOCK.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(LogicFacadeMOCK.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return u;
     }
 
 }

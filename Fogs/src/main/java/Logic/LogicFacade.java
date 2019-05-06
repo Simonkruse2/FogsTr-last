@@ -5,6 +5,8 @@
  */
 package Logic;
 
+import Data.User;
+
 /**
  *
  * @author simon
@@ -13,4 +15,6 @@ public interface LogicFacade {
     
     Carport createSimpleCarport(int length, int width);
     CarportCalc createSimpleCarportCalc(int length, int width);
+    User createCustomer(User u);
+    User createEmployee(User u);
 }
