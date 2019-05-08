@@ -103,7 +103,7 @@
     <rect x="<%=distance * i %>mm" y="0mm" width="10mm" height="<%=carport.getWidthOuter()%>mm"
           style="stroke: #000000; fill:#ffffff;"
           stroke-width="<%=carport.getLengthOuter() / 250%>"/>
-       <line x1="0mm"  y1="-100mm" x2="<%= distance*i%>mm"  y2="-100mm"
+       <line x1="<%= distance*(i)%>mm"  y1="-100mm" x2="<%= distance*(i+1)%>mm"  y2="-100mm"
           style="stroke:#000000;
           marker-start: url(#beginArrow);
           marker-end: url(#endArrow);"
