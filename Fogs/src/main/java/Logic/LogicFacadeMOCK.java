@@ -26,6 +26,19 @@ public class LogicFacadeMOCK implements LogicFacade {
     public CarportCalc createSimpleCarportCalc(int length, int width) {
         return new CarportCalc();
     }
+    
+    
+    @Override
+    public Carport createSimpleCarportWithShed(int length, int width) {
+       return new Carport(false, true, length, width);
+    }
+
+    @Override
+    public CarportCalcShed createSimpleCarportCalcWithShed(int length, int width) {
+        return new CarportCalcShed();
+    }
+
+    
 
     @Override
     public User createCustomer(User u) {
