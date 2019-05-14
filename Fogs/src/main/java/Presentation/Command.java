@@ -27,6 +27,8 @@ public abstract class Command {
             commands.put("CarportSimpleDrawing", new CommandCarportSimpleDrawing());
             commands.put("CreateCustomer", new CommandCreateCustomer());
             commands.put("Login", new CommandLogin());
+            commands.put("Partlists", new CommandPartlists());
+
         }
         String origin = request.getParameter("command");
 
