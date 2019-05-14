@@ -17,4 +17,5 @@ public interface LogicFacade {
     CarportCalc createSimpleCarportCalc(int length, int width);
     User createCustomer(User u);
     User createEmployee(User u);
+    User checkLogin(User u);
 }

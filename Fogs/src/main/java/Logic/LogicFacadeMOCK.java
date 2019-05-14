@@ -8,8 +8,6 @@ package Logic;
 import Data.User;
 import Data.UserMapper;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -33,24 +31,30 @@ public class LogicFacadeMOCK implements LogicFacade {
         try {
             um.createCustomer(u);
         } catch (SQLException ex) {
-            Logger.getLogger(LogicFacadeMOCK.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("SQLException ... øv");
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(LogicFacadeMOCK.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Class not found");
         }
         return u;
     }
 
     @Override
     public User createEmployee(User u) {
-           UserMapper um = new UserMapper();
+        UserMapper um = new UserMapper();
         try {
             um.createEmployee(u);
         } catch (SQLException ex) {
-            Logger.getLogger(LogicFacadeMOCK.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("SQLException ... øv");
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(LogicFacadeMOCK.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Class not found");
         }
         return u;
     }
 
+    @Override
+    public User checkLogin(User u) {
+        UserMapper um = new UserMapper();
+        um.checkLogin(u.getEmail(), u.getPassword());
+        return u;
+    }
 }

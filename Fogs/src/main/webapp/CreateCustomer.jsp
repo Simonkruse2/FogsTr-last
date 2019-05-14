@@ -1,5 +1,5 @@
 <%-- 
-    Document   : index
+    Document   : createCustomer
     Created on : 09-May-2019, 14:59:59
     Author     : simon
 --%>
@@ -12,11 +12,15 @@
     <body> 
         <h1>Create Customer</h1>
         <form action="FrontController" method="post">
+            Name<br>
+            <input type="text" name="name"><br><br>
             Email<br>
             <input type="text" name="email" ><br><br>
+            Phone number<br>
+            <input type="text" name="phone" ><br><br>
             Password:<br>
             <input type="password" name="password" ><br><br>
-            <input type="hidden" name="command" value="Login"/>
+            <input type="hidden" name="command" value="CreateCustomer"/>
             <input type="submit" value="submit"/>  
         </form>
     </body>
