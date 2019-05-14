@@ -14,13 +14,13 @@ public class User {
     private String name;
     private String phone;
     private String email;
+    private String password;
     private int role;
 
-    public User(String name, String phone, String email, int role) {
+    public User(String name, String phone, String email) {
         this.name = name;
         this.phone = phone;
         this.email = email;
-        this.role = role;
     }
 
     public String getName() {
@@ -47,6 +47,14 @@ public class User {
         this.email = email;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public int getRole() {
         return role;
     }
@@ -57,6 +65,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" + "name=" + name + ", phone=" + phone + ", email=" + email + ", role=" + role + '}';
+        return "User{" + "name=" + name + ", phone=" + phone + ", email=" + email + ", password=" + password + ", role=" + role + '}';
     }
+
 }

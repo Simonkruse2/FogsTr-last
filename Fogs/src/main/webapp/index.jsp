@@ -1,11 +1,9 @@
 <%--
     Document   : index
-    Created on : 28-Apr-2019, 18:30:38
+    Created on : 09-May-2019, 14:59:59
     Author     : simon
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
