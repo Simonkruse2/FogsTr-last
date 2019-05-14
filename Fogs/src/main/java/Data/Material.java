@@ -12,11 +12,11 @@ package Data;
 public class Material {
     private int id; // unique id number for product
     private String pname; //Productname - Produkt navn
-    private int price; // price pr. piece/package/roll - stk/pakke/rulle
+    private double price; // price pr. piece/package/roll - stk/pakke/rulle
     private int amount; // quantity of product
     private int length; // length of product
 
-    public Material(String pname, int price) {
+    public Material(String pname, double price) {
         this.pname = pname;
         this.price = price;
     }
@@ -29,7 +29,7 @@ public class Material {
         return pname;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
