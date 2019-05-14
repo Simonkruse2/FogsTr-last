@@ -10,8 +10,10 @@ package Data;
  * @author jacobfolkehildebrandt
  */
 public class Material {
+
     private int id; // unique id number for product
     private String pname; //Productname - Produkt navn
+    private double totalPrice; // total price - total pris
     private double price; // price pr. piece/package/roll - stk/pakke/rulle
     private int amount; // quantity of product
     private int length; // length of product
@@ -61,12 +63,17 @@ public class Material {
         this.length = length;
     }
 
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
     @Override
     public String toString() {
-        return "Material{" + "id=" + id + ", pname=" + pname + ", price=" + price + ", amount=" + amount + ", length=" + length + '}';
+        return "Material{" + "id=" + id + ", pname=" + pname + ", totalPrice=" + totalPrice + ", price=" + price + ", amount=" + amount + ", length=" + length + '}';
     }
-    
-    
-        
-    
+
 }

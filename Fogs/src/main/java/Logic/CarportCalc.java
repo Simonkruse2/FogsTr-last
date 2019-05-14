@@ -25,16 +25,7 @@ public class CarportCalc {
         for (int i = 0; i < cc.partLists().size(); i++) {
             System.out.println(cc.partLists().get(i));
         }
-        System.out.println(cc.poles(780, 600));
-        System.out.println(cc.beamsLength(780));
-        System.out.println(cc.rafts(780, 600));
-        System.out.println(cc.portFittings(780, 600));
-        System.out.println(cc.screwFittings(780, 600));
-        System.out.println(cc.frameWidth(780, 600));
-        System.out.println(cc.frameLength(780, 600));
-        System.out.println(cc.screwFrame(780, 600));
-        System.out.println(cc.plastmoShort(780, 600));
-        System.out.println(cc.plastmoLong(780, 600));
+   
 
     }
 
@@ -72,6 +63,7 @@ public class CarportCalc {
         Material mat = new Material(map.getMaterialDescription(id), map.getMaterialPrice(id));
         mat.setAmount(2);
         mat.setLength(length);
+        mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
         m.add(mat);
         return mat;
     }
@@ -82,6 +74,7 @@ public class CarportCalc {
         mat.setLength(width);
         int numRafts = (int) Math.ceil((length / 60) + 1); //cm cm cm!
         mat.setAmount(numRafts);
+        mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
         m.add(mat);
         return mat;
     }
@@ -97,6 +90,7 @@ public class CarportCalc {
         int pamount = poles(length, width).getAmount(); // port amount
         int ramount = 2 * rafts(length, width).getAmount(); // raft amount
         mat.setAmount(pamount + ramount);
+        mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
         m.add(mat);
         return mat;
 
@@ -106,7 +100,13 @@ public class CarportCalc {
         int id = 6;
         Material mat = new Material(map.getMaterialDescription(id), map.getMaterialPrice(id));
         int amount = 3 * portFittings(length, width).getAmount();
-        mat.setAmount(amount);
+        int count = 1;
+        while (amount > 300) {
+            amount -= 300;
+            count++;
+        }
+        mat.setAmount(count);
+        mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
         m.add(mat);
         return mat;
     }
@@ -116,6 +116,7 @@ public class CarportCalc {
         Material mat = new Material(map.getMaterialDescription(id), map.getMaterialPrice(id));
         mat.setLength(length);
         mat.setAmount(2);
+        mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
         m.add(mat);
         return mat;
     }
@@ -125,6 +126,7 @@ public class CarportCalc {
         Material mat = new Material(map.getMaterialDescription(id), map.getMaterialPrice(id));
         mat.setLength(width);
         mat.setAmount(2);
+        mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
         m.add(mat);
         return mat;
     }
@@ -135,7 +137,14 @@ public class CarportCalc {
 
         int lamount = 2 * 2 * rafts(length, width).getAmount();// length amount (lændgde siden)
         int wamount = 2 * width / 60;
-        mat.setAmount(lamount + wamount);
+        int screwAmount = lamount + wamount;
+        int count = 1;
+        while (screwAmount > 300) {
+            screwAmount -= 300;
+            count++;
+        }
+        mat.setAmount(count);
+        mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
         m.add(mat);
         return mat;
     }
@@ -152,6 +161,7 @@ public class CarportCalc {
         int carportSqrmtr = length * width / 100;
 
         mat.setAmount((int) Math.ceil(carportSqrmtr * 0.46 / 360));
+        mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
         m.add(mat);
         return mat;
     }
@@ -162,6 +172,7 @@ public class CarportCalc {
         int carportSqrmtr = length * width / 100;
 
         mat.setAmount((int) Math.ceil(carportSqrmtr * 0.77 / 600));
+        mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
         m.add(mat);
         return mat;
     }
