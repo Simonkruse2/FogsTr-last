@@ -54,7 +54,7 @@ public class UserMapper {
         PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
         ps.setString(1, u.getName());
         ps.setString(2, u.getPhone());
-        ps.setString(3, u.getEmail());
+        ps.setString(3, u.getUsername());
         ps.setString(4, u.getPassword());
         ps.executeUpdate();
     }
@@ -62,12 +62,13 @@ public class UserMapper {
     public void createEmployee(User u) throws SQLException, ClassNotFoundException {
         Connection con = DBConnector.connection();
         String SQL = "insert into "
-                + "`employees` (name, id_role, password) "
-                + "values (?, ?, ?);";
+                + "`employees` (username, name, id_role, password) "
+                + "values (?, ?, MD5(?));";
         PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
-        ps.setString(1, u.getName());
-        ps.setInt(2, u.getRole());
-        ps.setString(3, u.getPassword());
+        ps.setString(1, u.getUsername());
+        ps.setString(2, u.getName());
+        ps.setString(3, u.getRole());
+        ps.setString(4, u.getPassword());
         ps.executeUpdate();
     }
 
@@ -75,29 +76,25 @@ public class UserMapper {
      * Checks whether the input username and password matches in the
      * database(mySQL).
      *
-     * @param email input drawn from a textfield.
+     * @param username
      * @param password input drawn from a textfield.
      * @return true for login.
      */
-    public boolean checkLogin(String email, String password) {
+    public boolean checkLogin(String username, String password) {
         String _password = "";
         try {
             DBConnector c = new DBConnector();
-            String query = "SELECT password FROM `customers` WHERE email = '" + email + "';";
+            String query = "SELECT password FROM `employees` WHERE username = '" + username + "';";
             Connection con = DBConnector.connection();
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
                 _password = rs.getString("password");
                 password = getMd5(password);
-//                String passwordDecrypted = "select MD5('" + _password + "')";
-//                System.out.println(passwordDecrypted);
-//                System.out.println(_password + "decrypted");
             }
-//            System.out.println(query);
             return _password.equals(password);
         } catch (Exception ex) {
-//            System.out.println(_password + "Den henter intet password");
+            System.out.println(_password + "Den henter intet password");
             ex.printStackTrace();
             return false;
         }
@@ -124,7 +121,9 @@ public class UserMapper {
                 String _name = rs.getString("customer_name");
                 String phone = rs.getString("phone");
                 String _email = rs.getString("email");
-                u = new User(_name, phone, _email);
+                u.setName(_name);
+                u.setPhone(phone);
+                u.setUsername(_email);
             }
             return u;
         } catch (Exception ex) {
@@ -132,27 +131,27 @@ public class UserMapper {
             return null;
         }
     }
-    
-    
-        public User getEmployee(String email) {
+
+    public User getEmployee(String un) {
         User u = null;
         try {
             DBConnector c = new DBConnector();
 
-            String query = "SELECT customer_name, phone, email \n"
+            String query = "SELECT name, role \n"
                     + "FROM employees \n"
-                    + "WHERE email = '" + email + "';";
+                    + "WHERE username = '" + un + "';";
             Connection con = DBConnector.connection();
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
-                String _name = rs.getString("customer_name");
-                String phone = rs.getString("phone");
-                String _email = rs.getString("email");
-                u = new User(_name, phone, _email);
+                String name = rs.getString("name");
+                String role = rs.getString("role");
+                u = new User(name, un);
+                u.setRole(role);
             }
             return u;
         } catch (Exception ex) {
+            System.out.println("Den henter ingen bruger");
             ex.printStackTrace();
             return null;
         }

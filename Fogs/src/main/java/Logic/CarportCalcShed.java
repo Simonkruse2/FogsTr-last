@@ -12,6 +12,7 @@ public class CarportCalcShed {
     /**
      *
      * @author simon
+     * @param args
      */
     public static void main(String[] args) {
         CarportCalcShed cc = new CarportCalcShed();

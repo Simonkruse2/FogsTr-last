@@ -26,9 +26,9 @@ public abstract class Command {
             commands = new HashMap();
             commands.put("CarportSimpleDrawing", new CommandCarportSimpleDrawing());
             commands.put("CreateCustomer", new CommandCreateCustomer());
+            commands.put("CreateEmployee", new CommandCreateEmployee());
             commands.put("Login", new CommandLogin());
             commands.put("Partlists", new CommandPartlists());
-
         }
         String origin = request.getParameter("command");
 

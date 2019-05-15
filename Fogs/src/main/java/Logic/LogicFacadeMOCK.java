@@ -57,8 +57,10 @@ public class LogicFacadeMOCK implements LogicFacade {
         try {
             um.createEmployee(u);
         } catch (SQLException ex) {
+            ex.printStackTrace();
             System.out.println("SQLException ... øv");
         } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
             System.out.println("Class not found");
         }
         return u;
@@ -67,7 +69,14 @@ public class LogicFacadeMOCK implements LogicFacade {
     @Override
     public User checkLogin(User u) {
         UserMapper um = new UserMapper();
-        um.checkLogin(u.getEmail(), u.getPassword());
+        um.checkLogin(u.getUsername(),u.getPassword());
+        return u;
+    }
+
+    @Override
+    public User getEmployee(String un) {
+        UserMapper um = new UserMapper();
+        User u = um.getEmployee(un);
         return u;
     }
 }

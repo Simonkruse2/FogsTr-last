@@ -20,4 +20,5 @@ public interface LogicFacade {
     User createCustomer(User u);
     User createEmployee(User u);
     User checkLogin(User u);
+    User getEmployee(String un);
 }

@@ -24,7 +24,7 @@ public class CommandLogin extends Command {
     /**
      * Checks login. A session is created and attributes are set based on which
      * user/customer is trying to log in as. If the login is successful, the
-     * user is forwarded to shop.jsp, if not, then index.jsp.
+     * user is forwarded to dimensions.jsp, if not, then index.jsp.
      *
      * @param request
      * @param response
@@ -32,28 +32,26 @@ public class CommandLogin extends Command {
      * @throws IOException
      */
     @Override
-    public String execute(HttpServletRequest request, LogicFacade logic) throws ServletException, IOException {
-
+    public String execute(HttpServletRequest request, LogicFacade logic) throws IllegalArgumentException, ServletException, IOException {
         session = request.getSession();
-        String email = request.getParameter("email");
+        String username = request.getParameter("username");
         String password = request.getParameter("password");
+
         UserMapper um = new UserMapper();
-        User u = new User(um.getCustomer(email).getName(), um.getCustomer(email).getPhone(),
-                um.getCustomer(email).getEmail());
+        User u = um.getEmployee(username);
 
         session.setAttribute("user", u);
-        boolean valid = um.checkLogin(email, password);
+        boolean valid = um.checkLogin(username, password);
 
-        if (valid && email != null && password != null && !("".equals(email))
+        if (valid && username != null && password != null && !("".equals(username))
                 && !("".equals(password))) {
             System.out.println("User exists");
             session.setAttribute("user", u);
-            System.out.println(u.toString());
             return "Dimensions.jsp";
         } else {
             System.out.println("user doesnt exist");
             System.out.println(password);
-            System.out.println(email);
+            System.out.println(username);
             session.invalidate();
             return "index.jsp";
         }

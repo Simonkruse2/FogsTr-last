@@ -15,19 +15,18 @@ import javax.servlet.http.HttpServletRequest;
  *
  * @author simon
  */
-public class CommandCreateCustomer extends Command {
+public class CommandCreateEmployee extends Command {
 
-    public CommandCreateCustomer() {
+    public CommandCreateEmployee() {
     }
 
     @Override
     public String execute(HttpServletRequest request, LogicFacade logic) throws ServletException, IOException {
         User u = null;
         u.setName(request.getParameter("name"));
-        u.setPhone(request.getParameter("phone"));
-        u.setUsername(request.getParameter("email"));
+        u.setUsername(request.getParameter("username"));
         u.setPassword(request.getParameter("password"));
-        logic.createCustomer(u);
+        logic.createEmployee(u);
         return "index.jsp";
     }
 }
