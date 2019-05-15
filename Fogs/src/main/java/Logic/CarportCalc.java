@@ -20,14 +20,7 @@ public class CarportCalc {
     int id;
     MaterialMapper map = new MaterialMapper(id);
 
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        CarportCalc cc = new CarportCalc();
-        for (int i = 0; i < cc.partLists().size(); i++) {
-            System.out.println(cc.partLists().get(i));
-        }
-   
 
-    }
 
     public Material poles(int length, int width) throws SQLException, ClassNotFoundException {
 
@@ -45,7 +38,9 @@ public class CarportCalc {
         }
         amount += extraamount;
         mat.setAmount(amount);
-        m.add(mat);
+        mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
+        mat.setUnit(map.getMaterialUnit(id));
+     //   // m.add(mat);
         return mat;
     }
 
@@ -64,7 +59,8 @@ public class CarportCalc {
         mat.setAmount(2);
         mat.setLength(length);
         mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
-        m.add(mat);
+        mat.setUnit(map.getMaterialUnit(id));
+        // m.add(mat);
         return mat;
     }
 
@@ -75,7 +71,8 @@ public class CarportCalc {
         int numRafts = (int) Math.ceil((length / 60) + 1); //cm cm cm!
         mat.setAmount(numRafts);
         mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
-        m.add(mat);
+        mat.setUnit(map.getMaterialUnit(id));
+        // m.add(mat);
         return mat;
     }
 
@@ -87,11 +84,12 @@ public class CarportCalc {
     public Material portFittings(int length, int width) throws SQLException, ClassNotFoundException { //corport beslag (til stolper og spær)
         int id = 25;
         Material mat = new Material(map.getMaterialDescription(id), map.getMaterialPrice(id));
-        int pamount = poles(length, width).getAmount(); // port amount
+        int pamount = poles(length,width).getAmount(); // port amount
         int ramount = 2 * rafts(length, width).getAmount(); // raft amount
         mat.setAmount(pamount + ramount);
         mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
-        m.add(mat);
+        mat.setUnit(map.getMaterialUnit(id));
+        // m.add(mat);
         return mat;
 
     }
@@ -107,7 +105,8 @@ public class CarportCalc {
         }
         mat.setAmount(count);
         mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
-        m.add(mat);
+        mat.setUnit(map.getMaterialUnit(id));
+        // m.add(mat);
         return mat;
     }
 
@@ -117,7 +116,8 @@ public class CarportCalc {
         mat.setLength(length);
         mat.setAmount(2);
         mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
-        m.add(mat);
+        mat.setUnit(map.getMaterialUnit(id));
+        // m.add(mat);
         return mat;
     }
 
@@ -127,7 +127,8 @@ public class CarportCalc {
         mat.setLength(width);
         mat.setAmount(2);
         mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
-        m.add(mat);
+        mat.setUnit(map.getMaterialUnit(id));
+        // m.add(mat);
         return mat;
     }
 
@@ -145,7 +146,8 @@ public class CarportCalc {
         }
         mat.setAmount(count);
         mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
-        m.add(mat);
+        mat.setUnit(map.getMaterialUnit(id));
+        // m.add(mat);
         return mat;
     }
 
@@ -162,7 +164,8 @@ public class CarportCalc {
 
         mat.setAmount((int) Math.ceil(carportSqrmtr * 0.46 / 360));
         mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
-        m.add(mat);
+        mat.setUnit(map.getMaterialUnit(id));
+        // m.add(mat);
         return mat;
     }
 
@@ -173,12 +176,32 @@ public class CarportCalc {
 
         mat.setAmount((int) Math.ceil(carportSqrmtr * 0.77 / 600));
         mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
-        m.add(mat);
+        mat.setUnit(map.getMaterialUnit(id));
+        // m.add(mat);
         return mat;
     }
 
-    public ArrayList<Material> partLists() {
+    public void runCalc(int length, int width) throws SQLException, ClassNotFoundException {
+        m.add(poles(length, width));
+        m.add(beamsLength(length));
+        m.add(rafts(length, width));
+        m.add(portFittings(length, width));
+        m.add(screwFittings(length, width));
+        m.add(frameLength(length, width));
+        m.add(frameWidth(length, width));
+        m.add(screwFrame(length, width));
+        m.add(plastmoShort(length, width));
+        m.add(plastmoLong(length, width));
+    }
+
+    public ArrayList<Material> partLists(){
+        
         return m;
     }
+
+   
+
+    
+    
 
 }

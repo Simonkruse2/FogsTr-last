@@ -59,13 +59,21 @@ public class MaterialMapper {
 
     }
 
-    public void getMaterialUnit(int id) throws SQLException, ClassNotFoundException {
-        Connection con = DBConnector.connection();
-        String SQL = "Select `unit` from `materials` where `id_material` = (?);";
-        PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
-        ps.setInt(1, id);
-
-        ps.executeQuery();
+    public String getMaterialUnit(int id) throws SQLException, ClassNotFoundException {
+        String unit = "";
+        try {
+            Connection con = DBConnector.connection();
+            String query = "Select `unit` from `materials` where `id_material` = " + id + ";";
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                unit = rs.getString("unit");
+            }
+            return unit;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        }
     }
 
 }
