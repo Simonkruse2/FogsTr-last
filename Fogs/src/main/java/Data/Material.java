@@ -17,10 +17,19 @@ public class Material {
     private double price; // price pr. piece/package/roll - stk/pakke/rulle
     private int amount; // quantity of product
     private int length; // length of product
+    private String unit; // unit of product - stk, pakke...
 
     public Material(String pname, double price) {
         this.pname = pname;
         this.price = price;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
     }
 
     public int getId() {
@@ -73,7 +82,9 @@ public class Material {
 
     @Override
     public String toString() {
-        return "Material{" + "id=" + id + ", pname=" + pname + ", totalPrice=" + totalPrice + ", price=" + price + ", amount=" + amount + ", length=" + length + '}';
+        return "Material{" + "id=" + id + ", pname=" + pname + ", totalPrice=" + totalPrice + ", price=" + price + ", amount=" + amount + ", length=" + length + ", unit=" + unit + '}';
     }
+
+    
 
 }

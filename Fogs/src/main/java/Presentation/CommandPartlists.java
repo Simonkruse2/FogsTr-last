@@ -29,6 +29,8 @@ public class CommandPartlists extends Command{
         CarportCalc CarportCalc = logic.createSimpleCarportCalc(length, width);
         request.setAttribute("carport", carport);
         request.setAttribute("CarportCalc", CarportCalc);
+        request.setAttribute("length", length);
+        request.setAttribute("width", width);
         return "Partlists.jsp";
     }
 }
