@@ -13,25 +13,18 @@ and open the template in the editor.
     box-sizing: border-box;
 }
 
-.clearfix{
-    &::after {
-        display: block; content: "";
-        clear: both;
-    }
-}
-
-html {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-    text-align: center;
-    height: 100%;
-    overflow: hidden;
-}
-
 body {
     min-height: 100%;
 }
 .hide {
-  display: none;
+    display: none;
 }
+
+.kassen{
+    border: 1px dashed red;
+    min-height: 1700px;
+    height: auto;
+    margin-bottom: 1em;
+}
+
+
