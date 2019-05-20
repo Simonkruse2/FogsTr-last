@@ -7,7 +7,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="Data.Material"%>
 <%@page import="Logic.CarportCalc"%>
-<%@page import="Logic.Carport"%>
+<%@page import="Data.Carport"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">

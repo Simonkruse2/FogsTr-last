@@ -1,4 +1,4 @@
-<%@page import="Logic.Carport"%>
+<%@page import="Data.Carport"%>
 <%@page import="Logic.CarportCalc"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
