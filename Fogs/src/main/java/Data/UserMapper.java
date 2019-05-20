@@ -83,7 +83,6 @@ public class UserMapper {
     public boolean checkLogin(String username, String password) {
         String _password = "";
         try {
-            DBConnector c = new DBConnector();
             String query = "SELECT password FROM `employees` WHERE username = '" + username + "';";
             Connection con = DBConnector.connection();
             Statement stmt = con.createStatement();
@@ -109,8 +108,6 @@ public class UserMapper {
     public User getCustomer(String email) {
         User u = null;
         try {
-            DBConnector c = new DBConnector();
-
             String query = "SELECT customer_name, phone, email \n"
                     + "FROM customers \n"
                     + "WHERE email = '" + email + "';";
@@ -135,10 +132,8 @@ public class UserMapper {
     public User getEmployee(String un) {
         User u = null;
         try {
-            DBConnector c = new DBConnector();
-
-            String query = "SELECT name, role \n"
-                    + "FROM employees \n"
+            String query = "SELECT * \n"
+                    + "FROM users \n"
                     + "WHERE username = '" + un + "';";
             Connection con = DBConnector.connection();
             Statement stmt = con.createStatement();

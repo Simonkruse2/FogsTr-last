@@ -15,6 +15,7 @@
     <body>
         <h1><% out.print(u.getUsername()); %></h1>
         <h1><% out.print(u.getName());%></h1>
+        <h1><% out.print(u.getRole());%></h1>
         <div id="wrapper">
             <main class="container-fluid">
                 <section class="row-no-gutters">
