@@ -17,35 +17,16 @@ public class CarportCalcShed {
      * @author simon
      * @param args
      */
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        CarportCalcShed cc = new CarportCalcShed();
-        System.out.println(cc.poles(780, 600));
-        System.out.println(cc.beamsLength(780));
-        System.out.println(cc.rafts(780, 600));
-        System.out.println(cc.portFittings(780, 600));
-        System.out.println(cc.screwFittings(780, 600));
-        System.out.println(cc.frameWidth(780, 600));
-        System.out.println(cc.frameLength(780, 600));
-        System.out.println(cc.screwFrame(780, 600));
-        System.out.println(cc.plastmoShort(780, 600));
-        System.out.println(cc.plastmoLong(780, 600));
-        System.out.println(cc.skeletonShedWidth(780, 600));
-        System.out.println(cc.skeletonShedLength(780, 600));
-        System.out.println(cc.shedCover(780, 600));
-        System.out.println(cc.shedCoverScrewes(780, 600));
-        System.out.println(cc.shedDoor(780, 600));
-        System.out.println(cc.shedDoorScrews(780, 600));
-        System.out.println(cc.doorSkeleton(780, 600));
-        System.out.println(cc.doorKnob(780, 600));
-    }
 
     private ArrayList<Material> mArray = new ArrayList<>();
     int id;
     MaterialMapper map = new MaterialMapper(id);
-
+    int length;
+    int width;
+    Carport c = new Carport(false, true, length, width);
     public Material poles(int length, int width) throws SQLException, ClassNotFoundException {
-        id = 24;
-        int innerLength = length - (130 + 210);
+        int id = 24;
+        int innerLength = length - (130 + c.getShedlength());
         int extraamount = 0;
 
         Material mat = new Material(map.getMaterialDescription(id), map.getMaterialPrice(id));
@@ -59,35 +40,38 @@ public class CarportCalcShed {
         }
         amount += extraamount;
         mat.setAmount(amount);
-        mArray.add(mat);
+        mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
+        mat.setUnit(map.getMaterialUnit(id));
         return mat;
     }
 
     public double polesDrawing(int length) {
-        return (double) ((length - (130 + 210)) / 310);
+        return (double) ((length - (130 + c.getShedlength())) / 310);
 
     }
 
     public double poleDist(int length) {
-        return (length - (130 + 210)) / polesDrawing(length);
+        return (length - (130 + c.getShedlength())) / polesDrawing(length);
     }
 
     public Material beamsLength(int length) throws SQLException, ClassNotFoundException {
-        id = 14;
+        int id = 14;
         Material mat = new Material(map.getMaterialDescription(id), map.getMaterialPrice(id));
         mat.setAmount(2);
         mat.setLength(length);
-        mArray.add(mat);
+        mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
+        mat.setUnit(map.getMaterialUnit(id));
         return mat;
     }
 
     public Material rafts(int length, int width) throws SQLException, ClassNotFoundException { //spær
-        id = 21;
+        int id = 21;
         Material mat = new Material(map.getMaterialDescription(id), map.getMaterialPrice(id));
         mat.setLength(width);
         int numRafts = (int) Math.ceil((length / 60) + 1); //cm cm cm!
         mat.setAmount(numRafts);
-        mArray.add(mat);
+        mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
+        mat.setUnit(map.getMaterialUnit(id));
         return mat;
     }
 
@@ -97,18 +81,19 @@ public class CarportCalcShed {
     }
 
     public Material portFittings(int length, int width) throws SQLException, ClassNotFoundException { //corport beslag (til stolper og spær)
-        id = 25;
+        int id = 25;
         Material mat = new Material(map.getMaterialDescription(id), map.getMaterialPrice(id));
         int pamount = poles(length, width).getAmount(); // port amount
         int ramount = 2 * rafts(length, width).getAmount(); // raft amount
         mat.setAmount(pamount + ramount);
-        mArray.add(mat);
+        mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
+        mat.setUnit(map.getMaterialUnit(id));
         return mat;
 
     }
 
     public Material screwFittings(int length, int width) throws SQLException, ClassNotFoundException {
-        id = 6;
+        int id = 6;
         Material mat = new Material(map.getMaterialDescription(id), map.getMaterialPrice(id));
         int amount = 3 * portFittings(length, width).getAmount();
         int count = 1;
@@ -118,30 +103,32 @@ public class CarportCalcShed {
         }
         mat.setAmount(count);
         mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
-        mArray.add(mat);
+        mat.setUnit(map.getMaterialUnit(id));
         return mat;
     }
 
     public Material frameLength(int length, int width) throws SQLException, ClassNotFoundException { //frame for the lengthside
-        id = 17;
+        int id = 17;
         Material mat = new Material(map.getMaterialDescription(id), map.getMaterialPrice(id));
         mat.setLength(length);
         mat.setAmount(2);
-        mArray.add(mat);
+        mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
+        mat.setUnit(map.getMaterialUnit(id));
         return mat;
     }
 
     public Material frameWidth(int length, int width) throws SQLException, ClassNotFoundException { //frame for the widthside
-        id = 17;
+        int id = 17;
         Material mat = new Material(map.getMaterialDescription(id), map.getMaterialPrice(id));
         mat.setLength(width);
         mat.setAmount(2);
-        mArray.add(mat);
+        mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
+        mat.setUnit(map.getMaterialUnit(id));
         return mat;
     }
 
     public Material screwFrame(int length, int width) throws SQLException, ClassNotFoundException {
-        id = 10;
+        int id = 10;
         Material mat = new Material(map.getMaterialDescription(id), map.getMaterialPrice(id));
 
         int lamount = 2 * 2 * rafts(length, width).getAmount();// length amount (lændgde siden)
@@ -154,7 +141,7 @@ public class CarportCalcShed {
         }
         mat.setAmount(count);
         mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
-        mArray.add(mat);
+        mat.setUnit(map.getMaterialUnit(id));
         return mat;
     }
 
@@ -165,58 +152,63 @@ public class CarportCalcShed {
      * @return
      */
     public Material plastmoShort(int length, int width) throws SQLException, ClassNotFoundException {
-        id = 28;
-        Material plastmoShort = new Material(map.getMaterialDescription(id), map.getMaterialPrice(id));
+        int id = 28;
+        Material mat = new Material(map.getMaterialDescription(id), map.getMaterialPrice(id));
         int carportSqrmtr = length * width / 100;
 
-        plastmoShort.setAmount((int) Math.ceil(carportSqrmtr * 0.46 / 360));
-        mArray.add(plastmoShort);
-        return plastmoShort;
+        mat.setAmount((int) Math.ceil(carportSqrmtr * 0.46 / 360));
+        mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
+        mat.setUnit(map.getMaterialUnit(id));
+        return mat;
     }
 
     public Material plastmoLong(int length, int width) throws SQLException, ClassNotFoundException {
-        id = 29;
-        Material plastmoLong = new Material(map.getMaterialDescription(id), map.getMaterialPrice(id));
+        int id = 29;
+        Material mat = new Material(map.getMaterialDescription(id), map.getMaterialPrice(id));
         int carportSqrmtr = length * width / 100;
 
-        plastmoLong.setAmount((int) Math.ceil(carportSqrmtr * 0.77 / 600));
-        mArray.add(plastmoLong);
-        return plastmoLong;
+        mat.setAmount((int) Math.ceil(carportSqrmtr * 0.77 / 600));
+        mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
+        mat.setUnit(map.getMaterialUnit(id));
+        return mat;
     }
 
     public Material skeletonShedWidth(int length, int width) throws SQLException, ClassNotFoundException {
-        id = 11;
-        Material skeleton = new Material(map.getMaterialDescription(id), map.getMaterialPrice(id));
-        skeleton.setAmount(4);
-        skeleton.setLength(width);
-        mArray.add(skeleton);
-        return skeleton;
+        int id = 11;
+        Material mat = new Material(map.getMaterialDescription(id), map.getMaterialPrice(id));
+        mat.setAmount(4);
+        mat.setLength(c.getShedwidth());
+        mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
+        mat.setUnit(map.getMaterialUnit(id));
+        return mat;
 
     }
 
     public Material skeletonShedLength(int length, int width) throws SQLException, ClassNotFoundException {
-        id = 12;
-        Material skeleton = new Material(map.getMaterialDescription(id), map.getMaterialPrice(id));
-        skeleton.setAmount(4);
-        skeleton.setLength(210);
-        mArray.add(skeleton);
-        return skeleton;
+        int id = 12;
+        Material mat = new Material(map.getMaterialDescription(id), map.getMaterialPrice(id));
+        mat.setAmount(4);
+        mat.setLength(c.getShedlength());
+        mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
+        mat.setUnit(map.getMaterialUnit(id));
+        return mat;
 
     }
 
     public Material shedCover(int length, int width) throws SQLException, ClassNotFoundException {
-        id = 11;
-        Material shedcover = new Material(map.getMaterialDescription(id), map.getMaterialPrice(id));
+        int id = 11;
+        Material mat = new Material(map.getMaterialDescription(id), map.getMaterialPrice(id));
         int amount = 0;
-        amount += (210 / 10) * 2; // length amount
-        amount += ((width * 0.9) / 10) * 2;
-        shedcover.setAmount(amount);
-        mArray.add(shedcover);
-        return shedcover;
+        amount += (c.getShedwidth() / 10) * 2; // length amount
+        amount += ((c.getShedwidth() * 0.9) / 10) * 2;
+        mat.setAmount(amount);
+        mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
+        mat.setUnit(map.getMaterialUnit(id));
+        return mat;
     }
 
-    public Material shedCoverScrewes(int length, int width) throws SQLException, ClassNotFoundException {
-        id = 9;
+    public Material shedCoverScrews(int length, int width) throws SQLException, ClassNotFoundException {
+        int id = 9;
         Material mat = new Material(map.getMaterialDescription(id), map.getMaterialPrice(id));
         int screwAmount = shedCover(length, width).getAmount() * 6 + 18;
 
@@ -227,41 +219,73 @@ public class CarportCalcShed {
         }
         mat.setAmount(count);
         mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
-        mArray.add(mat);
+        mat.setUnit(map.getMaterialUnit(id));
         return mat;
     }
 
     public Material shedDoor(int length, int width) throws SQLException, ClassNotFoundException {
-        id = 27;
-        Material hinge = new Material(map.getMaterialDescription(id), map.getMaterialPrice(id));
-        hinge.setAmount(2);
-        mArray.add(hinge);
-        return hinge;
+        int id = 27;
+        Material mat = new Material(map.getMaterialDescription(id), map.getMaterialPrice(id));
+        mat.setAmount(2);
+        mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
+        mat.setUnit(map.getMaterialUnit(id));
+        return mat;
     }
 
     public Material shedDoorScrews(int length, int width) throws SQLException, ClassNotFoundException {
-        Material doorScrews = new Material(map.getMaterialDescription(id), map.getMaterialPrice(id));
-        doorScrews.setAmount(shedDoor(length, width).getAmount() * 6);
-        mArray.add(doorScrews);
-        return doorScrews;
+        int id = 5;
+        int count = 1;
+        Material mat = new Material(map.getMaterialDescription(id), map.getMaterialPrice(id));
+        int screwAmount = shedDoor(length, width).getAmount() * 6;
+        while (screwAmount > 300) {
+            screwAmount -= 300;
+            count++;
+        }
+        mat.setAmount(count);
+        mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
+        mat.setUnit(map.getMaterialUnit(id));
+        return mat;
     } //kan nok udkommenteres / slettes
 
     public Material doorSkeleton(int length, int width) throws SQLException, ClassNotFoundException {
-        id = 18;
-        Material doorSkeleton = new Material(map.getMaterialDescription(id), map.getMaterialPrice(id));
-        doorSkeleton.setAmount(1);
-        doorSkeleton.setLength(300);
-        mArray.add(doorSkeleton);
-        return doorSkeleton;
+        int id = 18;
+        Material mat = new Material(map.getMaterialDescription(id), map.getMaterialPrice(id));
+        mat.setAmount(1);
+        mat.setLength(300);
+        mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
+        mat.setUnit(map.getMaterialUnit(id));
+        return mat;
     }
 
     public Material doorKnob(int length, int width) throws SQLException, ClassNotFoundException {
-        id = 26;
-        Material doorKnob = new Material(map.getMaterialDescription(id), map.getMaterialPrice(id));
-        doorKnob.setAmount(1);
-        mArray.add(doorKnob);
-        return doorKnob;
+        int id = 26;
+        Material mat = new Material(map.getMaterialDescription(id), map.getMaterialPrice(id));
+        mat.setAmount(1);
+        mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
+        mat.setUnit(map.getMaterialUnit(id));
+        return mat;
     }
+        public void runCalc(int length, int width) throws SQLException, ClassNotFoundException {
+        mArray.add(poles(length, width));
+        mArray.add(beamsLength(length));
+        mArray.add(rafts(length, width));
+        mArray.add(portFittings(length, width));
+        mArray.add(screwFittings(length, width));
+        mArray.add(frameLength(length, width));
+        mArray.add(frameWidth(length, width));
+        mArray.add(screwFrame(length, width));
+        mArray.add(plastmoShort(length, width));
+        mArray.add(plastmoLong(length, width));
+        mArray.add(skeletonShedWidth(length, width));
+        mArray.add(skeletonShedLength(length, width));
+        mArray.add(shedCover(length, width));
+        mArray.add(shedCoverScrews(length, width));
+        mArray.add(shedDoor(length, width));
+        mArray.add(shedDoorScrews(length, width));
+        mArray.add(doorSkeleton(length, width));
+        mArray.add(doorKnob(length, width));
+    }
+        
         public ArrayList<Material> partLists() {
         return mArray;
     }
