@@ -5,6 +5,7 @@
  */
 package Logic;
 
+import Data.Carport;
 import Data.Material;
 import Data.MaterialMapper;
 import java.sql.SQLException;

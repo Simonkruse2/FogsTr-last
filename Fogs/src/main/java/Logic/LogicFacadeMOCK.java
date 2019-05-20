@@ -5,9 +5,14 @@
  */
 package Logic;
 
+import Data.Carport;
+import Data.Order;
+import Data.OrderMapper;
 import Data.User;
 import Data.UserMapper;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -78,5 +83,18 @@ public class LogicFacadeMOCK implements LogicFacade {
         UserMapper um = new UserMapper();
         User u = um.getEmployee(un);
         return u;
+    }
+
+    @Override
+    public Order createOrder(Order order) {
+        OrderMapper om = new OrderMapper();
+        try {
+            om.createOrder(order);
+        } catch (SQLException ex) {
+            Logger.getLogger(LogicFacadeMOCK.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(LogicFacadeMOCK.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return order;
     }
 }
