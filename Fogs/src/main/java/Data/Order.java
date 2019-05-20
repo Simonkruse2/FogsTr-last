@@ -14,6 +14,8 @@ public class Order {
     private String status;
     private int order_width;
     private int order_length;
+    private int order_width_shed;
+    private int order_length_shed;
     private int incline;
     private int id_customer;
     private int id_employee;
@@ -27,6 +29,22 @@ public class Order {
         this.id_customer = id_customer;
         this.id_employee = id_employee;
         this.price = price;
+    }
+
+    public int getOrder_width_shed() {
+        return order_width_shed;
+    }
+
+    public void setOrder_width_shed(int order_width_shed) {
+        this.order_width_shed = order_width_shed;
+    }
+
+    public int getOrder_length_shed() {
+        return order_length_shed;
+    }
+
+    public void setOrder_length_shed(int order_length_shed) {
+        this.order_length_shed = order_length_shed;
     }
 
     public String getStatus() {
