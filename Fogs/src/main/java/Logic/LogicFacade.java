@@ -16,7 +16,7 @@ public interface LogicFacade {
     Carport createSimpleCarport(int length, int width);
     CarportCalc createSimpleCarportCalc(int length, int width);
     Carport createSimpleCarportWithShed(int length, int width);
-    CarportCalcShed createSimpleCarportCalcWithShed(int length, int width);
+    CarportCalcShed createSimpleCarportCalcWithShed(int length, int width, int shedlength, int shedwidth);
     User createCustomer(User u);
     User createEmployee(User u);
     User checkLogin(User u);

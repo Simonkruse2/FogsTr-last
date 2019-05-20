@@ -40,7 +40,6 @@ public class CarportCalc {
         mat.setAmount(amount);
         mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
         mat.setUnit(map.getMaterialUnit(id));
-     //   // m.add(mat);
         return mat;
     }
 
@@ -60,7 +59,6 @@ public class CarportCalc {
         mat.setLength(length);
         mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
         mat.setUnit(map.getMaterialUnit(id));
-        // m.add(mat);
         return mat;
     }
 
@@ -72,7 +70,6 @@ public class CarportCalc {
         mat.setAmount(numRafts);
         mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
         mat.setUnit(map.getMaterialUnit(id));
-        // m.add(mat);
         return mat;
     }
 
@@ -89,7 +86,6 @@ public class CarportCalc {
         mat.setAmount(pamount + ramount);
         mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
         mat.setUnit(map.getMaterialUnit(id));
-        // m.add(mat);
         return mat;
 
     }
@@ -106,7 +102,6 @@ public class CarportCalc {
         mat.setAmount(count);
         mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
         mat.setUnit(map.getMaterialUnit(id));
-        // m.add(mat);
         return mat;
     }
 
@@ -117,7 +112,6 @@ public class CarportCalc {
         mat.setAmount(2);
         mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
         mat.setUnit(map.getMaterialUnit(id));
-        // m.add(mat);
         return mat;
     }
 
@@ -128,7 +122,6 @@ public class CarportCalc {
         mat.setAmount(2);
         mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
         mat.setUnit(map.getMaterialUnit(id));
-        // m.add(mat);
         return mat;
     }
 
@@ -147,7 +140,6 @@ public class CarportCalc {
         mat.setAmount(count);
         mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
         mat.setUnit(map.getMaterialUnit(id));
-        // m.add(mat);
         return mat;
     }
 
@@ -165,7 +157,6 @@ public class CarportCalc {
         mat.setAmount((int) Math.ceil(carportSqrmtr * 0.46 / 360));
         mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
         mat.setUnit(map.getMaterialUnit(id));
-        // m.add(mat);
         return mat;
     }
 
@@ -177,7 +168,6 @@ public class CarportCalc {
         mat.setAmount((int) Math.ceil(carportSqrmtr * 0.77 / 600));
         mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
         mat.setUnit(map.getMaterialUnit(id));
-        // m.add(mat);
         return mat;
     }
 
