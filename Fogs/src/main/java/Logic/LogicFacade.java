@@ -5,6 +5,8 @@
  */
 package Logic;
 
+import Data.Carport;
+import Data.Order;
 import Data.User;
 
 /**
@@ -21,4 +23,5 @@ public interface LogicFacade {
     User createEmployee(User u);
     User checkLogin(User u);
     User getEmployee(String un);
+    Order createOrder(Order order);
 }

@@ -5,7 +5,7 @@
  */
 package Presentation;
 
-import Logic.Carport;
+import Data.Carport;
 import Logic.CarportCalc;
 import Logic.CarportCalcShed;
 import Logic.LogicFacade;
