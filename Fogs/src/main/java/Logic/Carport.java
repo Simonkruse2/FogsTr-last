@@ -26,6 +26,24 @@ public class Carport {
     private int rooftiles; // number of rooftiles - tagbeklædning
     private int plastmoShort; // Short plastic roof - Plastik tagbeklædning
     private int plastmoLong; // Long plastic Roof - Plastik tagbeklædning
+    private int shedlength;
+    private int shedwidth;
+
+    public void setShedlength(int shedlength) {
+        this.shedlength = shedlength;
+    }
+
+    public void setShedwidth(int shedwidth) {
+        this.shedwidth = shedwidth;
+    }
+
+    public int getShedlength() {
+        return shedlength;
+    }
+
+    public int getShedwidth() {
+        return shedwidth;
+    }
 
     public Carport(boolean roof, boolean shed, int lengthOuter, int widthOuter) {
         this.roof = roof;

@@ -32,7 +32,7 @@ public class LogicFacadeMOCK implements LogicFacade {
     }
 
     @Override
-    public CarportCalcShed createSimpleCarportCalcWithShed(int length, int width) {
+    public CarportCalcShed createSimpleCarportCalcWithShed(int length, int width, int shedlength, int shedwidth) {
         return new CarportCalcShed();
     }
 

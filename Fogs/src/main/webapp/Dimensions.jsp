@@ -14,7 +14,7 @@
     </head>
     <body>
         <h1><% out.print(u.getUsername()); %></h1>
-        <h1><% out.print(u.getName()); %></h1>
+        <h1><% out.print(u.getName());%></h1>
         <div id="wrapper">
             <main class="container-fluid">
                 <section class="row-no-gutters">
@@ -30,76 +30,58 @@
                     </form>
                     <div class="col-md-6">
                         <form class="" action="FrontController" method="post">
-                            <h1>View carport partlists </h1>
+                            <h1>View carport partslist </h1>
                             Length:<br>
                             <input type="text" name="length"><br><br>
                             Width:<br>
                             <input type="text" name="width"><br><br>
+
+                            <div class="">
+                                <input type="radio" name="shed" value="false" checked/> 
+                                Without Shed<br> 
+                                <input type="radio" name="shed" value="true" />
+                                With shed <br> <br>
+                            </div>
+
+                            <p>Length on shed</p>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <select class="" id="length" name="shedlength">
+                                            <% for(int i = 0; i < 18; i++) { %> 
+                                            <option value="<%=(210 + i*30) %>"><%=(210 + i*30)  %></option>
+                                           
+                                            <% } %>
+                                            
+                                            
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                            Width on shed:
+                            <table>
+                                <tr>
+                                    <td>
+                                        <select class="" id="width" name="shedwidth">
+                                            <% for(int i = 0; i < 18; i++) { %> 
+                                            <option value="<%=(210 + i*30) %>"><%=(210 + i*30)  %></option>
+                                           
+                                            <% } %>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
                             <input type="hidden" name="command" value="Partlists"/>
                             <input type="submit" value="View Partlist">
                         </form>
 
-                        <div class="">
-                            <input type="radio" name="tab" value="igotnone" onclick="show1();" checked/>
-                            Without Shed
-                            <input type="radio" name="tab" value="igottwo" onclick="show2();" />
-                            With shed <br>
-                        </div>
 
-                        <div id="div1" class="hide">
-                            <h1>With shed</h1>
-                            <p>Length on shed</p>
-                            <form action="FrontController" method="POST">
-                                <table>
-                                    <tr>
-                                        <td>
-                                            <select class="" id="length" name="length">
-                                                <option value="210" value="length">210</option>
-                                                <option value="230">230</option>
-                                                <option value="260">260</option>
-                                                <option value="290">290</option>
-                                                <option value="320">320</option>
-                                                <option value="350">350</option>
-                                                <option value="380">380</option>
-                                                <option value="410">410</option>
-                                                <option value="440">440</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                </table>
-                                Width on shed:
-                                <table>
-                                    <tr>
-                                        <td>
-                                            <select class="" id="width" name="width">
-                                                <option value="210">210</option>
-                                                <option value="230">230</option>
-                                                <option value="260">260</option>
-                                                <option value="290">290</option>
-                                                <option value="320">320</option>
-                                                <option value="350">350</option>
-                                                <option value="380">380</option>
-                                                <option value="410">410</option>
-                                                <option value="440">440</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                </table>
-                                <input type="hidden" class="" name="command" value="Partlists"/>
-                                <button type="submit">View partslist</button>
-                            </form>
-                        </div>
+
+
                 </section>
             </main>
         </div>
     </body>
 </html>
-<script>
-    function show1() {
-        document.getElementById('div1').style.display = 'none';
-    }
-    function show2() {
-        document.getElementById('div1').style.display = 'block';
-    }
-</script>
+
 
