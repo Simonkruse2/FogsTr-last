@@ -97,4 +97,17 @@ public class LogicFacadeMOCK implements LogicFacade {
         }
         return order;
     }
+
+    @Override
+    public Order createOrderShed(Order order) {
+        OrderMapper om = new OrderMapper();
+        try {
+            om.createOrderShed(order);
+        } catch (SQLException ex) {
+            Logger.getLogger(LogicFacadeMOCK.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(LogicFacadeMOCK.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return order;
+    }
 }
