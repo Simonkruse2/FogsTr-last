@@ -16,10 +16,19 @@ public class User {
     private String username;
     private String password;
     private String role;
+    private int id;
 
     public User(String name, String username) {
         this.name = name;
         this.username = username;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {

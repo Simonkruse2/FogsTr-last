@@ -78,6 +78,16 @@
                 </div>
             </main>
         </div>
-
+        <h1>Create Customer</h1>
+        <form action="FrontController" method="post">
+            Name<br>
+            <input type="text" name="name"><br><br>
+            Email<br>
+            <input type="text" name="email" ><br><br>
+            Phone number<br>
+            <input type="text" name="phone" ><br><br>
+            <input type="hidden" name="command" value="CreateCustomer"/>
+            <input type="submit" value="submit"/>  
+        </form>
     </body>
 </html>

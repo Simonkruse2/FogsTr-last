@@ -49,6 +49,7 @@ public class LogicFacadeMOCK implements LogicFacade {
         try {
             um.createCustomer(u);
         } catch (SQLException ex) {
+            ex.printStackTrace();
             System.out.println("SQLException ... øv");
         } catch (ClassNotFoundException ex) {
             System.out.println("Class not found");
@@ -78,6 +79,13 @@ public class LogicFacadeMOCK implements LogicFacade {
         return u;
     }
 
+    @Override
+    public User getCustomer(String un) {
+        UserMapper um = new UserMapper();
+        User u = um.getCustomer(un);
+        return u;
+    }
+    
     @Override
     public User getEmployee(String un) {
         UserMapper um = new UserMapper();
@@ -110,4 +118,5 @@ public class LogicFacadeMOCK implements LogicFacade {
         }
         return order;
     }
+
 }

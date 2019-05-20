@@ -36,13 +36,13 @@ public class OrderMapper {
         Connection con = DBConnector.connection();
         String SQL = "insert into `orders` (status, order_width, "
                 + "order_length, order_width_shed, order_length_shed, incline,"
-                + " id_customer, id_employee, price) values (?,?,?, ?, ?, ?, ?, ?, ?);";
+                + " id_customer, id_employee, price) values (?, ?, ?, ?, ?, ?, ?, ?, ?);";
         PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
         ps.setString(1, order.getStatus());
         ps.setInt(2, order.getOrder_width());
         ps.setInt(3, order.getOrder_length());
-        ps.setInt(5, order.getOrder_width_shed());
-        ps.setInt(4, order.getOrder_length_shed());
+        ps.setInt(4, order.getOrder_width_shed());
+        ps.setInt(5, order.getOrder_length_shed());
         ps.setInt(6, order.getIncline());
         ps.setInt(7, order.getId_customer());
         ps.setInt(8, order.getId_employee());

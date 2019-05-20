@@ -20,8 +20,6 @@ public class CarportCalc {
     int id;
     MaterialMapper map = new MaterialMapper(id);
 
-
-
     public Material poles(int length, int width) throws SQLException, ClassNotFoundException {
 
         int innerLength = length - 130;
@@ -81,7 +79,7 @@ public class CarportCalc {
     public Material portFittings(int length, int width) throws SQLException, ClassNotFoundException { //corport beslag (til stolper og spær)
         int id = 25;
         Material mat = new Material(map.getMaterialDescription(id), map.getMaterialPrice(id));
-        int pamount = poles(length,width).getAmount(); // port amount
+        int pamount = poles(length, width).getAmount(); // port amount
         int ramount = 2 * rafts(length, width).getAmount(); // raft amount
         mat.setAmount(pamount + ramount);
         mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
@@ -184,14 +182,17 @@ public class CarportCalc {
         m.add(plastmoLong(length, width));
     }
 
-    public ArrayList<Material> partLists(){
-        
+    public ArrayList<Material> partLists() {
+
         return m;
     }
 
-   
-
-    
-    
+    public int getPrice() {
+        int price = 0;
+        for (int i = 0; i < partLists().size(); i++) {
+            price += partLists().get(i).getPrice();
+        }
+        return price;
+    }
 
 }

@@ -163,6 +163,11 @@ public class Carport {
     public void setPlastmoLong(int plastmoLong) {
         this.plastmoLong = plastmoLong;
     }
+
+    @Override
+    public String toString() {
+        return "Carport{" + "roof=" + roof + ", shed=" + shed + ", lengthOuter=" + lengthOuter + ", lengthInner=" + lengthInner + ", widthOuter=" + widthOuter + ", widthInner=" + widthInner + ", screws=" + screws + ", screwBoxes=" + screwBoxes + ", rafts=" + rafts + ", beams=" + beams + ", postSpacing=" + postSpacing + ", tHinges=" + tHinges + ", doorFittings=" + doorFittings + ", rooftiles=" + rooftiles + ", plastmoShort=" + plastmoShort + ", plastmoLong=" + plastmoLong + ", shedlength=" + shedlength + ", shedwidth=" + shedwidth + '}';
+    }
     
     
 }
