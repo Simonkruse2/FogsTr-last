@@ -16,9 +16,6 @@ and open the template in the editor.
 body {
     min-height: 100%;
 }
-.hide {
-    display: none;
-}
 
 .kassen{
     border: 1px dashed red;
@@ -27,4 +24,10 @@ body {
     margin-bottom: 1em;
 }
 
+.dimensions{
+    margin: 1em 0;
+}
 
+.i{
+  font-size: 10px;  
+}
