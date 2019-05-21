@@ -7,6 +7,7 @@ package Logic;
 
 import Data.Carport;
 import Data.Order;
+import Data.OrderException;
 import Data.OrderMapper;
 import Data.User;
 import Data.UserMapper;
@@ -117,6 +118,18 @@ public class LogicFacadeMOCK implements LogicFacade {
             Logger.getLogger(LogicFacadeMOCK.class.getName()).log(Level.SEVERE, null, ex);
         }
         return order;
+    }
+
+    @Override
+    public Order getOrder(int id) {
+        OrderMapper om = new OrderMapper();
+        Order o = null;
+        try {
+            o = om.getOrder(id);
+        } catch (OrderException ex) {
+            Logger.getLogger(LogicFacadeMOCK.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return o;
     }
 
 }

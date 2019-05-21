@@ -15,6 +15,7 @@
     <body>
         <h1><% out.print(u.getUsername()); %></h1>
         <h2><% out.print(u.getName());%></h2>
+        <a href="ViewOrders.jsp" >click here to view previous orders</a>
         <div id="wrapper">
             <main class="container-fluid">
                 <section class="row-no-gutters dimensions">

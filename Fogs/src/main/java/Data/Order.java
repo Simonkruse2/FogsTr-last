@@ -11,6 +11,7 @@ package Data;
  */
 public class Order {
 
+    private int id_order;
     private String status;
     private int order_width;
     private int order_length;
@@ -29,6 +30,14 @@ public class Order {
         this.id_customer = id_customer;
         this.id_employee = id_employee;
         this.price = price;
+    }
+
+    public int getId_order() {
+        return id_order;
+    }
+
+    public void setId_order(int id_order) {
+        this.id_order = id_order;
     }
 
     public int getOrder_width_shed() {

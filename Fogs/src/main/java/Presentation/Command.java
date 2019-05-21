@@ -31,6 +31,7 @@ public abstract class Command {
             commands.put("Partlists", new CommandPartlists());
             commands.put("CreateOrder", new CommandCreateOrder());
             commands.put("CreateOrderShed", new CommandCreateOrderShed());
+            commands.put("ViewOrders", new CommandViewOrders());
         }
         String origin = request.getParameter("command");
 

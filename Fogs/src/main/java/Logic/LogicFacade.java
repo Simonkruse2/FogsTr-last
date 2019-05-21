@@ -26,4 +26,5 @@ public interface LogicFacade {
     User getEmployee(String un);
     Order createOrder(Order order);
     Order createOrderShed(Order order);
+    Order getOrder(int id);
 }

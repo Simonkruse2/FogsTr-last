@@ -31,7 +31,6 @@ public class CommandPartlists extends Command {
         int shedlength = Integer.parseInt(request.getParameter("shedlength"));
         int shedwidth = Integer.parseInt(request.getParameter("shedwidth"));
         
-        
         request.setAttribute("length", length);
         request.setAttribute("width", width);
         request.setAttribute("shedlength", shedlength);
