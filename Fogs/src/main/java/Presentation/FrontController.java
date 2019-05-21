@@ -8,6 +8,8 @@ package Presentation;
 import Logic.LogicFacade;
 import Logic.LogicFacadeMOCK;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,10 +32,12 @@ public class FrontController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, UserException {
         Command c = Command.from(request);
         String target = c.execute(request, logic);
-        System.out.println(target);
+        if(target.isEmpty()){
+            throw new UserException("Lol");
+        }
         request.getRequestDispatcher(target).forward(request, response);
     }
 
@@ -48,7 +52,12 @@ public class FrontController extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+            
+        } catch (UserException ex) {
+            
+        }
 
     }
 
@@ -62,7 +71,10 @@ public class FrontController extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (UserException ex) {
+        }
     }
 
     /**

@@ -29,7 +29,7 @@ public class CommandPartlists extends Command {
         int width = Integer.parseInt(request.getParameter("width"));
         String shed = request.getParameter("shed");
         int shedlength = Integer.parseInt(request.getParameter("shedlength"));
-        int shedwidth = Integer.parseInt(request.getParameter("shedlength"));
+        int shedwidth = Integer.parseInt(request.getParameter("shedwidth"));
         
         
         request.setAttribute("length", length);

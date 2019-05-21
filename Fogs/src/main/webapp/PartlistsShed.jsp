@@ -51,17 +51,21 @@
 
                             </tr>
                         </thead>
-                        <% int price = 0; %>
 
                         <% for (int i = 0; i < carportCalcShed.partLists().size(); i++) {%>
                         <tr>
                             <td> <%=carportCalcShed.partLists().get(i).getPname()%></td>
                             <td> <%=carportCalcShed.partLists().get(i).getUnit()%></td>
-                            <td> <%=carportCalcShed.partLists().get(i).getLength()%> cm</td>
+                            <td> 
+                             <% if(carportCalcShed.partLists().get(i).getLength() == 0) { %>
+                                    -
+                             <% } else{ %>
+                             <%=carportCalcShed.partLists().get(i).getLength() %> cm
+                             <% } %> 
+                             </td>
                             <td> <%=carportCalcShed.partLists().get(i).getAmount()%></td>
                             <td> <%=carportCalcShed.partLists().get(i).getPrice()%> kr.</td>
                             <td> <%=carportCalcShed.partLists().get(i).getTotalPrice()%> kr.</td>
-                            <% price += carportCalcShed.partLists().get(i).getTotalPrice(); %>
                         </tr>
                         <% }%>
                         <tr>
@@ -70,7 +74,7 @@
                             <td></td>
                             <td></td>
                             <td><b><i>Total price</i></b></td>
-                            <td><b><i> <%=price%></i>,-</b></td>
+                            <td><b><i> <%= carportCalcShed.getPrice() %>%></i>,-</b></td>
                         </tr>
 
 

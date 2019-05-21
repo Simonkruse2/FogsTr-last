@@ -30,31 +30,43 @@ public class CommandLogin extends Command {
      * @param response
      * @throws ServletException
      * @throws IOException
+     * @throws Presentation.UserException
      */
     @Override
-    public String execute(HttpServletRequest request, LogicFacade logic) throws IllegalArgumentException, ServletException, IOException {
+    public String execute(HttpServletRequest request, LogicFacade logic) throws  
+                   IllegalArgumentException, ServletException,UserException, IOException {
         session = request.getSession();
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-
-        UserMapper um = new UserMapper();
-        User u = um.getEmployee(username);
-
-        session.setAttribute("user", u);
-        boolean valid = um.checkLogin(username, password);
-
-        if (valid && username != null && password != null && !("".equals(username))
-                && !("".equals(password))) {
-            System.out.println("User exists");
+        
+        try {
+            
+            String username = request.getParameter("username");
+            String password = request.getParameter("password");
+            
+            UserMapper um = new UserMapper();
+            User u = um.getEmployee(username);
+            
             session.setAttribute("user", u);
-            return "Dimensions.jsp";
-        } else {
-            System.out.println("user doesnt exist");
-            System.out.println(password);
-            System.out.println(username);
-            session.invalidate();
-            return "index.jsp";
-        }
-    }
+            boolean valid = um.checkLogin(username, password);
+            
+            if (valid && username != null && password != null && !("".equals(username))
+                           && !("".equals(password))) {
+                session.setAttribute("user", u);
+                return "Dimensions.jsp";
+            } 
 
-}
+             else {
+                throw new UserException("User doesnt exist");
+            }
+            }catch (IllegalArgumentException iae){
+                throw new IllegalArgumentException("Forkert imput");
+            }catch (UserException ue){
+                session.setAttribute("error", ue.getMessage());
+                return "index.jsp";
+            
+            } 
+              
+    }
+        } 
+    
+
+
