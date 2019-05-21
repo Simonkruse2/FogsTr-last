@@ -165,8 +165,101 @@ public class Carport {
     }
 
     @Override
+ FogUnitTest2
+    public int hashCode() {
+        int hash = 3;
+        hash = 97 * hash + (this.roof ? 1 : 0);
+        hash = 97 * hash + (this.shed ? 1 : 0);
+        hash = 97 * hash + this.lengthOuter;
+        hash = 97 * hash + this.lengthInner;
+        hash = 97 * hash + this.widthOuter;
+        hash = 97 * hash + this.widthInner;
+        hash = 97 * hash + this.screws;
+        hash = 97 * hash + this.screwBoxes;
+        hash = 97 * hash + this.rafts;
+        hash = 97 * hash + this.beams;
+        hash = 97 * hash + this.postSpacing;
+        hash = 97 * hash + this.tHinges;
+        hash = 97 * hash + this.doorFittings;
+        hash = 97 * hash + this.rooftiles;
+        hash = 97 * hash + this.plastmoShort;
+        hash = 97 * hash + this.plastmoLong;
+        hash = 97 * hash + this.shedlength;
+        hash = 97 * hash + this.shedwidth;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Carport other = (Carport) obj;
+        if (this.roof != other.roof) {
+            return false;
+        }
+        if (this.shed != other.shed) {
+            return false;
+        }
+        if (this.lengthOuter != other.lengthOuter) {
+            return false;
+        }
+        if (this.lengthInner != other.lengthInner) {
+            return false;
+        }
+        if (this.widthOuter != other.widthOuter) {
+            return false;
+        }
+        if (this.widthInner != other.widthInner) {
+            return false;
+        }
+        if (this.screws != other.screws) {
+            return false;
+        }
+        if (this.screwBoxes != other.screwBoxes) {
+            return false;
+        }
+        if (this.rafts != other.rafts) {
+            return false;
+        }
+        if (this.beams != other.beams) {
+            return false;
+        }
+        if (this.postSpacing != other.postSpacing) {
+            return false;
+        }
+        if (this.tHinges != other.tHinges) {
+            return false;
+        }
+        if (this.doorFittings != other.doorFittings) {
+            return false;
+        }
+        if (this.rooftiles != other.rooftiles) {
+            return false;
+        }
+        if (this.plastmoShort != other.plastmoShort) {
+            return false;
+        }
+        if (this.plastmoLong != other.plastmoLong) {
+            return false;
+        }
+        if (this.shedlength != other.shedlength) {
+            return false;
+        }
+        if (this.shedwidth != other.shedwidth) {
+            return false;
+        }
+        return true;
+=======
     public String toString() {
         return "Carport{" + "roof=" + roof + ", shed=" + shed + ", lengthOuter=" + lengthOuter + ", lengthInner=" + lengthInner + ", widthOuter=" + widthOuter + ", widthInner=" + widthInner + ", screws=" + screws + ", screwBoxes=" + screwBoxes + ", rafts=" + rafts + ", beams=" + beams + ", postSpacing=" + postSpacing + ", tHinges=" + tHinges + ", doorFittings=" + doorFittings + ", rooftiles=" + rooftiles + ", plastmoShort=" + plastmoShort + ", plastmoLong=" + plastmoLong + ", shedlength=" + shedlength + ", shedwidth=" + shedwidth + '}';
+ master
     }
     
     
