@@ -10,7 +10,7 @@
         <title>JSP Page</title>
     </head>
     <body> 
-        <h1>Create Customer</h1>
+        <h1>Create employee</h1>
         <form action="FrontController" method="post">
             Name<br>
             <input type="text" name="name"><br><br>

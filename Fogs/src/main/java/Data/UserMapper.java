@@ -49,13 +49,12 @@ public class UserMapper {
         Connection con = DBConnector.connection();
         String SQL = "insert into "
                 + "`customers` "
-                + "(customer_name, phone, email, password) "
-                + "values (?, ?, ?, MD5(?))";
+                + "(customer_name, phone, email) "
+                + "values (?, ?, ?)";
         PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
         ps.setString(1, u.getName());
         ps.setString(2, u.getPhone());
         ps.setString(3, u.getUsername());
-        ps.setString(4, u.getPassword());
         ps.executeUpdate();
     }
 
@@ -108,7 +107,7 @@ public class UserMapper {
     public User getCustomer(String email) {
         User u = null;
         try {
-            String query = "SELECT customer_name, phone, email \n"
+            String query = "SELECT id_customer, customer_name, phone, email \n"
                     + "FROM customers \n"
                     + "WHERE email = '" + email + "';";
             Connection con = DBConnector.connection();
@@ -118,9 +117,10 @@ public class UserMapper {
                 String _name = rs.getString("customer_name");
                 String phone = rs.getString("phone");
                 String _email = rs.getString("email");
-                u.setName(_name);
+                int id = rs.getInt("id_customer");
+                u = new User(_name, _email);
+                u.setId(id);
                 u.setPhone(phone);
-                u.setUsername(_email);
             }
             return u;
         } catch (Exception ex) {
@@ -141,8 +141,10 @@ public class UserMapper {
             while (rs.next()) {
                 String name = rs.getString("name");
                 String role = rs.getString("role");
+                int id = rs.getInt("id_employee");
                 u = new User(name, un);
                 u.setRole(role);
+                u.setId(id);
             }
             return u;
         } catch (Exception ex) {

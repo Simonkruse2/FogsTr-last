@@ -165,6 +165,7 @@ public class Carport {
     }
 
     @Override
+ FogUnitTest2
     public int hashCode() {
         int hash = 3;
         hash = 97 * hash + (this.roof ? 1 : 0);
@@ -255,6 +256,10 @@ public class Carport {
             return false;
         }
         return true;
+=======
+    public String toString() {
+        return "Carport{" + "roof=" + roof + ", shed=" + shed + ", lengthOuter=" + lengthOuter + ", lengthInner=" + lengthInner + ", widthOuter=" + widthOuter + ", widthInner=" + widthInner + ", screws=" + screws + ", screwBoxes=" + screwBoxes + ", rafts=" + rafts + ", beams=" + beams + ", postSpacing=" + postSpacing + ", tHinges=" + tHinges + ", doorFittings=" + doorFittings + ", rooftiles=" + rooftiles + ", plastmoShort=" + plastmoShort + ", plastmoLong=" + plastmoLong + ", shedlength=" + shedlength + ", shedwidth=" + shedwidth + '}';
+ master
     }
     
     

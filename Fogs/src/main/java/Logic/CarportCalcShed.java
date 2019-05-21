@@ -18,13 +18,13 @@ public class CarportCalcShed {
      * @author simon
      * @param args
      */
-
     private ArrayList<Material> mArray = new ArrayList<>();
     int id;
     MaterialMapper map = new MaterialMapper(id);
     int length;
     int width;
     Carport c = new Carport(false, true, length, width);
+
     public Material poles(int length, int width) throws SQLException, ClassNotFoundException {
         int id = 24;
         int innerLength = length - (130 + c.getShedlength());
@@ -266,7 +266,8 @@ public class CarportCalcShed {
         mat.setUnit(map.getMaterialUnit(id));
         return mat;
     }
-        public void runCalc(int length, int width) throws SQLException, ClassNotFoundException {
+
+    public void runCalc(int length, int width) throws SQLException, ClassNotFoundException {
         mArray.add(poles(length, width));
         mArray.add(beamsLength(length));
         mArray.add(rafts(length, width));
@@ -286,9 +287,16 @@ public class CarportCalcShed {
         mArray.add(doorSkeleton(length, width));
         mArray.add(doorKnob(length, width));
     }
-        
-        public ArrayList<Material> partLists() {
+
+    public ArrayList<Material> partLists() {
         return mArray;
     }
 
+    public int getPrice() {
+        int price = 0;
+        for (int i = 0; i < partLists().size(); i++) {
+            price += partLists().get(i).getAmount() * partLists().get(i).getPrice();
+        }
+        return price;
+    }
 }

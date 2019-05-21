@@ -16,6 +16,10 @@
             <input type="text" name="username" ><br><br>
             Password:<br>
             <input type="password" name="password" ><br><br>
+            <% if( !((request.getSession().getAttribute("error")) == null) )  { %>
+            * <%= request.getSession().getAttribute("error") %> <br>
+            <% } %>
+            
             <input type="hidden" name="command" value="Login"/>
             <input type="submit" value="submit"/>  
         </form>

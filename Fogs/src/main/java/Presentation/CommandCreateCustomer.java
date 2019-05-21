@@ -26,7 +26,6 @@ public class CommandCreateCustomer extends Command {
         u.setName(request.getParameter("name"));
         u.setPhone(request.getParameter("phone"));
         u.setUsername(request.getParameter("email"));
-        u.setPassword(request.getParameter("password"));
         logic.createCustomer(u);
         return "index.jsp";
     }
