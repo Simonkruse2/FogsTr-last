@@ -51,6 +51,7 @@ public class CommandCreateOrderShed extends Command {
                 customer.getId(), u.getId(), calcShed.getPrice());
         o.setOrder_width_shed(carport.getShedwidth());
         o.setOrder_length_shed(carport.getShedlength());
+        
         try {
             om.createOrderShed(o);
         } catch (SQLException ex) {
