@@ -16,10 +16,10 @@ public abstract class Command {
     private final static Command UNKNOWN = new CommandUnknown();
     private static Map<String, Command> commands;
 
-    public abstract String execute(
+    public abstract String execute (
             HttpServletRequest request,
             LogicFacade logic)
-            throws ServletException, IOException;
+            throws ServletException, IOException, UserException;
 
     public static Command from(HttpServletRequest request) {
         if (commands == null) {
