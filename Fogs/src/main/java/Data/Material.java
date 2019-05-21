@@ -5,6 +5,8 @@
  */
 package Data;
 
+import java.util.Objects;
+
 /**
  *
  * @author jacobfolkehildebrandt
@@ -83,6 +85,55 @@ public class Material {
     @Override
     public String toString() {
         return "Material{" + "id=" + id + ", pname=" + pname + ", totalPrice=" + totalPrice + ", price=" + price + ", amount=" + amount + ", length=" + length + ", unit=" + unit + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 31 * hash + this.id;
+        hash = 31 * hash + Objects.hashCode(this.pname);
+        hash = 31 * hash + (int) (Double.doubleToLongBits(this.totalPrice) ^ (Double.doubleToLongBits(this.totalPrice) >>> 32));
+        hash = 31 * hash + (int) (Double.doubleToLongBits(this.price) ^ (Double.doubleToLongBits(this.price) >>> 32));
+        hash = 31 * hash + this.amount;
+        hash = 31 * hash + this.length;
+        hash = 31 * hash + Objects.hashCode(this.unit);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Material other = (Material) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.totalPrice) != Double.doubleToLongBits(other.totalPrice)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.price) != Double.doubleToLongBits(other.price)) {
+            return false;
+        }
+        if (this.amount != other.amount) {
+            return false;
+        }
+        if (this.length != other.length) {
+            return false;
+        }
+        if (!Objects.equals(this.pname, other.pname)) {
+            return false;
+        }
+        if (!Objects.equals(this.unit, other.unit)) {
+            return false;
+        }
+        return true;
     }
 
     
