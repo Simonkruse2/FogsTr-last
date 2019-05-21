@@ -88,6 +88,6 @@
             Phone number<br>
             <input type="text" name="phone" ><br><br>
             <input type="hidden" name="command" value="CreateOrderShed"/>
-            <input type="submit" value="submit"/>  
+            <input type="submit" value="submit"/> 
     </body>
 </html>

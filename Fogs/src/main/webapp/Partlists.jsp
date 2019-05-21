@@ -86,7 +86,7 @@
             <input type="text" name="email" ><br><br>
             Phone number<br>
             <input type="text" name="phone" ><br><br>
-            <input type="hidden" name="command" value="CreateCustomer"/>
+            <input type="hidden" name="command" value="CreateOrder"/>
             <input type="submit" value="submit"/>  
         </form>
     </body>

@@ -5,11 +5,12 @@
  */
 package Presentation;
 
+import Data.Carport;
 import Data.Order;
 import Data.OrderMapper;
 import Data.User;
 import Data.UserMapper;
-import Logic.CarportCalcShed;
+import Logic.CarportCalc;
 import Logic.LogicFacade;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -17,6 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -26,19 +28,23 @@ public class CommandCreateOrder extends Command {
 
     @Override
     public String execute(HttpServletRequest request, LogicFacade logic) throws ServletException, IOException {
-        User u = null;
-        u.setName(request.getParameter("name"));
-        u.setPhone(request.getParameter("phone"));
-        u.setUsername(request.getParameter("email"));
-        int length = Integer.parseInt(request.getParameter("length"));
-        int width = Integer.parseInt(request.getParameter("width"));
-        int shedlength = Integer.parseInt(request.getParameter("shedlength"));
-        int shedwidth = Integer.parseInt(request.getParameter("shedlength"));
-        CarportCalcShed calcShed = (CarportCalcShed) request.getAttribute("carportCalcShed");
+        HttpSession session = request.getSession();
         OrderMapper om = new OrderMapper();
         UserMapper um = new UserMapper();
-        Order o = new Order("Shipped", width, length, shedwidth, shedlength,
-                um.getCustomer(u.getUsername()).getId(), calcShed.getPrice());
+
+        User u = (User) session.getAttribute("user");
+        Carport carport = (Carport) session.getAttribute("carport");
+        CarportCalc calc = (CarportCalc) session.getAttribute("CarportCalc");
+        String name = request.getParameter("name");
+        String phone = request.getParameter("phone");
+        String email = request.getParameter("email");
+
+        User customer = new User(name, email);
+        customer.setPhone(phone);
+        logic.createCustomer(customer);
+        customer.setId(um.getCustomer(customer.getUsername()).getId());
+        Order o = new Order("Shipped", carport.getWidthOuter(), carport.getLengthOuter(), 0,
+                customer.getId(), u.getId(), calc.getPrice());
         try {
             om.createOrder(o);
         } catch (SQLException ex) {
@@ -46,9 +52,7 @@ public class CommandCreateOrder extends Command {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(CommandCreateOrder.class.getName()).log(Level.SEVERE, null, ex);
         }
-        logic.createCustomer(u);
         return "index.jsp";
-
     }
 
 }
