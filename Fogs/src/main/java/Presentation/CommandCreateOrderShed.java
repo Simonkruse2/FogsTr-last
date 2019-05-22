@@ -47,7 +47,7 @@ public class CommandCreateOrderShed extends Command {
         customer.setPhone(phone);
         logic.createCustomer(customer);
         customer.setId(um.getCustomer(customer.getUsername()).getId());
-        Order o = new Order("Shipped", carport.getWidthOuter(), carport.getLengthOuter(), 0,
+        Order o = new Order("In progress", carport.getWidthOuter(), carport.getLengthOuter(), 0,
                 customer.getId(), u.getId(), calcShed.getPrice());
         o.setOrder_width_shed(carport.getShedwidth());
         o.setOrder_length_shed(carport.getShedlength());

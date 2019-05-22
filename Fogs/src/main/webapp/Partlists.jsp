@@ -82,6 +82,7 @@
                 </div>
             </main>
         </div>
+                               <% if(request.getAttribute("id")== null){ %>
         <h1>Create Customer</h1>
         <form action="FrontController" method="post">
             Name<br>
@@ -93,5 +94,6 @@
             <input type="hidden" name="command" value="CreateOrder"/>
             <input type="submit" value="submit"/>  
         </form>
+      <%  }%>
     </body>
 </html>

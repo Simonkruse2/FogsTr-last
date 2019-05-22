@@ -5,15 +5,19 @@
  */
 package Presentation;
 
+import Data.Carport;
 import Data.Order;
 import Data.OrderException;
 import Data.OrderMapper;
+import Logic.CarportCalc;
+import Logic.CarportCalcShed;
 import Logic.LogicFacade;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -27,29 +31,34 @@ public class CommandViewOrders extends Command {
 
     @Override
     public String execute(HttpServletRequest request, LogicFacade logic) throws ServletException, IOException {
-        request.getSession();
+        HttpSession session = request.getSession();
         int id = Integer.parseInt(request.getParameter("id"));
 
-//            o = new Order(om.getOrder(id).getStatus(), om.getOrder(id).getOrder_width(),
-//                    om.getOrder(id).getOrder_length(), om.getOrder(id).getIncline(),
-//                    om.getOrder(id).getId_customer(), om.getOrder(id).getId_employee(),
-//                    om.getOrder(id).getPrice());
-//            
-        /* logic.getOrder(id) = new Order(logic.getOrder(id).getStatus(), logic.getOrder(id).getOrder_width(),
-                logic.getOrder(id).getOrder_length(), logic.getOrder(id).getIncline(), logic.getOrder(id).getId_customer(),
-                logic.getOrder(id).getId_employee(), logic.getOrder(id).getPrice());
-        int length = o.getOrder_length();
-        int width = o.getOrder_width();
-        int shedlength = o.getOrder_length_shed();
-        int shedwidth = o.getOrder_width_shed();
-         */
- /* request.setAttribute("length", logic.getOrder(id).getOrder_length());
-        request.setAttribute("width", logic.getOrder(id).getOrder_width());
-        request.setAttribute("shedlength",logic.getOrder(id).getOrder_length_shed());
-        request.setAttribute("shedwidth", logic.getOrder(id).getOrder_width_shed());
-         */
+        int length = logic.getOrder(id).getOrder_length();
+        int width = logic.getOrder(id).getOrder_width();
+        int shedlength = logic.getOrder(id).getOrder_length_shed();
+        int shedwidth = logic.getOrder(id).getOrder_width_shed();
         
-        request.setAttribute("id", id);
-        return "Dimensions.jsp";
+        if (shedlength != 0 && shedwidth != 0) {
+            Carport carport = logic.createSimpleCarportWithShed(length, width);
+            CarportCalcShed CarportCalcShed = logic.createSimpleCarportCalcWithShed(length, width, shedlength, shedwidth);
+            carport.setShedlength(shedlength);
+            carport.setShedwidth(shedwidth);
+            request.setAttribute("id", id);
+            request.setAttribute(
+                    "carport", carport);
+            request.setAttribute(
+                    "CarportCalcShed", CarportCalcShed);
+            return "PartlistsShed.jsp";
+        } else {
+            Carport carport = logic.createSimpleCarport(length, width);
+            CarportCalc CarportCalc = logic.createSimpleCarportCalc(length, width);
+            request.setAttribute("id", id);
+            request.setAttribute(
+                    "carport", carport);
+            request.setAttribute(
+                    "CarportCalc", CarportCalc);
+            return "Partlists.jsp";
+        }
     }
 }

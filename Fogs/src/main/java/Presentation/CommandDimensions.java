@@ -27,12 +27,12 @@ public class CommandDimensions extends Command {
         int length = Integer.parseInt(request.getParameter("length"));
         int width = Integer.parseInt(request.getParameter("width"));
         Carport carport = logic.createSimpleCarport(length, width);
-        CarportCalc carpCalc = logic.createSimpleCarportCalc(length, width);
+        CarportCalc CarportCalc = logic.createSimpleCarportCalc(length, width);
 
         request.setAttribute(
-                "carport", carport);
+                "Carport", carport);
         request.setAttribute(
-                "carpCalc", carpCalc);
+                "CarportCalc", CarportCalc);
 
         return "Dimensions.jsp";
     }
