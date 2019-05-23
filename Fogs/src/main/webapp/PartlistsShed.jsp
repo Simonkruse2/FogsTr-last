@@ -74,7 +74,7 @@
                             <td></td>
                             <td></td>
                             <td><b><i>Total price</i></b></td>
-                            <td><b><i> <%= carportCalcShed.getPrice() %>%></i>,-</b></td>
+                            <td><b><i> <%= carportCalcShed.getPrice() %></i>,-</b></td>
                         </tr>
 
 
@@ -83,6 +83,7 @@
                 </div>
             </main>
         </div>
+                        <% if(request.getAttribute("id")== null){ %>
         <h1>Create Customer</h1>
         <form action="FrontController" method="post">
             Name<br>
@@ -91,7 +92,9 @@
             <input type="text" name="email" ><br><br>
             Phone number<br>
             <input type="text" name="phone" ><br><br>
-            <input type="hidden" name="command" value="CreateOrderShed"/>
-            <input type="submit" value="submit"/> 
+            <input type="hidden" name="command" value="CreateOrder"/>
+            <input type="submit" value="submit"/>  
+        </form>
+      <%  }%>
     </body>
 </html>

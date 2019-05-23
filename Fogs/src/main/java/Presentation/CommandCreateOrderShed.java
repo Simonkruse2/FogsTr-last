@@ -56,19 +56,21 @@ public class CommandCreateOrderShed extends Command {
             if(!phone.matches(".*\\d.*"))
                 throw new OrderException("Phone can't contain letters or signs");
 
+
         if(email == null || "".equals(email) )
             throw new OrderException("E-mail must be filled out");
         if(!(email.contains("@")) && !(email.contains(".")))
             throw new OrderException("Incorrect e-mail");
+
         
-            User customer = new User(name, email);
-            customer.setPhone(phone);
-            logic.createCustomer(customer);
-            customer.setId(um.getCustomer(customer.getUsername()).getId());
-            Order o = new Order("Shipped", carport.getWidthOuter(), carport.getLengthOuter(), 0,
-                           customer.getId(), u.getId(), calcShed.getPrice());
-            o.setOrder_width_shed(carport.getShedwidth());
-            o.setOrder_length_shed(carport.getShedlength());
+        User customer = new User(name, email);
+        customer.setPhone(phone);
+        logic.createCustomer(customer);
+        customer.setId(um.getCustomer(customer.getUsername()).getId());
+        Order o = new Order("In progress", carport.getWidthOuter(), carport.getLengthOuter(), 0,
+                customer.getId(), u.getId(), calcShed.getPrice());
+        o.setOrder_width_shed(carport.getShedwidth());
+        o.setOrder_length_shed(carport.getShedlength());
             
             om.createOrderShed(o);
         } catch (SQLException ex) {

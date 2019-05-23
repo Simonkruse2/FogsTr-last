@@ -60,7 +60,7 @@ try {
         customer.setPhone(phone);
         logic.createCustomer(customer);
         customer.setId(um.getCustomer(customer.getUsername()).getId());
-        Order o = new Order("Shipped", carport.getWidthOuter(), carport.getLengthOuter(), 0,
+        Order o = new Order("In progress", carport.getWidthOuter(), carport.getLengthOuter(), 0,
                 customer.getId(), u.getId(), calc.getPrice());
                     om.createOrder(o);
         } catch (OrderException oe) {

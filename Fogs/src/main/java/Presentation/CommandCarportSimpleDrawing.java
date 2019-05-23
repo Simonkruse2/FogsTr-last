@@ -26,9 +26,9 @@ public class CommandCarportSimpleDrawing extends Command {
         int length = Integer.parseInt(request.getParameter("length"));
         int width = Integer.parseInt(request.getParameter("width"));
         Carport carport = logic.createSimpleCarport(length, width);
-        CarportCalc carpCalc = logic.createSimpleCarportCalc(length, width);
+        CarportCalc CarportCalc = logic.createSimpleCarportCalc(length, width);
         request.setAttribute("carport", carport);
-        request.setAttribute("carpCalc", carpCalc);
+        request.setAttribute("CarportCalc", CarportCalc);
         return "CarportSimpleDrawing.jsp";
     }
 }

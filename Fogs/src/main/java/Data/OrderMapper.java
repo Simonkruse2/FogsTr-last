@@ -106,29 +106,5 @@ public class OrderMapper {
         } catch (SQLException | ClassNotFoundException ex) {
             throw new OrderException(ex.getMessage());
         }
-        
-//    public Order getOrder(Order order) {
-//        User u = null;
-//        try {
-//            String query = "SELECT * \n"
-//                    + "FROM users \n"
-//                    + "WHERE username = '" + un + "';";
-//            Connection con = DBConnector.connection();
-//            Statement stmt = con.createStatement();
-//            ResultSet rs = stmt.executeQuery(query);
-//            while (rs.next()) {
-//                String name = rs.getString("name");
-//                String role = rs.getString("role");
-//                u = new User(name, un);
-//                u.setRole(role);
-//            }
-//            return u;
-//        } catch (Exception ex) {
-//            System.out.println("Den henter ingen bruger");
-//            ex.printStackTrace();
-//            return null;
-//        }
-//    }
     }
-    
 }

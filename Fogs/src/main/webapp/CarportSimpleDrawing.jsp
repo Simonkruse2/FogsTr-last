@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link href="style_fog.css" rel="stylesheet" type="text/css"/>
         <% Carport carport = (Carport) (request.getAttribute("carport"));%>
-        <% CarportCalc carpCalc = (CarportCalc) (request.getAttribute("carpCalc"));%>
+        <% CarportCalc CarportCalc = (CarportCalc) (request.getAttribute("CarportCalc"));%>
         <% int poleHeight = 230;%>
     </head>
 
@@ -75,9 +75,9 @@
                       style="stroke: #000000; fill:#ffffff;"/>
 
                 <%
-                    double numPoles = carpCalc.polesDrawing(carport.getLengthOuter());
+                    double numPoles = CarportCalc.polesDrawing(carport.getLengthOuter());
 
-                    double distPoles = carpCalc.poleDist(carport.getLengthOuter());
+                    double distPoles = CarportCalc.poleDist(carport.getLengthOuter());
                 %> 
 
                 <%
@@ -121,8 +121,8 @@
 
 
                 --Rafts
-                <% double numRaft = carpCalc.rafts(carport.getLengthOuter(), carport.getWidthOuter()).getAmount();
-                    double distance = carpCalc.raftDistance(carport.getLengthOuter(), carport.getWidthOuter());
+                <% double numRaft = CarportCalc.rafts(carport.getLengthOuter(), carport.getWidthOuter()).getAmount();
+                    double distance = CarportCalc.raftDistance(carport.getLengthOuter(), carport.getWidthOuter());
                 %>
 
 
