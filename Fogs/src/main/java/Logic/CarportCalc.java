@@ -190,7 +190,9 @@ public class CarportCalc {
     public int getPrice() {
         int price = 0;
         for (int i = 0; i < partLists().size(); i++) {
-           price += partLists().get(i).getAmount() * partLists().get(i).getPrice();
+
+            price += partLists().get(i).getPrice() * partLists().get(i).getAmount();
+
         }
         return price;
     }
