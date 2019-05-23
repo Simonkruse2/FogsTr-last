@@ -79,7 +79,7 @@ public class CommandCreateOrderShed extends Command {
             return "index.jsp";
         } catch (OrderException oe) {
             session.setAttribute("error", oe.getMessage());
-            return "index.jsp";
+            return "PartlistsShed.jsp";
         }
             return "index.jsp";
     }
