@@ -27,31 +27,50 @@ import javax.servlet.http.HttpSession;
 public class CommandCreateOrder extends Command {
 
     @Override
-    public String execute(HttpServletRequest request, LogicFacade logic) throws ServletException, IOException {
+    public String execute(HttpServletRequest request, LogicFacade logic) throws ServletException, IOException, OrderException{
         HttpSession session = request.getSession();
         OrderMapper om = new OrderMapper();
         UserMapper um = new UserMapper();
-
+try {
         User u = (User) session.getAttribute("user");
         Carport carport = (Carport) session.getAttribute("carport");
         CarportCalc calc = (CarportCalc) session.getAttribute("CarportCalc");
         String name = request.getParameter("name");
         String phone = request.getParameter("phone");
         String email = request.getParameter("email");
-
         User customer = new User(name, email);
+        
+        if(name == null || "".equals(name) )
+            throw new OrderException("Name must be filled out");
+        for(int i = 0; i < name.length(); i++){
+            if(name.indexOf(i) == -1)
+            throw new OrderException("Name can't contain numbers or signs");
+        }
+
+        if(phone == null || "".equals(phone) )
+            throw new OrderException("Phonenumber must be filled out");
+        if(!phone.matches(".*\\d.*"))
+            throw new OrderException("Phone can't contain letters or signs");
+
+        if(email == null || "".equals(email) )
+            throw new OrderException("E-mail must be filled out");
+        if(!(email.contains("@")) && !(email.contains(".")))
+            throw new OrderException("Incorrect e-mail");
+        
         customer.setPhone(phone);
         logic.createCustomer(customer);
         customer.setId(um.getCustomer(customer.getUsername()).getId());
         Order o = new Order("Shipped", carport.getWidthOuter(), carport.getLengthOuter(), 0,
                 customer.getId(), u.getId(), calc.getPrice());
-        try {
-            om.createOrder(o);
+                    om.createOrder(o);
+        } catch (OrderException oe) {
+            session.setAttribute("error", oe.getMessage());
+            return "Partlists.jsp"; 
         } catch (SQLException ex) {
-            Logger.getLogger(CommandCreateOrder.class.getName()).log(Level.SEVERE, null, ex);
+            return "Partlists.jsp";
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(CommandCreateOrder.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            return "Partlists.jsp";
+        } 
         return "index.jsp";
     }
 

@@ -32,7 +32,7 @@ public class FrontController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, UserException {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, UserException, OrderException {
         Command c = Command.from(request);
         String target = c.execute(request, logic);
         if(target.isEmpty()){
@@ -57,6 +57,8 @@ public class FrontController extends HttpServlet {
             
         } catch (UserException ex) {
             
+        } catch (OrderException oe) {
+            
         }
 
     }
@@ -74,6 +76,7 @@ public class FrontController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (UserException ex) {
+        } catch (OrderException oe) {
         }
     }
 

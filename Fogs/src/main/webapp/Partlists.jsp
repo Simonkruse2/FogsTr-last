@@ -85,11 +85,15 @@
         <h1>Create Customer</h1>
         <form action="FrontController" method="post">
             Name<br>
-            <input type="text" name="name"><br><br>
+            <input type="text" name="name">
+            <br><br>
             Email<br>
             <input type="text" name="email" ><br><br>
             Phone number<br>
             <input type="text" name="phone" ><br><br>
+            <% if( !((request.getSession().getAttribute("error")) == null) )  { %>
+            * <%= request.getSession().getAttribute("error") %> <br>
+            <% } %>
             <input type="hidden" name="command" value="CreateOrder"/>
             <input type="submit" value="submit"/>  
         </form>
