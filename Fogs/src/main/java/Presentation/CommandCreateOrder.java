@@ -43,7 +43,7 @@ try {
         if(name == null || "".equals(name) )
             throw new OrderException("Name must be filled out");
         for(int i = 0; i < name.length(); i++){
-            if(name.indexOf(i) == -1)
+            if(name.indexOf(i) != -1)
             throw new OrderException("Name can't contain numbers or signs");
         }
 
@@ -65,11 +65,11 @@ try {
                     om.createOrder(o);
         } catch (OrderException oe) {
             session.setAttribute("error", oe.getMessage());
-            return "Partlists.jsp"; 
+            return "index.jsp"; 
         } catch (SQLException ex) {
-            return "Partlists.jsp";
+            return "index.jsp";
         } catch (ClassNotFoundException ex) {
-            return "Partlists.jsp";
+            return "index.jsp";
         } 
         return "index.jsp";
     }

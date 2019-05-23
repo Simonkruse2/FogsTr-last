@@ -74,12 +74,12 @@ public class CommandCreateOrderShed extends Command {
             
             om.createOrderShed(o);
         } catch (SQLException ex) {
-            return "PartlistsShed.jsp";            
+            return "index.jsp";            
         } catch (ClassNotFoundException ex) {
-            return "PartlistsShed.jsp";
+            return "index.jsp";
         } catch (OrderException oe) {
             session.setAttribute("error", oe.getMessage());
-            return "PartlistsShed.jsp";
+            return "index.jsp";
         }
             return "index.jsp";
     }
