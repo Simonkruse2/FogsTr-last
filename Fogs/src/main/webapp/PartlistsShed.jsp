@@ -110,7 +110,7 @@
             <select name="newStatus">
                 <option value="In progress">In progress</option>
                 <option value="Shipped">Shipped</option>
-                <option value="Pending">Pending payment</option>
+                <option value="Pending payment">Pending payment</option>
             </select>
             <input type="hidden" name="command" value="UpdateStatus"/>
             <input type="submit" value="Update status"/>  
