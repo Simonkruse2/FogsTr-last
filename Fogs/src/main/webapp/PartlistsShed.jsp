@@ -18,8 +18,10 @@
         <%CarportCalcShed carportCalcShed = (CarportCalcShed) request.getAttribute("CarportCalcShed");%>
         <% int length = carport.getLengthOuter();
             int width = carport.getWidthOuter();
+            int shedlength = carport.getShedlength();
+            int shedwidth = carport.getShedwidth();
         %>
-        <% carportCalcShed.runCalc(length, width); %>
+        <% carportCalcShed.runCalc(length, width, shedlength, shedwidth); %>
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     </head>
@@ -112,6 +114,10 @@
                 <option value="Shipped">Shipped</option>
                 <option value="Pending payment">Pending payment</option>
             </select>
+            <% if (!((request.getSession().getAttribute("error")) == null)) {%>
+            * <%= request.getSession().getAttribute("error")%>
+            <% request.removeAttribute("error"); %> 
+            <% } %> <br>
             <input type="hidden" name="command" value="UpdateStatus"/>
             <input type="submit" value="Update status"/>  
         </form>

@@ -19,7 +19,7 @@ public abstract class Command {
     public abstract String execute (
             HttpServletRequest request,
             LogicFacade logic)
-            throws ServletException, IOException, UserException, OrderException;
+            throws ServletException, IOException, UserException, OrderException, DimensionsException;
 
     public static Command from(HttpServletRequest request) {
         if (commands == null) {

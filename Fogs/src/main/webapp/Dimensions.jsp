@@ -72,6 +72,11 @@
                                     </td>
                                 </tr>
                             </table>
+                            <% if (!((request.getSession().getAttribute("error")) == null)) {%>
+                            * <%= request.getSession().getAttribute("error")%> 
+                            <br>
+                            <% request.removeAttribute("error"); %> 
+                            <% }%> 
                             <input type="hidden" name="command" value="Partlists"/>
                             <input type="submit" value="View Partlist">
                         </form>

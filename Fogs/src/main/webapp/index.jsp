@@ -19,7 +19,7 @@
             <% if( !((request.getSession().getAttribute("error")) == null) )  { %>
             * <%= request.getSession().getAttribute("error") %> <br>
             <% } %>
-            
+            <% request.getSession().invalidate(); %>
             <input type="hidden" name="command" value="Login"/>
             <input type="submit" value="submit"/>  
         </form>

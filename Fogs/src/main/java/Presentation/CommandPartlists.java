@@ -23,39 +23,45 @@ public class CommandPartlists extends Command {
     }
 
     @Override
-    public String execute(HttpServletRequest request, LogicFacade logic) throws ServletException {
+    public String execute(HttpServletRequest request, LogicFacade logic) throws ServletException, DimensionsException {
         HttpSession session = request.getSession();
         int length = Integer.parseInt(request.getParameter("length"));
         int width = Integer.parseInt(request.getParameter("width"));
         String shed = request.getParameter("shed");
         int shedlength = Integer.parseInt(request.getParameter("shedlength"));
         int shedwidth = Integer.parseInt(request.getParameter("shedwidth"));
-        
-        request.setAttribute("length", length);
-        request.setAttribute("width", width);
-        request.setAttribute("shedlength", shedlength);
-        request.setAttribute("shedwidth", shedwidth);
-        if (shed.equals("false")) {
-            Carport carport = logic.createSimpleCarport(length, width);
-            CarportCalc CarportCalc = logic.createSimpleCarportCalc(length, width);
-            request.setAttribute("carport", carport);
-            session.setAttribute("carport", carport);
-            request.setAttribute("CarportCalc", CarportCalc);
-            session.setAttribute("CarportCalc", CarportCalc);
-            return "Partlists.jsp";
-        } else {
-            Carport carport = logic.createSimpleCarportWithShed(length, width);
-            CarportCalcShed CarportCalcShed = logic.createSimpleCarportCalcWithShed(length, width, shedlength, shedwidth);
-            carport.setShedlength(shedlength);
-            carport.setShedwidth(shedwidth);
-            request.setAttribute("carport", carport);
-            session.setAttribute("carport", carport);
-            request.setAttribute("CarportCalcShed", CarportCalcShed);
-            session.setAttribute("CarportCalcShed", CarportCalcShed);
-            return "PartlistsShed.jsp";
+
+        try {
+            request.setAttribute("length", length);
+            request.setAttribute("width", width);
+            request.setAttribute("shedlength", shedlength);
+            request.setAttribute("shedwidth", shedwidth);
+            if (shed.equals("false")) {
+                Carport carport = logic.createSimpleCarport(length, width);
+                CarportCalc CarportCalc = logic.createSimpleCarportCalc(length, width);
+                request.setAttribute("carport", carport);
+                session.setAttribute("carport", carport);
+                request.setAttribute("CarportCalc", CarportCalc);
+                session.setAttribute("CarportCalc", CarportCalc);
+                return "Partlists.jsp";
+            } else {
+                if (length < shedlength || width < shedwidth) {
+                    throw new DimensionsException("Shed dimensions can't be bigger than the carport");
+                }
+                Carport carport = logic.createSimpleCarportWithShed(length, width);
+                CarportCalcShed CarportCalcShed = logic.createSimpleCarportCalcWithShed(length, width, shedlength, shedwidth);
+                carport.setShedlength(shedlength);
+                carport.setShedwidth(shedwidth);
+                request.setAttribute("carport", carport);
+                session.setAttribute("carport", carport);
+                request.setAttribute("CarportCalcShed", CarportCalcShed);
+                session.setAttribute("CarportCalcShed", CarportCalcShed);
+                return "PartlistsShed.jsp";
+            }
+        } catch (DimensionsException de) {
+            session.setAttribute("error", de.getMessage());
+            return "Dimensions.jsp";
         }
 
-
-        
     }
 }

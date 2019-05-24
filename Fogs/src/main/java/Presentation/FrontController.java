@@ -22,7 +22,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "FrontController", urlPatterns = {"/FrontController"})
 public class FrontController extends HttpServlet {
+
     LogicFacade logic = new LogicFacadeMOCK();
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -32,10 +34,11 @@ public class FrontController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, UserException, OrderException {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, UserException, OrderException, DimensionsException {
         Command c = Command.from(request);
         String target = c.execute(request, logic);
-        if(target.isEmpty()){
+        if (target.isEmpty()) {
             throw new UserException("Lol");
         }
         request.getRequestDispatcher(target).forward(request, response);
@@ -54,11 +57,12 @@ public class FrontController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             processRequest(request, response);
-            
+
         } catch (UserException ex) {
-            
+
         } catch (OrderException oe) {
-            
+
+        } catch (DimensionsException ex) {
         }
 
     }
@@ -77,6 +81,7 @@ public class FrontController extends HttpServlet {
             processRequest(request, response);
         } catch (UserException ex) {
         } catch (OrderException oe) {
+        } catch (DimensionsException ex) {
         }
     }
 

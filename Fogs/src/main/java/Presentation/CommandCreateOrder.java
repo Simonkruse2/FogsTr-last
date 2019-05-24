@@ -16,6 +16,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -40,23 +42,32 @@ try {
         String email = request.getParameter("email");
         User customer = new User(name, email);
         
-        if(name == null || "".equals(name) )
-            throw new OrderException("Name must be filled out");
-        for(int i = 0; i < name.length(); i++){
-            if(name.indexOf(i) != -1)
-            throw new OrderException("Name can't contain numbers or signs");
-        }
-
-        if(phone == null || "".equals(phone) )
-            throw new OrderException("Phonenumber must be filled out");
-        if(!phone.matches(".*\\d.*"))
-            throw new OrderException("Phone can't contain letters or signs");
-
-        if(email == null || "".equals(email) )
-            throw new OrderException("E-mail must be filled out");
-        if(!(email.contains("@")) && !(email.contains(".")))
-            throw new OrderException("Incorrect e-mail");
         
+            if ( "".equals(name) || name == null) {
+                throw new OrderException("Name must be filled out");
+            }
+            /*
+            Pattern p = Pattern.compile("[^A-Za-z]");
+            Matcher m = p.matcher(name);
+
+            if (m.find() != true) {
+                throw new OrderException("Name can't contain numbers or signs");
+            }
+*/
+            if ("".equals(phone) || phone == null) {
+                throw new OrderException("Phonenumber must be filled out");
+            }
+            if (!phone.matches(".*\\d.*")) {
+                throw new OrderException("Phone can't contain letters or signs");
+            }
+
+            if ("".equals(email) || email == null) {
+                throw new OrderException("E-mail must be filled out");
+            }
+            if (!(email.contains("@")) && !(email.contains("."))) {
+                throw new OrderException("Incorrect e-mail");
+            }
+
         customer.setPhone(phone);
         logic.createCustomer(customer);
         customer.setId(um.getCustomer(customer.getUsername()).getId());
@@ -65,13 +76,16 @@ try {
                     om.createOrder(o);
         } catch (OrderException oe) {
             session.setAttribute("error", oe.getMessage());
-            return "index.jsp"; 
+            oe.printStackTrace();
+            return "Dimensions.jsp"; 
         } catch (SQLException ex) {
-            return "index.jsp";
+            ex.printStackTrace();
+            return "Dimensions.jsp";
         } catch (ClassNotFoundException ex) {
-            return "index.jsp";
+            ex.printStackTrace();
+            return "Dimensions.jsp";
         } 
-        return "index.jsp";
+        return "ViewOrders.jsp";
     }
 
 }
