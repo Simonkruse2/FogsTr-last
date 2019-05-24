@@ -94,6 +94,13 @@
             <input type="hidden" name="command" value="CreateOrder"/>
             <input type="submit" value="submit"/>  
         </form>
-      <%  }%>
+      <%  }else{ %>
+ <form action="FrontController" method="post">
+            Update total price<br>
+            <input type="number" name="price"><br><br>
+            <input type="hidden" name="command" value="UpdatePrice"/>
+            <input type="submit" value="Update price"/>  
+      
+   <%   }%>
     </body>
 </html>
