@@ -132,4 +132,14 @@ public class LogicFacadeMOCK implements LogicFacade {
         return o;
     }
 
+    @Override
+    public void updatePrice(int id, int newPrice) {
+        OrderMapper om = new OrderMapper();
+        try {
+            om.updatePrice(id, newPrice);
+        } catch (OrderException ex) {
+            Logger.getLogger(LogicFacadeMOCK.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 }

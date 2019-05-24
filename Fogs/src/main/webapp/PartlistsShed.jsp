@@ -84,7 +84,8 @@
             </main>
         </div>
                         <% if(request.getAttribute("id")== null){ %>
-        <h1>Create Customer</h1>
+        <h1>Place order</h1>
+        <h2>Fill out customer information</h2>
         <form action="FrontController" method="post">
             Name<br>
             <input type="text" name="name"><br><br>
@@ -92,9 +93,16 @@
             <input type="text" name="email" ><br><br>
             Phone number<br>
             <input type="text" name="phone" ><br><br>
-            <input type="hidden" name="command" value="CreateOrder"/>
+            <input type="hidden" name="command" value="CreateOrderShed"/>
             <input type="submit" value="submit"/>  
         </form>
-      <%  }%>
+      <%  }else{ %>
+ <form action="FrontController" method="post">
+            Update price<br>
+            <input type="number" name="price"><br><br>
+            <input type="hidden" name="command" value="UpdatePrice"/>
+            <input type="submit" value="Update price"/>  
+      
+   <%   }%>
     </body>
 </html>

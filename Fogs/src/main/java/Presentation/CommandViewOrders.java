@@ -33,7 +33,7 @@ public class CommandViewOrders extends Command {
     public String execute(HttpServletRequest request, LogicFacade logic) throws ServletException, IOException {
         HttpSession session = request.getSession();
         int id = Integer.parseInt(request.getParameter("id"));
-
+        session.setAttribute("id", id);
         int length = logic.getOrder(id).getOrder_length();
         int width = logic.getOrder(id).getOrder_width();
         int shedlength = logic.getOrder(id).getOrder_length_shed();
