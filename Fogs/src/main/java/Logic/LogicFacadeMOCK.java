@@ -30,19 +30,16 @@ public class LogicFacadeMOCK implements LogicFacade {
     public CarportCalc createSimpleCarportCalc(int length, int width) {
         return new CarportCalc();
     }
-    
-    
+
     @Override
     public Carport createSimpleCarportWithShed(int length, int width) {
-       return new Carport(false, true, length, width);
+        return new Carport(false, true, length, width);
     }
 
     @Override
     public CarportCalcShed createSimpleCarportCalcWithShed(int length, int width, int shedlength, int shedwidth) {
         return new CarportCalcShed();
     }
-
-    
 
     @Override
     public User createCustomer(User u) {
@@ -76,7 +73,7 @@ public class LogicFacadeMOCK implements LogicFacade {
     @Override
     public User checkLogin(User u) {
         UserMapper um = new UserMapper();
-        um.checkLogin(u.getUsername(),u.getPassword());
+        um.checkLogin(u.getUsername(), u.getPassword());
         return u;
     }
 
@@ -86,7 +83,7 @@ public class LogicFacadeMOCK implements LogicFacade {
         User u = um.getCustomer(un);
         return u;
     }
-    
+
     @Override
     public User getEmployee(String un) {
         UserMapper um = new UserMapper();
@@ -137,6 +134,16 @@ public class LogicFacadeMOCK implements LogicFacade {
         OrderMapper om = new OrderMapper();
         try {
             om.updatePrice(id, newPrice);
+        } catch (OrderException ex) {
+            Logger.getLogger(LogicFacadeMOCK.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Override
+    public void updateStatus(int id, String newStatus) {
+        OrderMapper om = new OrderMapper();
+        try {
+            om.updateStatus(id, newStatus);
         } catch (OrderException ex) {
             Logger.getLogger(LogicFacadeMOCK.class.getName()).log(Level.SEVERE, null, ex);
         }

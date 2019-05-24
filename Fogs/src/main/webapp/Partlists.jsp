@@ -16,10 +16,10 @@
         <%Carport carport = (Carport) request.getAttribute("carport");%>
         <%CarportCalc carportCalc = (CarportCalc) request.getAttribute("CarportCalc");%>
         <% int length = carport.getLengthOuter();
-           int width = carport.getWidthOuter();
+            int width = carport.getWidthOuter();
         %>
         <% carportCalc.runCalc(length, width); %>
-        
+
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     </head>
     <body>
@@ -50,39 +50,39 @@
 
                             </tr>
                         </thead>
-                       
-                            <% for(int i = 0; i < carportCalc.partLists().size(); i++){ %>
-                             <tr>
-                             <td> <%=carportCalc.partLists().get(i).getPname() %></td>
-                             <td> <%=carportCalc.partLists().get(i).getUnit() %></td>
-                             <td> 
-                             <% if(carportCalc.partLists().get(i).getLength() == 0) { %>
-                                    -
-                             <% } else{ %>
-                             <%=carportCalc.partLists().get(i).getLength() %> cm
-                             <% } %> 
-                             </td>
-                             <td> <%=carportCalc.partLists().get(i).getAmount() %></td>
-                             <td> <%=carportCalc.partLists().get(i).getPrice() %> kr.</td>
-                             <td> <%=carportCalc.partLists().get(i).getTotalPrice() %> kr.</td>
-                             </tr>
-                           <% } %>
-                           <tr>
-                               <td></td>
-                               <td></td>
-                               <td></td>
-                               <td></td>
-                               <td><b><i>Total price</i></b></td>
-                               <td><b><i> <%= carportCalc.getPrice() %></i>,-</b></td>
-                           </tr>
-                       
-                       
+
+                        <% for (int i = 0; i < carportCalc.partLists().size(); i++) {%>
+                        <tr>
+                            <td> <%=carportCalc.partLists().get(i).getPname()%></td>
+                            <td> <%=carportCalc.partLists().get(i).getUnit()%></td>
+                            <td> 
+                                <% if (carportCalc.partLists().get(i).getLength() == 0) { %>
+                                -
+                                <% } else {%>
+                                <%=carportCalc.partLists().get(i).getLength()%> cm
+                                <% }%> 
+                            </td>
+                            <td> <%=carportCalc.partLists().get(i).getAmount()%></td>
+                            <td> <%=carportCalc.partLists().get(i).getPrice()%> kr.</td>
+                            <td> <%=carportCalc.partLists().get(i).getTotalPrice()%> kr.</td>
+                        </tr>
+                        <% }%>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><b><i>Total price</i></b></td>
+                            <td><b><i> <%= carportCalc.getPrice()%></i>,-</b></td>
+                        </tr>
+
+
                     </table>
 
                 </div>
             </main>
         </div>
-                               <% if(request.getAttribute("id")== null){ %>
+        <% if (request.getAttribute("id") == null) { %>
         <h1>Create Customer</h1>
         <form action="FrontController" method="post">
             Name<br>
@@ -92,19 +92,30 @@
             <input type="text" name="email" ><br><br>
             Phone number<br>
             <input type="text" name="phone" ><br><br>
-            <% if( !((request.getSession().getAttribute("error")) == null) )  { %>
-            * <%= request.getSession().getAttribute("error") %> <br>
+            <% if (!((request.getSession().getAttribute("error")) == null)) {%>
+            * <%= request.getSession().getAttribute("error")%> <br>
             <% } %>
             <input type="hidden" name="command" value="CreateOrder"/>
             <input type="submit" value="submit"/>  
         </form>
-      <%  }else{ %>
- <form action="FrontController" method="post">
+        <%  } else { %>
+        <form action="FrontController" method="post">
             Update total price<br>
             <input type="number" name="price"><br><br>
             <input type="hidden" name="command" value="UpdatePrice"/>
             <input type="submit" value="Update price"/>  
-      
-   <%   }%>
+        </form>
+        <br>
+        <form action="FrontController" method="post">
+            Update status<br>
+            <select name="newStatus">
+                <option value="In progress">In progress</option>
+                <option value="Shipped">Shipped</option>
+                <option value="Pending">Pending payment</option>
+            </select>
+            <input type="hidden" name="command" value="UpdateStatus"/>
+            <input type="submit" value="Update status"/>  
+        </form>
+        <%   }%>
     </body>
 </html>

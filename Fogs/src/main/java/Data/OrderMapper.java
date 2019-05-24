@@ -119,5 +119,16 @@ public class OrderMapper {
             throw new OrderException(ex.getMessage());
         }
     }
+    public void updateStatus(int id, String newStatus) throws OrderException {
+        try {
+            Connection con = DBConnector.connection();
+            String SQL = "UPDATE `orders` SET `status` = ? where id_customer = " + id + ";";
+            PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, newStatus);
+            ps.executeUpdate();
+        } catch (SQLException | ClassNotFoundException ex) {
+            throw new OrderException(ex.getMessage());
+        }
+    }
 
 }

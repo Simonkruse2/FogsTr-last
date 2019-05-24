@@ -28,4 +28,5 @@ public interface LogicFacade {
     Order createOrderShed(Order order);
     Order getOrder(int id);
     void updatePrice(int id, int newPrice);
+    void updateStatus(int id, String newStatus);
 }

@@ -57,12 +57,12 @@
                             <td> <%=carportCalcShed.partLists().get(i).getPname()%></td>
                             <td> <%=carportCalcShed.partLists().get(i).getUnit()%></td>
                             <td> 
-                             <% if(carportCalcShed.partLists().get(i).getLength() == 0) { %>
-                                    -
-                             <% } else{ %>
-                             <%=carportCalcShed.partLists().get(i).getLength() %> cm
-                             <% } %> 
-                             </td>
+                                <% if (carportCalcShed.partLists().get(i).getLength() == 0) { %>
+                                -
+                                <% } else {%>
+                                <%=carportCalcShed.partLists().get(i).getLength()%> cm
+                                <% }%> 
+                            </td>
                             <td> <%=carportCalcShed.partLists().get(i).getAmount()%></td>
                             <td> <%=carportCalcShed.partLists().get(i).getPrice()%> kr.</td>
                             <td> <%=carportCalcShed.partLists().get(i).getTotalPrice()%> kr.</td>
@@ -74,7 +74,7 @@
                             <td></td>
                             <td></td>
                             <td><b><i>Total price</i></b></td>
-                            <td><b><i> <%= carportCalcShed.getPrice() %></i>,-</b></td>
+                            <td><b><i> <%= carportCalcShed.getPrice()%></i>,-</b></td>
                         </tr>
 
 
@@ -83,7 +83,7 @@
                 </div>
             </main>
         </div>
-                        <% if(request.getAttribute("id")== null){ %>
+        <% if (request.getAttribute("id") == null) { %>
         <h1>Place order</h1>
         <h2>Fill out customer information</h2>
         <form action="FrontController" method="post">
@@ -96,13 +96,26 @@
             <input type="hidden" name="command" value="CreateOrderShed"/>
             <input type="submit" value="submit"/>  
         </form>
-      <%  }else{ %>
- <form action="FrontController" method="post">
-            Update price<br>
+        <%  } else { %>
+        <form action="FrontController" method="post">
+            Update total price <br>
             <input type="number" name="price"><br><br>
             <input type="hidden" name="command" value="UpdatePrice"/>
             <input type="submit" value="Update price"/>  
-      
-   <%   }%>
+
+        </form>
+        <br>
+        <form action="FrontController" method="post">
+            Update status<br>
+            <select name="newStatus">
+                <option value="In progress">In progress</option>
+                <option value="Shipped">Shipped</option>
+                <option value="Pending">Pending payment</option>
+            </select>
+            <input type="hidden" name="command" value="UpdateStatus"/>
+            <input type="submit" value="Update status"/>  
+        </form>
+
+        <%   }%>
     </body>
 </html>

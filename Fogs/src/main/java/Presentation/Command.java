@@ -33,6 +33,7 @@ public abstract class Command {
             commands.put("CreateOrderShed", new CommandCreateOrderShed());
             commands.put("ViewOrders", new CommandViewOrders());
             commands.put("UpdatePrice", new CommandUpdatePrice());
+            commands.put("UpdateStatus", new CommandUpdateStatus());
         }
         String origin = request.getParameter("command");
 
