@@ -56,9 +56,11 @@ public class UserMapper {
     public boolean checkLogin(String username, String password) {
         String _password = "";
         try {
-            String SQL = "SELECT password FROM `employees` WHERE username = ?;";
+            String SQL = "SELECT password FROM "
+                    + "`employees` WHERE username = ?;";
             Connection con = DBConnector.connection();
-            PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement ps
+                    = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, username);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -67,7 +69,6 @@ public class UserMapper {
             password = md5.getMd5(password);
             return _password.equals(password);
         } catch (Exception ex) {
-            ex.printStackTrace();
             return false;
         }
     }
@@ -99,7 +100,6 @@ public class UserMapper {
             }
             return u;
         } catch (Exception ex) {
-            ex.printStackTrace();
             return null;
         }
     }
@@ -125,7 +125,6 @@ public class UserMapper {
             return u;
         } catch (Exception ex) {
             System.out.println("Den henter ingen bruger");
-            ex.printStackTrace();
             return null;
         }
     }

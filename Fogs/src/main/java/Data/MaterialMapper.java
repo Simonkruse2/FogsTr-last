@@ -36,7 +36,6 @@ public class MaterialMapper {
             }
             return description;
         } catch (Exception ex) {
-            ex.printStackTrace();
             return null;
         }
     }
@@ -54,7 +53,6 @@ public class MaterialMapper {
             }
             return price;
         } catch (Exception ex) {
-            ex.printStackTrace();
             return 0;
         }
 
@@ -73,7 +71,6 @@ public class MaterialMapper {
             }
             return unit;
         } catch (Exception ex) {
-            ex.printStackTrace();
             return null;
         }
     }
