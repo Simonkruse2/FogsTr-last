@@ -13,6 +13,9 @@
     <head>
         <meta charset="utf-8">
         <title>Part list</title>
+        <% if (null == session.getAttribute("user")) {
+                 request.getRequestDispatcher("index.jsp").forward(request, response);
+             }%>
         <%Carport carport = (Carport) request.getAttribute("carport");%>
         <%CarportCalc carportCalc = (CarportCalc) request.getAttribute("CarportCalc");%>
         <% int length = carport.getLengthOuter();
@@ -89,9 +92,9 @@
             <input type="text" name="name">
             <br><br>
             Email<br>
-            <input type="text" name="email" ><br><br>
+            <input type="email" name="email" ><br><br>
             Phone number<br>
-            <input type="text" name="phone" ><br><br>
+            <input type="number" name="phone" ><br><br>
             <% if (!((request.getSession().getAttribute("error")) == null)) {%>
             * <%= request.getSession().getAttribute("error")%>
             <% request.removeAttribute("error"); %> 
@@ -119,5 +122,8 @@
             <input type="submit" value="Update status"/>  
         </form>
         <%   }%>
+        <form>
+            <button type="button" name="back" onclick="history.back()">back</button>
+        </form>
     </body>
 </html>

@@ -14,6 +14,10 @@
     <head>
         <meta charset="utf-8">
         <title>Part list</title>
+
+        <% if (null == session.getAttribute("user")) {
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+            }%>
         <%Carport carport = (Carport) request.getAttribute("carport");%>
         <%CarportCalcShed carportCalcShed = (CarportCalcShed) request.getAttribute("CarportCalcShed");%>
         <% int length = carport.getLengthOuter();
@@ -117,11 +121,12 @@
             <% if (!((request.getSession().getAttribute("error")) == null)) {%>
             * <%= request.getSession().getAttribute("error")%>
             <% request.removeAttribute("error"); %> 
-            <% } %> <br>
+            <% }%> <br>
             <input type="hidden" name="command" value="UpdateStatus"/>
             <input type="submit" value="Update status"/>  
         </form>
-
-        <%   }%>
+        <form>
+            <button type="button" name="back" onclick="history.back()">back</button>
+        </form>
     </body>
 </html>

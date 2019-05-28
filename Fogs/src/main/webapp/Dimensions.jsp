@@ -11,6 +11,9 @@
         <link href="style_fog.css" rel="stylesheet" type="text/css"/>
         <title>JSP Page</title>
         <% User u = (User) session.getAttribute("user"); %>
+        <% if (null == session.getAttribute("user")) {
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+            }%>
     </head>
     <body>
         <h1><% out.print(u.getUsername()); %></h1>
@@ -85,6 +88,9 @@
             </main>
         </div>
     </body>
+    <form>
+        <button type="button" name="back" onclick="history.back()">back</button>
+    </form>
 </html>
 
 

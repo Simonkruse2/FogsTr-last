@@ -8,13 +8,16 @@
         <title>JSP Page</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link href="style_fog.css" rel="stylesheet" type="text/css"/>
+        <% if (null == session.getAttribute("user")) {
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+            }%>
         <% Carport carport = (Carport) (request.getAttribute("carport"));%>
         <% CarportCalc CarportCalc = (CarportCalc) (request.getAttribute("CarportCalc"));%>
         <% int poleHeight = 230;%>
     </head>
 
     <body>
-       
+
         <div class="container-fluid">
             <div class="row">
                 <h1 class="col-md-12">Carport drawing</h1>
@@ -312,6 +315,9 @@
             </div>
         </div>
 
+        <form>
+            <button type="button" name="back" onclick="history.back()">back</button>
+        </form>
 
     </body>
 </html>

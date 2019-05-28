@@ -86,6 +86,7 @@ public class OrderMapper {
             Connection con = DBConnector.connection();
             String SQL = "select * from `orders` where id_customer =" + id + ";";
             ResultSet rs = con.createStatement().executeQuery(SQL);
+                        PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             while (rs.next()) {
                 int id_order = rs.getInt("id_order");
                 String status = rs.getString("status");
@@ -111,9 +112,10 @@ public class OrderMapper {
     public void updatePrice(int id, int newPrice) throws OrderException {
         try {
             Connection con = DBConnector.connection();
-            String SQL = "UPDATE `orders` SET `price` = ? where id_customer = " + id + ";";
+            String SQL = "UPDATE `orders` SET `price` = ? where id_customer = ?;";
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, newPrice);
+            ps.setInt(2, id);
             ps.executeUpdate();
         } catch (SQLException | ClassNotFoundException ex) {
             throw new OrderException(ex.getMessage());
@@ -122,9 +124,10 @@ public class OrderMapper {
     public void updateStatus(int id, String newStatus) throws OrderException {
         try {
             Connection con = DBConnector.connection();
-            String SQL = "UPDATE `orders` SET `status` = ? where id_customer = " + id + ";";
+            String SQL = "UPDATE `orders` SET `status` = ? where id_customer = ?;";
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, newStatus);
+            ps.setInt(2, id);
             ps.executeUpdate();
         } catch (SQLException | ClassNotFoundException ex) {
             throw new OrderException(ex.getMessage());
