@@ -115,7 +115,7 @@
         </div>
                 <hr>
         <div class="col-md-12 create">
-            <div class="col-md-4 forms">
+            <div class="col-md-6 forms">
                 <% if (request.getAttribute("id") == null) { %>
                 <h1>Place order</h1>
                 <h2>Fill out customer information</h2>

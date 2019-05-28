@@ -43,7 +43,7 @@
                 </li>
             </ul>
         </nav>
-        <h1>Type a customer ID.</h1>
+        <h1>Type an order ID.</h1>
         <form action="FrontController" method="post">
             ID<br>
             <input type="text" name="id"><br><br>

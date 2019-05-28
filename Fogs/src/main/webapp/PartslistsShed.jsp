@@ -120,9 +120,9 @@
                 </div>
             </main>
         </div>
-                <hr>
+        <hr>
         <div class="col-md-12">
-            <div class="col-md-6">
+            <div>
                 <% if (request.getAttribute("id") == null) { %>
                 <h1>Place order</h1>
                 <h2>Fill out customer information</h2>
@@ -137,7 +137,7 @@
                     <input type="submit" value="Submit"/>  
                 </form>
                 <%  } else { %>
-                <form action="FrontController" method="post">
+                <form class="col-md-6" action="FrontController" method="post">
                     Update total price <br>
                     <input type="number" name="price"><br><br>
                     <input type="hidden" name="command" value="UpdatePrice"/>
@@ -145,7 +145,7 @@
 
                 </form>
                 <br>
-                <form action="FrontController" method="post">
+                <form class="col-md-6" action="FrontController" method="post">
                     Update status<br>
                     <select name="newStatus">
                         <option value="In progress">In progress</option>
@@ -159,13 +159,7 @@
                     <input type="hidden" name="command" value="UpdateStatus"/>
                     <input type="submit" value="Update status"/>  
                 </form>
-                <form>
-                    <button type="button" name="back" onclick="history.back()">Back</button>
-                </form>
-                <form action="FrontController" method="post">
-                    <input type="hidden" name="command" value="logout">
-                    <input type="submit" value="Log out"/>  
-                </form>
+
                 <%}%>
             </div>
         </div>

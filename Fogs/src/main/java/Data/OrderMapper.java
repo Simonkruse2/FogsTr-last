@@ -84,7 +84,7 @@ public class OrderMapper {
         Order o = null;
         try {
             Connection con = DBConnector.connection();
-            String SQL = "select * from `orders` where id_customer = ?;";
+            String SQL = "select * from `orders` where id_order = ?;";
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
