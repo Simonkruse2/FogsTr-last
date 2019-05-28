@@ -18,7 +18,7 @@ import static org.junit.Assert.*;
 
 public class LogicFacadeMockTest {
 
-    LogicFacadeMOCK logic = new LogicFacadeMOCK();
+    LogicFacade_Impl logic = new LogicFacade_Impl();
 
     public LogicFacadeMockTest() {
     }

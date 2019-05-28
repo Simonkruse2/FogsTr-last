@@ -38,7 +38,7 @@ public class CarportCalcShed {
         }
         amount += extraamount;
         mat.setAmount(amount);
-        mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
+        mat.setTotalPrice(mat.getPrice() * mat.getAmount());
         mat.setUnit(map.getMaterialUnit(id));
         return mat;
     }
@@ -57,7 +57,7 @@ public class CarportCalcShed {
         Material mat = new Material(map.getMaterialDescription(id), map.getMaterialPrice(id));
         mat.setAmount(2);
         mat.setLength(length);
-        mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
+        mat.setTotalPrice(mat.getPrice() * mat.getAmount());
         mat.setUnit(map.getMaterialUnit(id));
         return mat;
     }
@@ -68,7 +68,7 @@ public class CarportCalcShed {
         mat.setLength(width);
         int numRafts = (int) Math.ceil((length / 60) + 1); //cm cm cm!
         mat.setAmount(numRafts);
-        mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
+        mat.setTotalPrice(mat.getPrice() * mat.getAmount());
         mat.setUnit(map.getMaterialUnit(id));
         return mat;
     }
@@ -84,7 +84,7 @@ public class CarportCalcShed {
         int pamount = poles(length, width, shedlength, shedwidth).getAmount(); // port amount
         int ramount = 2 * rafts(length, width, shedlength, shedwidth).getAmount(); // raft amount
         mat.setAmount(pamount + ramount);
-        mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
+        mat.setTotalPrice(mat.getPrice() * mat.getAmount());
         mat.setUnit(map.getMaterialUnit(id));
         return mat;
 
@@ -100,7 +100,7 @@ public class CarportCalcShed {
             count++;
         }
         mat.setAmount(count);
-        mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
+        mat.setTotalPrice(mat.getPrice() * mat.getAmount());
         mat.setUnit(map.getMaterialUnit(id));
         return mat;
     }
@@ -110,7 +110,7 @@ public class CarportCalcShed {
         Material mat = new Material(map.getMaterialDescription(id), map.getMaterialPrice(id));
         mat.setLength(length);
         mat.setAmount(2);
-        mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
+        mat.setTotalPrice(mat.getPrice() * mat.getAmount());
         mat.setUnit(map.getMaterialUnit(id));
         return mat;
     }
@@ -120,7 +120,7 @@ public class CarportCalcShed {
         Material mat = new Material(map.getMaterialDescription(id), map.getMaterialPrice(id));
         mat.setLength(width);
         mat.setAmount(2);
-        mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
+        mat.setTotalPrice(mat.getPrice() * mat.getAmount());
         mat.setUnit(map.getMaterialUnit(id));
         return mat;
     }
@@ -138,7 +138,7 @@ public class CarportCalcShed {
             count++;
         }
         mat.setAmount(count);
-        mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
+        mat.setTotalPrice(mat.getPrice() * mat.getAmount());
         mat.setUnit(map.getMaterialUnit(id));
         return mat;
     }
@@ -155,7 +155,7 @@ public class CarportCalcShed {
         int carportSqrmtr = length * width / 100;
 
         mat.setAmount((int) Math.ceil(carportSqrmtr * 0.46 / 360));
-        mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
+        mat.setTotalPrice(mat.getPrice() * mat.getAmount());
         mat.setUnit(map.getMaterialUnit(id));
         return mat;
     }
@@ -166,7 +166,7 @@ public class CarportCalcShed {
         int carportSqrmtr = length * width / 100;
 
         mat.setAmount((int) Math.ceil(carportSqrmtr * 0.77 / 600));
-        mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
+        mat.setTotalPrice(mat.getPrice() * mat.getAmount());
         mat.setUnit(map.getMaterialUnit(id));
         return mat;
     }
@@ -176,7 +176,7 @@ public class CarportCalcShed {
         Material mat = new Material(map.getMaterialDescription(id), map.getMaterialPrice(id));
         mat.setAmount(4);
         mat.setLength(shedwidth);
-        mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
+        mat.setTotalPrice(mat.getPrice() * mat.getAmount());
         mat.setUnit(map.getMaterialUnit(id));
         return mat;
 
@@ -187,7 +187,7 @@ public class CarportCalcShed {
         Material mat = new Material(map.getMaterialDescription(id), map.getMaterialPrice(id));
         mat.setAmount(4);
         mat.setLength(shedwidth);
-        mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
+        mat.setTotalPrice(mat.getPrice() * mat.getAmount());
         mat.setUnit(map.getMaterialUnit(id));
         return mat;
 
@@ -200,7 +200,7 @@ public class CarportCalcShed {
         amount += (shedlength / 10) * 2; // length amount
         amount += (shedwidth / 10) * 2;
         mat.setAmount(amount);
-        mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
+        mat.setTotalPrice(mat.getPrice() * mat.getAmount());
         mat.setUnit(map.getMaterialUnit(id));
         return mat;
     }
@@ -216,7 +216,7 @@ public class CarportCalcShed {
             count++;
         }
         mat.setAmount(count);
-        mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
+        mat.setTotalPrice(mat.getPrice() * mat.getAmount());
         mat.setUnit(map.getMaterialUnit(id));
         return mat;
     }
@@ -225,7 +225,7 @@ public class CarportCalcShed {
         int id = 27;
         Material mat = new Material(map.getMaterialDescription(id), map.getMaterialPrice(id));
         mat.setAmount(2);
-        mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
+        mat.setTotalPrice(mat.getPrice() * mat.getAmount());
         mat.setUnit(map.getMaterialUnit(id));
         return mat;
     }
@@ -240,7 +240,7 @@ public class CarportCalcShed {
             count++;
         }
         mat.setAmount(count);
-        mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
+        mat.setTotalPrice(mat.getPrice() * mat.getAmount());
         mat.setUnit(map.getMaterialUnit(id));
         return mat;
     } //kan nok udkommenteres / slettes
@@ -250,7 +250,7 @@ public class CarportCalcShed {
         Material mat = new Material(map.getMaterialDescription(id), map.getMaterialPrice(id));
         mat.setAmount(1);
         mat.setLength(300);
-        mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
+        mat.setTotalPrice(mat.getPrice() * mat.getAmount());
         mat.setUnit(map.getMaterialUnit(id));
         return mat;
     }
@@ -259,7 +259,7 @@ public class CarportCalcShed {
         int id = 26;
         Material mat = new Material(map.getMaterialDescription(id), map.getMaterialPrice(id));
         mat.setAmount(1);
-        mat.setTotalPrice(map.getMaterialPrice(id) * mat.getAmount());
+        mat.setTotalPrice(mat.getPrice() * mat.getAmount());
         mat.setUnit(map.getMaterialUnit(id));
         return mat;
     }

@@ -17,9 +17,9 @@ import javax.servlet.http.HttpSession;
  *
  * @author Renz
  */
-public class CommandPartlists extends Command {
+public class CommandPartslists extends Command {
 
-    public CommandPartlists() {
+    public CommandPartslists() {
     }
 
     @Override
@@ -43,7 +43,7 @@ public class CommandPartlists extends Command {
                 session.setAttribute("carport", carport);
                 request.setAttribute("CarportCalc", CarportCalc);
                 session.setAttribute("CarportCalc", CarportCalc);
-                return "Partlists.jsp";
+                return "Partslists.jsp";
             } else {
                 if (length < shedlength || width < shedwidth) {
                     throw new DimensionsException("Shed dimensions can't be bigger than the carport");
@@ -56,7 +56,7 @@ public class CommandPartlists extends Command {
                 session.setAttribute("carport", carport);
                 request.setAttribute("CarportCalcShed", CarportCalcShed);
                 session.setAttribute("CarportCalcShed", CarportCalcShed);
-                return "PartlistsShed.jsp";
+                return "PartslistsShed.jsp";
             }
         } catch (DimensionsException de) {
             session.setAttribute("error", de.getMessage());

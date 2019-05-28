@@ -12,7 +12,7 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <title>Part list</title>
+        <title>Orders</title>
         <% User u = (User) session.getAttribute("user"); %>
         <% OrderMapper om = new OrderMapper(); %>
         <% if (null == session.getAttribute("user")) {
@@ -31,7 +31,7 @@
                     </form>
                 </li>
                 <li>
-                    <i><% out.print(u.getUsername().toUpperCase()); %></i>
+                    <b><% out.print(u.getUsername().toUpperCase());%></b>
                 </li>
                 <li>
                     <form class="float-left" action="" method="">
@@ -49,7 +49,7 @@
             <input type="text" name="id"><br><br>
 
             <input type="hidden" name="command" value="ViewOrders"/>
-            <input type="submit" value="View Partlist"/>  
+            <input type="submit" value="View Partslist"/>  
         </form>
         <div id="wrapper">
             <main clas="container-fluid">

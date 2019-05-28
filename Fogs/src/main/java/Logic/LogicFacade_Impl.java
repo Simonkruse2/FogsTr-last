@@ -12,14 +12,12 @@ import Data.OrderMapper;
 import Data.User;
 import Data.UserMapper;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author simon
  */
-public class LogicFacadeMOCK implements LogicFacade {
+public class LogicFacade_Impl implements LogicFacade {
 
     @Override
     public Carport createSimpleCarport(int length, int width) {
@@ -46,11 +44,7 @@ public class LogicFacadeMOCK implements LogicFacade {
         UserMapper um = new UserMapper();
         try {
             um.createCustomer(u);
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-            System.out.println("SQLException ... øv");
-        } catch (ClassNotFoundException ex) {
-            System.out.println("Class not found");
+        } catch (SQLException | ClassNotFoundException ex) {
         }
         return u;
     }
@@ -60,12 +54,7 @@ public class LogicFacadeMOCK implements LogicFacade {
         UserMapper um = new UserMapper();
         try {
             um.createEmployee(u);
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-            System.out.println("SQLException ... øv");
-        } catch (ClassNotFoundException ex) {
-            ex.printStackTrace();
-            System.out.println("Class not found");
+        } catch (SQLException | ClassNotFoundException ex) {
         }
         return u;
     }
@@ -96,10 +85,7 @@ public class LogicFacadeMOCK implements LogicFacade {
         OrderMapper om = new OrderMapper();
         try {
             om.createOrder(order);
-        } catch (SQLException ex) {
-            Logger.getLogger(LogicFacadeMOCK.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(LogicFacadeMOCK.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException | ClassNotFoundException ex) {
         }
         return order;
     }
@@ -109,10 +95,7 @@ public class LogicFacadeMOCK implements LogicFacade {
         OrderMapper om = new OrderMapper();
         try {
             om.createOrderShed(order);
-        } catch (SQLException ex) {
-            Logger.getLogger(LogicFacadeMOCK.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(LogicFacadeMOCK.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException | ClassNotFoundException ex) {
         }
         return order;
     }
@@ -124,7 +107,6 @@ public class LogicFacadeMOCK implements LogicFacade {
         try {
             o = om.getOrder(id);
         } catch (OrderException ex) {
-            Logger.getLogger(LogicFacadeMOCK.class.getName()).log(Level.SEVERE, null, ex);
         }
         return o;
     }
@@ -135,7 +117,6 @@ public class LogicFacadeMOCK implements LogicFacade {
         try {
             om.updatePrice(id, newPrice);
         } catch (OrderException ex) {
-            Logger.getLogger(LogicFacadeMOCK.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -145,7 +126,6 @@ public class LogicFacadeMOCK implements LogicFacade {
         try {
             om.updateStatus(id, newStatus);
         } catch (OrderException ex) {
-            Logger.getLogger(LogicFacadeMOCK.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

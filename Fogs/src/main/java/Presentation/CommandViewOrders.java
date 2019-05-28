@@ -44,7 +44,7 @@ public class CommandViewOrders extends Command {
                     "carport", carport);
             request.setAttribute(
                     "CarportCalcShed", CarportCalcShed);
-            return "PartlistsShed.jsp";
+            return "PartslistsShed.jsp";
         } else {
             Carport carport = logic.createSimpleCarport(length, width);
             CarportCalc CarportCalc = logic.createSimpleCarportCalc(length, width);
@@ -53,7 +53,7 @@ public class CommandViewOrders extends Command {
                     "carport", carport);
             request.setAttribute(
                     "CarportCalc", CarportCalc);
-            return "Partlists.jsp";
+            return "Partslists.jsp";
         }
     }
 }

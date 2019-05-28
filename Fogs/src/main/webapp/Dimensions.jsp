@@ -9,7 +9,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link href="style_fog.css" rel="stylesheet" type="text/css"/>
-        <title>JSP Page</title>
+        <title>Dimensions</title>
         <% User u = (User) session.getAttribute("user"); %>
         <% if (null == session.getAttribute("user")) {
                 request.getRequestDispatcher("index.jsp").forward(request, response);
@@ -26,7 +26,7 @@
                         </form>
                     </li>
                     <li>
-                        <i><% out.print(u.getUsername().toUpperCase()); %></i>
+                        <b><% out.print(u.getUsername().toUpperCase());%></b>
                     </li>
                     <li>
                         <a href="ViewOrders.jsp" >click here to view previous orders</a>
@@ -93,7 +93,7 @@
                             <br>
                             <% request.removeAttribute("error"); %> 
                             <% }%> 
-                            <input type="hidden" name="command" value="Partlists"/>
+                            <input type="hidden" name="command" value="Partslists"/>
                             <input type="submit" value="View Partlist">
                         </form>
                     </div>

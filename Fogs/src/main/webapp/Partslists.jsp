@@ -1,5 +1,5 @@
 <%-- 
-    Document   : Partlists
+    Document   : Partslists
     Created on : 09-May-2019, 16:22:06
     Author     : Renz
 --%>
@@ -13,7 +13,7 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <title>Part list</title>
+        <title>Partslist</title>
         <% if (null == session.getAttribute("user")) {
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             }%>
@@ -38,7 +38,7 @@
                         </form>
                     </li>
                     <li>
-                        <i><% out.print(u.getUsername().toUpperCase()); %></i>
+                        <b><% out.print(u.getUsername().toUpperCase());%></b>
                     </li>
                     <li>
                         <form class="float-left" action="" method="">
@@ -116,7 +116,8 @@
         <div class="col-md-12 create">
             <div class="col-md-4 forms">
                 <% if (request.getAttribute("id") == null) { %>
-                <h1>Create Customer</h1>
+                <h1>Place order</h1>
+                <h2>Fill out customer information</h2>
                 <form class="" action="FrontController" method="post">
                     Name<br>
                     <input class="col-md-6" type="text" name="name">

@@ -25,7 +25,6 @@ public class CommandUpdatePrice extends Command {
 
         int id = (int) request.getSession().getAttribute("id");
         int newPrice = Integer.parseInt(request.getParameter("price"));
-
         logic.updatePrice(id, newPrice);
         return "ViewOrders.jsp";
     }

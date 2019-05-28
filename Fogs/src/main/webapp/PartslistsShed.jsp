@@ -1,5 +1,5 @@
 <%-- 
-    Document   : Partlists
+    Document   : Partslists
     Created on : 09-May-2019, 16:22:06
     Author     : Renz
 --%>
@@ -14,7 +14,7 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <title>Part list</title>
+        <title>Partslist</title>
 
         <% if (null == session.getAttribute("user")) {
                 request.getRequestDispatcher("index.jsp").forward(request, response);
@@ -42,7 +42,7 @@
                         </form>
                     </li>
                     <li>
-                        <i><% out.print(u.getUsername().toUpperCase()); %></i>
+                        <b><% out.print(u.getUsername().toUpperCase());%></b>
                     </li>
                     <li>
                         <form class="float-left" action="" method="">
@@ -54,14 +54,14 @@
                     </li>
                 </ul>
             </nav>
-                    Width:  <% out.print(carport.getWidthOuter()); %> CM
-                    <br>
-                    Length:  <% out.print(carport.getLengthOuter()); %> CM
-                    <br>
-                    Shed width:  <% out.print(carport.getShedwidth()); %> CM
-                    <br>
-                    Shed length:  <% out.print(carport.getShedlength()); %> CM
-                    <br>
+            Width:  <% out.print(carport.getWidthOuter()); %> CM
+            <br>
+            Length:  <% out.print(carport.getLengthOuter()); %> CM
+            <br>
+            Shed width:  <% out.print(carport.getShedwidth()); %> CM
+            <br>
+            Shed length:  <% out.print(carport.getShedlength()); %> CM
+            <br>
             <main clas="container-fluid">
                 <div class="col-md-12">
                     <table class="table">
@@ -80,7 +80,7 @@
                                     Amount
                                 </th>
                                 <th>
-                                    Price pr. unit
+                                    Price per unit
                                 </th>
                                 <th>
                                     Total price
@@ -129,9 +129,9 @@
                     Name<br>
                     <input type="text" name="name"><br><br>
                     Email<br>
-                    <input type="text" name="email" ><br><br>
+                    <input type="email" name="email" ><br><br>
                     Phone number<br>
-                    <input type="text" name="phone" ><br><br>
+                    <input type="number" name="phone" ><br><br>
                     <input type="hidden" name="command" value="CreateOrderShed"/>
                     <input type="submit" value="submit"/>  
                 </form>

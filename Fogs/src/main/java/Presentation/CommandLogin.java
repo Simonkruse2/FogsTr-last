@@ -33,40 +33,35 @@ public class CommandLogin extends Command {
      * @throws Presentation.UserException
      */
     @Override
-    public String execute(HttpServletRequest request, LogicFacade logic) throws  
-                   IllegalArgumentException, ServletException,UserException, IOException {
+    public String execute(HttpServletRequest request, LogicFacade logic) throws
+            IllegalArgumentException, ServletException, UserException, IOException {
         session = request.getSession();
-        
+
         try {
-            
+
             String username = request.getParameter("username");
             String password = request.getParameter("password");
-            
+
             UserMapper um = new UserMapper();
             User u = um.getEmployee(username);
-            
+
             session.setAttribute("user", u);
             boolean valid = um.checkLogin(username, password);
-            
+
             if (valid && username != null && password != null && !("".equals(username))
-                           && !("".equals(password))) {
+                    && !("".equals(password))) {
                 session.setAttribute("user", u);
                 return "Dimensions.jsp";
-            } 
-
-             else {
-                throw new UserException("User doesnt exist");
+            } else {
+                throw new UserException("Wrong username or password");
             }
-            }catch (IllegalArgumentException iae){
-                throw new IllegalArgumentException("Forkert imput");
-            }catch (UserException ue){
-                session.setAttribute("error", ue.getMessage());
-                return "index.jsp";
-            
-            } 
-              
+        } catch (IllegalArgumentException iae) {
+            throw new IllegalArgumentException("Illegal imput");
+        } catch (UserException ue) {
+            session.setAttribute("error", ue.getMessage());
+            return "index.jsp";
+
+        }
+
     }
-        } 
-    
-
-
+}
