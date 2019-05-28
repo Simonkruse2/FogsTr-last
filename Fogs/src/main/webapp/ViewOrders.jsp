@@ -3,6 +3,7 @@
     Created on : 21-May-2019, 15:30:06
     Author     : Simon
 --%>
+<%@page import="Data.User"%>
 <%@page import="Data.OrderMapper"%>
 <%@page import="java.util.ArrayList"%>
 
@@ -12,14 +13,36 @@
     <head>
         <meta charset="utf-8">
         <title>Part list</title>
+        <% User u = (User) session.getAttribute("user"); %>
         <% OrderMapper om = new OrderMapper(); %>
         <% if (null == session.getAttribute("user")) {
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             }%>
-
+        <link href="style_fog.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     </head>
     <body>
+        <nav class="">
+            <ul>
+                <li>
+                    <form class="float-right" action="FrontController" method="post">
+                        <input type="hidden" name="command" value="logout">
+                        <input type="submit" value="Log out"/>  
+                    </form>
+                </li>
+                <li>
+                    <i><% out.print(u.getUsername().toUpperCase()); %></i>
+                </li>
+                <li>
+                    <form class="float-left" action="" method="">
+                        <button type="button" name="back" onclick="history.back()">Back</button>
+                    </form>
+                </li>
+                <li>
+                    <a href="ViewOrders.jsp" >click here to view previous orders</a>
+                </li>
+            </ul>
+        </nav>
         <h1>Type a customer ID.</h1>
         <form action="FrontController" method="post">
             ID<br>
@@ -96,13 +119,6 @@
                 </div>
             </main>
         </div>
-        <form>
-            <button type="button" name="back" onclick="history.back()">Back</button>
-        </form>
-        <form action="FrontController" method="post">
-            <input type="hidden" name="command" value="logout">
-            <input type="submit" value="Log out"/>  
-        </form>
     </body>
 
 </html>

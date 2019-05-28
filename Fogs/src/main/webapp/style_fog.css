@@ -18,7 +18,6 @@ body {
 }
 
 .kassen{
-    border: 1px dashed red;
     min-height: 1700px;
     height: auto;
     margin-bottom: 1em;
@@ -29,5 +28,40 @@ body {
 }
 
 .i{
-  font-size: 10px;  
+  font-size: 10px;
 }
+
+.indexf{
+  border: 1px solid red;
+  padding: 1em 150px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 3px 0 ;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li i{
+    color:white;
+    float:right;
+    padding-right: 1%;
+}
+
+li a{
+    padding-left: 1%;
+    float:left;
+}
+
+.create{   
+    margin-bottom: 1em;
+}
+
+.forms{
+    margin:auto;
+}
+
+
+

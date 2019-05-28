@@ -1,3 +1,4 @@
+<%@page import="Data.User"%>
 <%@page import="Data.Carport"%>
 <%@page import="Logic.CarportCalc"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -8,6 +9,7 @@
         <title>JSP Page</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link href="style_fog.css" rel="stylesheet" type="text/css"/>
+        <% User u = (User) session.getAttribute("user"); %>
         <% if (null == session.getAttribute("user")) {
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             }%>
@@ -17,9 +19,30 @@
     </head>
 
     <body>
-
+        <nav class="">
+            <ul>
+                <li>
+                    <form class="float-right" action="FrontController" method="post">
+                        <input type="hidden" name="command" value="logout">
+                        <input type="submit" value="Log out"/>  
+                    </form>
+                </li>
+                <li>
+                    <i><% out.print(u.getUsername().toUpperCase()); %></i>
+                </li>
+                <li>
+                    <form class="float-left" action="" method="">
+                        <button type="button" name="back" onclick="history.back()">Back</button>
+                    </form>
+                </li>
+                <li>
+                    <a href="ViewOrders.jsp" >click here to view previous orders</a>
+                </li>
+            </ul>
+        </nav>
         <div class="container-fluid">
             <div class="row">
+
                 <h1 class="col-md-12">Carport drawing</h1>
                 <svg class="kassen col-md-8 col-sm-8" viewBox="-1000 -1800 <%=carport.getLengthOuter() * 10%> <%=carport.getWidthOuter() * 10%>">
 
@@ -314,13 +337,5 @@
                 </svg>
             </div>
         </div>
-
-        <form>
-            <button type="button" name="back" onclick="history.back()">Back</button>
-        </form>
-        <form action="FrontController" method="post">
-            <input type="hidden" name="command" value="logout">
-            <input type="submit" value="Log out"/>  
-        </form>
     </body>
 </html>
