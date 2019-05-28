@@ -23,7 +23,7 @@
         <%CarportCalc carportCalc = (CarportCalc) request.getAttribute("CarportCalc");%>
         <% int length = carport.getLengthOuter();
             int width = carport.getWidthOuter();
-            int id = Integer.parseInt(request.getParameter("id"));
+
             OrderMapper om = new OrderMapper();
             carportCalc.runCalc(length, width); %>
         <link href="style_fog.css" rel="stylesheet" type="text/css"/>
@@ -109,7 +109,9 @@
                             <td><b><i>Total price</i></b></td>
                             <td><b><i> <%= carportCalc.getPrice()%></i>,-</b></td>
                         </tr>
-                        <% } else {%>
+                        <% } else {
+                            int id = Integer.parseInt(request.getParameter("id"));%>
+
                         <tr>
                             <td></td>
                             <td></td>

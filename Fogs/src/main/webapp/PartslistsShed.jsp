@@ -27,7 +27,7 @@
             int width = carport.getWidthOuter();
             int shedlength = carport.getShedlength();
             int shedwidth = carport.getShedwidth();
-            int id = Integer.parseInt(request.getParameter("id"));
+
             OrderMapper om = new OrderMapper();
             carportCalcShed.runCalc(length, width, shedlength, shedwidth); %>
         <link href="style_fog.css" rel="stylesheet" type="text/css"/>
@@ -117,7 +117,9 @@
                             <td><b><i>Total price</i></b></td>
                             <td><b><i> <%= carportCalcShed.getPrice()%></i>,-</b></td>
                         </tr>
-                        <% } else {%>
+                        <% } else {
+                            int id = Integer.parseInt(request.getParameter("id"));
+                        %>
                         <tr>
                             <td></td>
                             <td></td>
