@@ -12,6 +12,7 @@ import static org.junit.Assert.*;
  *
  * @author Renz
  */
+/*
 public class UserMapperTest {
     private UserMapper handler;
     
@@ -21,16 +22,16 @@ public class UserMapperTest {
     
     @Test
     public void userMapperTest(){
-        String str = "carl123";
-        String expected = "Carl";
+        String str = "admin";
+        String expected = "Carl Carlsen";
         String actual = handler.getEmployee(str).getName();
         
         assertEquals(actual, expected);
     }
     @Test
     public void userMapperCapsTest(){
-        String str = "CARL123";
-        String expected = "carl123";
+        String str = "ADMIN";
+        String expected = "admin";
         String actual = handler.getEmployee(str.toLowerCase()).getUsername();
         
         assertEquals(actual, expected);
@@ -38,3 +39,4 @@ public class UserMapperTest {
     
     
 }
+*/

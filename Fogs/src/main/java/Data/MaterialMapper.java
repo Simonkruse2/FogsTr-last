@@ -5,7 +5,6 @@
  */
 package Data;
 
-import Data.DBConnector;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -28,9 +27,10 @@ public class MaterialMapper {
         String description = "";
         try {
             Connection con = DBConnector.connection();
-            String query = "Select `description` from `materials` where `id_material` = " + id + ";";
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
+            String SQL = "Select `description` from `materials` where `id_material` = ?;";
+            PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 description = rs.getString("description");
             }
@@ -45,9 +45,10 @@ public class MaterialMapper {
         double price = 0;
         try {
             Connection con = DBConnector.connection();
-            String query = "Select `price` from `materials` where `id_material` = " + id + ";";
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
+            String SQL = "Select `price` from `materials` where `id_material` = ?;";
+            PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 price = rs.getDouble("price");
             }
@@ -58,14 +59,14 @@ public class MaterialMapper {
         }
 
     }
-
     public String getMaterialUnit(int id) throws SQLException, ClassNotFoundException {
         String unit = "";
         try {
             Connection con = DBConnector.connection();
-            String query = "Select `unit` from `materials` where `id_material` = " + id + ";";
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
+            String SQL = "Select `unit` from `materials` where `id_material` = ?;";
+            PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 unit = rs.getString("unit");
             }

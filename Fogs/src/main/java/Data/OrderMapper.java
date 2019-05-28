@@ -84,9 +84,10 @@ public class OrderMapper {
         Order o = null;
         try {
             Connection con = DBConnector.connection();
-            String SQL = "select * from `orders` where id_customer =" + id + ";";
-            ResultSet rs = con.createStatement().executeQuery(SQL);
-                        PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
+            String SQL = "select * from `orders` where id_customer = ?;";
+            PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 int id_order = rs.getInt("id_order");
                 String status = rs.getString("status");
@@ -121,6 +122,7 @@ public class OrderMapper {
             throw new OrderException(ex.getMessage());
         }
     }
+
     public void updateStatus(int id, String newStatus) throws OrderException {
         try {
             Connection con = DBConnector.connection();

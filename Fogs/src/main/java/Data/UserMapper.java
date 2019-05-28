@@ -82,17 +82,17 @@ public class UserMapper {
     public boolean checkLogin(String username, String password) {
         String _password = "";
         try {
-            String query = "SELECT password FROM `employees` WHERE username = '" + username + "';";
+            String SQL = "SELECT password FROM `employees` WHERE username = ?;";
             Connection con = DBConnector.connection();
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
+            PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, username);
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 _password = rs.getString("password");
-                password = getMd5(password);
             }
+                password = getMd5(password);
             return _password.equals(password);
         } catch (Exception ex) {
-            System.out.println(_password + "Den henter intet password");
             ex.printStackTrace();
             return false;
         }
@@ -107,12 +107,13 @@ public class UserMapper {
     public User getCustomer(String email) {
         User u = null;
         try {
-            String query = "SELECT id_customer, customer_name, phone, email \n"
+            String SQL = "SELECT id_customer, customer_name, phone, email \n"
                     + "FROM customers \n"
-                    + "WHERE email = '" + email + "';";
+                    + "WHERE email = ?;";
             Connection con = DBConnector.connection();
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
+            PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, email);
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 String _name = rs.getString("customer_name");
                 String phone = rs.getString("phone");
@@ -132,12 +133,13 @@ public class UserMapper {
     public User getEmployee(String un) {
         User u = null;
         try {
-            String query = "SELECT * \n"
+            String SQL = "SELECT * \n"
                     + "FROM users \n"
-                    + "WHERE username = '" + un + "';";
+                    + "WHERE username = ? ;";
             Connection con = DBConnector.connection();
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
+            PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, un);
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 String name = rs.getString("name");
                 String role = rs.getString("role");

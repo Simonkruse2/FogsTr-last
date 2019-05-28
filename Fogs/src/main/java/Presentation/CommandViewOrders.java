@@ -6,15 +6,10 @@
 package Presentation;
 
 import Data.Carport;
-import Data.Order;
-import Data.OrderException;
-import Data.OrderMapper;
 import Logic.CarportCalc;
 import Logic.CarportCalcShed;
 import Logic.LogicFacade;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;

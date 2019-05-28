@@ -50,6 +50,11 @@
                     </li>
                 </ul>
             </nav>
+                    
+                    Width:  <% out.print(carport.getWidthOuter()); %> CM
+                    <br>
+                    Length:  <% out.print(carport.getLengthOuter()); %> CM
+                    <br>
             <main clas="container-fluid">
                 <div class="col-md-12">
                     <table class="table">

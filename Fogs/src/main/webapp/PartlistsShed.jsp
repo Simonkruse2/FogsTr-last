@@ -54,6 +54,14 @@
                     </li>
                 </ul>
             </nav>
+                    Width:  <% out.print(carport.getWidthOuter()); %> CM
+                    <br>
+                    Length:  <% out.print(carport.getLengthOuter()); %> CM
+                    <br>
+                    Shed width:  <% out.print(carport.getShedwidth()); %> CM
+                    <br>
+                    Shed length:  <% out.print(carport.getShedlength()); %> CM
+                    <br>
             <main clas="container-fluid">
                 <div class="col-md-12">
                     <table class="table">
