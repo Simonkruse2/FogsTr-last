@@ -113,26 +113,27 @@
                 </div>
             </main>
         </div>
+                <hr>
         <div class="col-md-12 create">
             <div class="col-md-4 forms">
                 <% if (request.getAttribute("id") == null) { %>
                 <h1>Place order</h1>
                 <h2>Fill out customer information</h2>
-                <form class="" action="FrontController" method="post">
+                <form class="pad" action="FrontController" method="post">
                     Name<br>
                     <input class="col-md-6" type="text" name="name">
                     <br><br>
                     Email<br>
                     <input class="col-md-6" type="email" name="email" ><br><br>
-                    Phone number<br>
-                    <input class="col-md-6" type="number" name="phone" ><br><br>
+                    Phone number (0-9)<br>
+                    <input class="col-md-6" type="tel" name="phone" pattern="[0-9]{8}" required><br><br>
                     <% if (!((request.getSession().getAttribute("error")) == null)) {%>
                     * <%= request.getSession().getAttribute("error")%>
                     <% request.removeAttribute("error"); %> 
                     <% } %> 
                     <br>
                     <input type="hidden" name="command" value="CreateOrder"/>
-                    <input class="col-md-6" type="submit" value="submit"/>  
+                    <input class="col-md-6" type="submit" value="Submit"/>  
                 </form>
                 <%  } else { %>
                 <form action="FrontController" method="post">

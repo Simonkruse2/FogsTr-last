@@ -93,7 +93,7 @@ public class CarportCalcShed {
     public Material screwFittings(int length, int width, int shedlength, int shedwidth) throws SQLException, ClassNotFoundException {
         int id = 6;
         Material mat = new Material(map.getMaterialDescription(id), map.getMaterialPrice(id));
-        int amount = 3 * portFittings(length, width, shedlength, shedwidth).getAmount();
+        int amount = 6 * portFittings(length, width, shedlength, shedwidth).getAmount();
         int count = 1;
         while (amount > 300) {
             amount -= 300;

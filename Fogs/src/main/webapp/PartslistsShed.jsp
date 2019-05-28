@@ -120,20 +120,21 @@
                 </div>
             </main>
         </div>
+                <hr>
         <div class="col-md-12">
             <div class="col-md-6">
                 <% if (request.getAttribute("id") == null) { %>
                 <h1>Place order</h1>
                 <h2>Fill out customer information</h2>
-                <form action="FrontController" method="post">
+                <form class="pad" action="FrontController" method="post">
                     Name<br>
                     <input type="text" name="name"><br><br>
                     Email<br>
                     <input type="email" name="email" ><br><br>
                     Phone number<br>
-                    <input type="number" name="phone" ><br><br>
+                    <input type="tel" name="phone" pattern="[0-9]{8}" required>
                     <input type="hidden" name="command" value="CreateOrderShed"/>
-                    <input type="submit" value="submit"/>  
+                    <input type="submit" value="Submit"/>  
                 </form>
                 <%  } else { %>
                 <form action="FrontController" method="post">
