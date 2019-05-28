@@ -14,8 +14,8 @@
         <meta charset="utf-8">
         <title>Part list</title>
         <% if (null == session.getAttribute("user")) {
-                 request.getRequestDispatcher("index.jsp").forward(request, response);
-             }%>
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+            }%>
         <%Carport carport = (Carport) request.getAttribute("carport");%>
         <%CarportCalc carportCalc = (CarportCalc) request.getAttribute("CarportCalc");%>
         <% int length = carport.getLengthOuter();
@@ -123,7 +123,12 @@
         </form>
         <%   }%>
         <form>
-            <button type="button" name="back" onclick="history.back()">back</button>
+            <button type="button" name="back" onclick="history.back()">Back</button>
         </form>
+        <form action="FrontController" method="post">
+            <input type="hidden" name="command" value="logout">
+            <input type="submit" value="Log out"/>  
+        </form>
+
     </body>
 </html>

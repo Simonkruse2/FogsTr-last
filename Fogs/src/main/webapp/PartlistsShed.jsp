@@ -126,7 +126,11 @@
             <input type="submit" value="Update status"/>  
         </form>
         <form>
-            <button type="button" name="back" onclick="history.back()">back</button>
+            <button type="button" name="back" onclick="history.back()">Back</button>
+        </form>
+        <form action="FrontController" method="post">
+            <input type="hidden" name="command" value="logout">
+            <input type="submit" value="Log out"/>  
         </form>
     </body>
 </html>

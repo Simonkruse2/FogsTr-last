@@ -34,6 +34,7 @@ public abstract class Command {
             commands.put("ViewOrders", new CommandViewOrders());
             commands.put("UpdatePrice", new CommandUpdatePrice());
             commands.put("UpdateStatus", new CommandUpdateStatus());
+            commands.put("Logout", new CommandLogout());
         }
         String origin = request.getParameter("command");
 

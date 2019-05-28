@@ -14,8 +14,8 @@
         <title>Part list</title>
         <% OrderMapper om = new OrderMapper(); %>
         <% if (null == session.getAttribute("user")) {
-         request.getRequestDispatcher("index.jsp").forward(request, response);
-     }%>
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+            }%>
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     </head>
@@ -96,9 +96,13 @@
                 </div>
             </main>
         </div>
+        <form>
+            <button type="button" name="back" onclick="history.back()">Back</button>
+        </form>
+        <form action="FrontController" method="post">
+            <input type="hidden" name="command" value="logout">
+            <input type="submit" value="Log out"/>  
+        </form>
     </body>
-    <form>
-        <button type="button" name="back" onclick="history.back()">back</button>
-    </form>
 
 </html>
