@@ -15,7 +15,6 @@ import static org.junit.Assert.*;
  *
  * @author vince
  */
-/*
 public class CarportCalcTest {
 
     CarportCalc calc = new CarportCalc();
@@ -26,9 +25,9 @@ public class CarportCalcTest {
 
     @Test
     public void polesTest() throws SQLException, ClassNotFoundException {
-        Material polesExpected = new Material("97x97 mm. trykimp. stolpe", 710);
+        Material polesExpected = new Material("97x97 mm. trykimp. - Carport - Stolpe", 355);
         polesExpected.setAmount(6);
-        polesExpected.setTotalPrice(6 * 710);
+        polesExpected.setTotalPrice(6 * 355);
         polesExpected.setUnit("Stk");
 
         Material polesActual = calc.poles(780, 600);
@@ -51,10 +50,10 @@ public class CarportCalcTest {
 
     @Test
     public void beamsLengthTest() throws SQLException, ClassNotFoundException {
-        Material expected = new Material("38x73 mm. Lægte ubh.", 1000);
+        Material expected = new Material("38x73 mm. Lægte ubh. - Skur - Dørskelet", 500);
         expected.setAmount(2);
         expected.setLength(780);
-        expected.setTotalPrice(1000 * 2);
+        expected.setTotalPrice(500 * 2);
         expected.setUnit("Stk");
         Material actual = calc.beamsLength(780);
         assertEquals(expected, actual);
@@ -62,10 +61,10 @@ public class CarportCalcTest {
 
     @Test
     public void raftTest() throws SQLException, ClassNotFoundException {
-        Material expected = new Material("45x195 mm. spærtræ ubh.", 710);
+        Material expected = new Material("45x195 mm. spærtræ ubh. - Carport - Spær", 355);
         expected.setAmount(14);
         expected.setLength(600);
-        expected.setTotalPrice(710 * 14);
+        expected.setTotalPrice(355 * 14);
         expected.setUnit("Stk");
         Material actual = calc.rafts(780, 600);
         assertEquals(expected, actual);
@@ -80,11 +79,11 @@ public class CarportCalcTest {
 
     @Test
     public void portFittingsTest() throws SQLException, ClassNotFoundException {
-        Material expected = new Material("Vinkelbeslag 35 mm", 200);
+        Material expected = new Material("Vinkelbeslag 35 mm - Carport - stolpe- og spærbeslag", 100);
         int pamount = 6;
         int ramount = 2 * 14;
         expected.setAmount(pamount + ramount);
-        expected.setTotalPrice(200 * (pamount + ramount));
+        expected.setTotalPrice(100 * (pamount + ramount));
         expected.setUnit("Stk");
         Material actual = calc.portFittings(780, 600);
         assertEquals(expected, actual);
@@ -92,10 +91,10 @@ public class CarportCalcTest {
 
     @Test
     public void frameLengthTest() throws SQLException, ClassNotFoundException {
-        Material expected = new Material("19x100 mm. trykimp. Brædt", 410);
+        Material expected = new Material("19x100 mm. trykimp. Brædt - Carport - ramme", 205);
         expected.setLength(780);
         expected.setAmount(2);
-        expected.setTotalPrice(410 * 2);
+        expected.setTotalPrice(205 * 2);
         expected.setUnit("Stk");
         Material actual = calc.frameLength(780, 600);
         assertEquals(expected, actual);
@@ -103,10 +102,10 @@ public class CarportCalcTest {
 
     @Test
     public void frameWidthTest() throws SQLException, ClassNotFoundException {
-        Material expected = new Material("19x100 mm. trykimp. Brædt", 410);
+        Material expected = new Material("19x100 mm. trykimp. Brædt - Carport - ramme", 205);
         expected.setLength(600);
         expected.setAmount(2);
-        expected.setTotalPrice(410 * 2);
+        expected.setTotalPrice(205 * 2);
         expected.setUnit("Stk");
         Material actual = calc.frameWidth(780, 600);
         assertEquals(expected, actual);
@@ -114,9 +113,9 @@ public class CarportCalcTest {
 
     @Test
     public void screwFrameTest() throws SQLException, ClassNotFoundException {
-        Material expected = new Material("4,5 x 50 mm. skruer 300 stk.", 350);
+        Material expected = new Material("4,5 x 50 mm. skruer 300 stk. - Carport - Rammebeklædning", 175);
         expected.setAmount(1);
-        expected.setTotalPrice(350);
+        expected.setTotalPrice(175);
         expected.setUnit("Pakke");
         Material actual = calc.screwFrame(780, 600);
         assertEquals(expected, actual);
@@ -124,10 +123,10 @@ public class CarportCalcTest {
 
     @Test
     public void plastmoShortTest() throws SQLException, ClassNotFoundException {
-        Material expected = new Material("Plastmo Exolite blåtonet", 905);
+        Material expected = new Material("Plastmo Exolite blåtonet - Lang", 402.5);
 
         expected.setAmount((int) Math.ceil((780 * 600 / 100) * 0.46 / 360));
-        expected.setTotalPrice(905 * expected.getAmount());
+        expected.setTotalPrice(402.5 * expected.getAmount());
         expected.setUnit("Stk");
         Material actual = calc.plastmoShort(780, 600);
         assertEquals(expected, actual);
@@ -135,14 +134,13 @@ public class CarportCalcTest {
 
     @Test
     public void plastmoLongTest() throws SQLException, ClassNotFoundException {
-        Material expected = new Material("Plastmo Exolite blåtonet.", 390);
+        Material expected = new Material("Plastmo Exolite blåtonet - Kort", 195);
 
         expected.setAmount((int) Math.ceil((780 * 600 / 100) * 0.77 / 600));
-        expected.setTotalPrice(390 * expected.getAmount());
+        expected.setTotalPrice(195 * expected.getAmount());
         expected.setUnit("Stk");
         Material actual = calc.plastmoLong(780, 600);
         assertEquals(expected, actual);
     }
 
 }
-*/
