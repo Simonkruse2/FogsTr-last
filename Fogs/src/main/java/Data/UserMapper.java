@@ -68,7 +68,7 @@ public class UserMapper {
             }
             password = md5.getMd5(password);
             return _password.equals(password);
-        } catch (Exception ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             return false;
         }
     }
@@ -99,7 +99,7 @@ public class UserMapper {
                 u.setPhone(phone);
             }
             return u;
-        } catch (Exception ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             return null;
         }
     }
@@ -123,8 +123,7 @@ public class UserMapper {
                 u.setId(id);
             }
             return u;
-        } catch (Exception ex) {
-            System.out.println("Den henter ingen bruger");
+        } catch (ClassNotFoundException | SQLException ex) {
             return null;
         }
     }

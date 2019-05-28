@@ -141,7 +141,7 @@
                 <% if (request.getAttribute("id") == null) { %>
                 <h1>Place order</h1>
                 <h2>Fill out customer information</h2>
-                <form class="pad" action="FrontController" method="post">
+                <form class="col-md-6 one" action="FrontController" method="post">
                     Name<br>
                     <input type="text" name="name"><br><br>
                     Email<br>
@@ -151,11 +151,12 @@
                     <input type="hidden" name="command" value="CreateOrderShed"/>
                     <input type="submit" value="Submit"/>  
                 </form>
-                <%  } else { %>
+                <%  } else {
+                    int id = Integer.parseInt(request.getParameter("id"));%>
                 <div class="col-md-12">
                     <form class="col-md-6 one" action="FrontController" method="post">
                         <p>Update total price</p>
-                        <input class="col-md-8" type="number" name="price"><br><br>
+                        <input class="col-md-8" type="number" value="<%= om.getOrder(id).getPrice()%>" name="price"><br><br>
                         <input type="hidden" name="command" value="UpdatePrice"/>
                         <input class="col-md-8" type="submit" value="Update price"/>  
                     </form>

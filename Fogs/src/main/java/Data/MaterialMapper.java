@@ -17,7 +17,7 @@ import java.sql.Statement;
  */
 public class MaterialMapper {
 
-    private int id;
+    private final int id;
 
     public MaterialMapper(int id) {
         this.id = id;
@@ -35,7 +35,7 @@ public class MaterialMapper {
                 description = rs.getString("description");
             }
             return description;
-        } catch (Exception ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             return null;
         }
     }
@@ -52,7 +52,7 @@ public class MaterialMapper {
                 price = rs.getDouble("price");
             }
             return price;
-        } catch (Exception ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             return 0;
         }
 
@@ -70,7 +70,7 @@ public class MaterialMapper {
                 unit = rs.getString("unit");
             }
             return unit;
-        } catch (Exception ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             return null;
         }
     }

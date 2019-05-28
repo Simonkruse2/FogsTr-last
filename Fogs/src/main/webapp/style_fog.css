@@ -63,12 +63,6 @@ li a{
     text-align: center;
 }
 
-
-.pad{
-    padding-bottom: 2em;
-    margin-left: 34%;
-}
-
 .testen{
     border: 1px solid red;
 }
@@ -76,6 +70,7 @@ li a{
 .one{
     float:left;
     clearfix: after;
+    margin-bottom: 2em;
 }
 
 .one select{
