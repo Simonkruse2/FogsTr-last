@@ -59,11 +59,25 @@ li a{
     margin-bottom: 1em;
 }
 
-.forms{
-    margin:auto;
+.forms h1, h2{
+    text-align: center;
 }
 
 
 .pad{
     padding-bottom: 2em;
+    margin-left: 34%;
+}
+
+.testen{
+    border: 1px solid red;
+}
+
+.one{
+    float:left;
+    clearfix: after;
+}
+
+.one select{
+    margin-bottom: 1.5em;
 }

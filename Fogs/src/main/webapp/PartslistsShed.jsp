@@ -137,7 +137,7 @@
         </div>
         <hr>
         <div class="col-md-12">
-            <div>
+            <div class="col-md-6 forms">
                 <% if (request.getAttribute("id") == null) { %>
                 <h1>Place order</h1>
                 <h2>Fill out customer information</h2>
@@ -152,29 +152,25 @@
                     <input type="submit" value="Submit"/>  
                 </form>
                 <%  } else { %>
-                <form class="col-md-6" action="FrontController" method="post">
-                    Update total price <br>
-                    <input type="number" name="price"><br><br>
-                    <input type="hidden" name="command" value="UpdatePrice"/>
-                    <input type="submit" value="Update price"/>  
+                <div class="col-md-12">
+                    <form class="col-md-6 one" action="FrontController" method="post">
+                        <p>Update total price</p>
+                        <input class="col-md-8" type="number" name="price"><br><br>
+                        <input type="hidden" name="command" value="UpdatePrice"/>
+                        <input class="col-md-8" type="submit" value="Update price"/>  
+                    </form>
 
-                </form>
-                <br>
-                <form class="col-md-6" action="FrontController" method="post">
-                    Update status<br>
-                    <select name="newStatus">
-                        <option value="In progress">In progress</option>
-                        <option value="Shipped">Shipped</option>
-                        <option value="Pending payment">Pending payment</option>
-                    </select>
-                    <% if (!((request.getSession().getAttribute("error")) == null)) {%>
-                    * <%= request.getSession().getAttribute("error")%>
-                    <% request.removeAttribute("error"); %> 
-                    <% }%> <br>
-                    <input type="hidden" name="command" value="UpdateStatus"/>
-                    <input type="submit" value="Update status"/>  
-                </form>
-
+                    <form class="col-md-6 one" action="FrontController" method="post">
+                        <p>Update status</p>
+                        <select class="col-md-8" name="newStatus">
+                            <option value="In progress">In progress</option>
+                            <option value="Shipped">Shipped</option>
+                            <option value="Pending payment">Pending payment</option>
+                        </select>
+                        <input type="hidden" name="command" value="UpdateStatus"/>
+                        <input class="col-md-8" type="submit" value="Update status"/>  
+                    </form>
+                </div>
                 <%}%>
             </div>
         </div>
