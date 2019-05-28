@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
  *
  * @author Renz
  */
-/*
+
 public class UserMapperTest {
     private UserMapper handler;
     
@@ -39,4 +39,3 @@ public class UserMapperTest {
     
     
 }
-*/

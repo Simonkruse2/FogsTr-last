@@ -15,7 +15,7 @@ import static org.junit.Assert.*;
  *
  * @author vince
  */
-/*
+
 public class LogicFacadeMockTest {
 
     LogicFacadeMOCK logic = new LogicFacadeMOCK();
@@ -52,4 +52,3 @@ public class LogicFacadeMockTest {
     }
     
 }
-*/
