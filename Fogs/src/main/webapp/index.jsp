@@ -9,10 +9,10 @@
         <img width="100%" src="image/FOG_forside.png" alt=""/>
         <div class="row-no-gutters">
             <div class="main">
-
-                <div class="col-md-4 indexf">
-                    <h1>Login as employee</h1>
-                    <form class="test" action="FrontController" method="post">
+                <i><p class="centre">Login using salesperson or admin as username. Salesperson or admin as password</p></i>
+                <div class="col-md-4 ">
+                <h1>Login as employee</h1>
+                    <form  action="FrontController" method="post">
                         Username<br>
                         <input class="col-md-12" type="text" name="username" ><br><br>
                         Password:<br>
@@ -22,7 +22,7 @@
                         <% } %>
                         <% request.getSession().invalidate();%>
                         <input type="hidden" name="command" value="Login"/>
-                        <input class="col-md-12" type="submit" value="Login"/>
+                        <input class="col-md-12 one" type="submit" value="Login"/>
                     </form>
                 </div>
             </div>

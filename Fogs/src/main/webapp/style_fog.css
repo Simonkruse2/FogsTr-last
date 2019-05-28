@@ -59,12 +59,8 @@ li a{
     margin-bottom: 1em;
 }
 
-.forms h1, h2{
+.forms h1{
     text-align: center;
-}
-
-.testen{
-    border: 1px solid red;
 }
 
 .one{
@@ -75,4 +71,10 @@ li a{
 
 .one select{
     margin-bottom: 1.5em;
+}
+
+.centre{
+    font-size: 12px;
+    padding-top: 1em;
+    text-align: center;
 }
