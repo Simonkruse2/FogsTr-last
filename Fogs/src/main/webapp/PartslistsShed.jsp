@@ -3,6 +3,7 @@
     Created on : 09-May-2019, 16:22:06
     Author     : Renz
 --%>
+<%@page import="Data.OrderMapper"%>
 <%@page import="Data.User"%>
 <%@page import="Logic.CarportCalcShed"%>
 <%@page import="java.util.ArrayList"%>
@@ -26,8 +27,9 @@
             int width = carport.getWidthOuter();
             int shedlength = carport.getShedlength();
             int shedwidth = carport.getShedwidth();
-        %>
-        <% carportCalcShed.runCalc(length, width, shedlength, shedwidth); %>
+            int id = Integer.parseInt(request.getParameter("id"));
+            OrderMapper om = new OrderMapper();
+            carportCalcShed.runCalc(length, width, shedlength, shedwidth); %>
         <link href="style_fog.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     </head>
@@ -105,6 +107,8 @@
                             <td> <%=carportCalcShed.partLists().get(i).getTotalPrice()%> kr.</td>
                         </tr>
                         <% }%>
+                        </tr>
+                        <% if (request.getAttribute("id") == null) {%>
                         <tr>
                             <td></td>
                             <td></td>
@@ -113,7 +117,16 @@
                             <td><b><i>Total price</i></b></td>
                             <td><b><i> <%= carportCalcShed.getPrice()%></i>,-</b></td>
                         </tr>
-
+                        <% } else {%>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><b><i>Total price</i></b></td>
+                            <td><b><i> <%= om.getOrder(id).getPrice()%></i>,-</b></td>
+                        </tr>
+                        <% } %>
 
                     </table>
 

@@ -292,7 +292,7 @@ public class CarportCalcShed {
     public int getPrice() {
         int price = 0;
         for (int i = 0; i < partLists().size(); i++) {
-            price += partLists().get(i).getAmount() * partLists().get(i).getPrice();
+            price += partLists().get(i).getTotalPrice();
         }
         return price;
     }

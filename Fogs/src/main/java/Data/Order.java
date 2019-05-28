@@ -18,6 +18,7 @@ public class Order {
     private int order_width_shed;
     private int order_length_shed;
     private int incline;
+    private String customer_name;
     private int id_customer;
     private int id_employee;
     private int price;
@@ -30,6 +31,14 @@ public class Order {
         this.id_customer = id_customer;
         this.id_employee = id_employee;
         this.price = price;
+    }
+
+    public String getCustomer_name() {
+        return customer_name;
+    }
+
+    public void setCustomer_name(String customer_name) {
+        this.customer_name = customer_name;
     }
 
     public int getId_order() {

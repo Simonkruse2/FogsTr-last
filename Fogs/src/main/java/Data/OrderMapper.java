@@ -54,7 +54,7 @@ public class OrderMapper {
     public ArrayList<Order> getOrders() throws OrderException {
         try {
             Connection con = DBConnector.connection();
-            String SQL = "select * from `orders`;";
+            String SQL = "select * from `ordersview`;";
             ArrayList<Order> orders = new ArrayList<>();
             ResultSet rs = con.createStatement().executeQuery(SQL);
             while (rs.next()) {
@@ -63,6 +63,7 @@ public class OrderMapper {
                 int order_width = rs.getInt("order_width");
                 int order_length = rs.getInt("order_length");
                 int incline = rs.getInt("incline");
+                String customer_name = rs.getString("customer_name");
                 int id_customer = rs.getInt("id_customer");
                 int id_employee = rs.getInt("id_employee");
                 int price = rs.getInt("price");
@@ -72,6 +73,7 @@ public class OrderMapper {
                 o.setId_order(id_order);
                 o.setOrder_width_shed(order_width_shed);
                 o.setOrder_length_shed(order_length_shed);
+                o.setCustomer_name(customer_name);
                 orders.add(o);
             }
             return orders;
@@ -84,7 +86,7 @@ public class OrderMapper {
         Order o = null;
         try {
             Connection con = DBConnector.connection();
-            String SQL = "select * from `orders` where id_order = ?;";
+            String SQL = "select * from `ordersview` where id_order = ?;";
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
@@ -95,6 +97,7 @@ public class OrderMapper {
                 int order_length = rs.getInt("order_length");
                 int incline = rs.getInt("incline");
                 int id_customer = rs.getInt("id_customer");
+                String customer_name = rs.getString("customer_name");
                 int id_employee = rs.getInt("id_employee");
                 int price = rs.getInt("price");
                 int order_width_shed = rs.getInt("order_width_shed");
@@ -103,6 +106,7 @@ public class OrderMapper {
                 o.setId_order(id_order);
                 o.setOrder_width_shed(order_width_shed);
                 o.setOrder_length_shed(order_length_shed);
+                o.setCustomer_name(customer_name);
             }
             return o;
         } catch (SQLException | ClassNotFoundException ex) {
@@ -113,7 +117,7 @@ public class OrderMapper {
     public void updatePrice(int id, int newPrice) throws OrderException {
         try {
             Connection con = DBConnector.connection();
-            String SQL = "UPDATE `orders` SET `price` = ? where id_customer = ?;";
+            String SQL = "UPDATE `orders` SET `price` = ? where id_order = ?;";
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, newPrice);
             ps.setInt(2, id);
@@ -126,7 +130,7 @@ public class OrderMapper {
     public void updateStatus(int id, String newStatus) throws OrderException {
         try {
             Connection con = DBConnector.connection();
-            String SQL = "UPDATE `orders` SET `status` = ? where id_customer = ?;";
+            String SQL = "UPDATE `orders` SET `status` = ? where id_order = ?;";
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, newStatus);
             ps.setInt(2, id);

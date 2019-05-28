@@ -3,6 +3,7 @@
     Created on : 09-May-2019, 16:22:06
     Author     : Renz
 --%>
+<%@page import="Data.OrderMapper"%>
 <%@page import="Data.User"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Data.Material"%>
@@ -22,8 +23,9 @@
         <%CarportCalc carportCalc = (CarportCalc) request.getAttribute("CarportCalc");%>
         <% int length = carport.getLengthOuter();
             int width = carport.getWidthOuter();
-        %>
-        <% carportCalc.runCalc(length, width); %>
+            int id = Integer.parseInt(request.getParameter("id"));
+            OrderMapper om = new OrderMapper();
+            carportCalc.runCalc(length, width); %>
         <link href="style_fog.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     </head>
@@ -50,11 +52,11 @@
                     </li>
                 </ul>
             </nav>
-                    
-                    Width:  <% out.print(carport.getWidthOuter()); %> CM
-                    <br>
-                    Length:  <% out.print(carport.getLengthOuter()); %> CM
-                    <br>
+
+            Width:  <% out.print(carport.getWidthOuter()); %> CM
+            <br>
+            Length:  <% out.print(carport.getLengthOuter()); %> CM
+            <br>
             <main clas="container-fluid">
                 <div class="col-md-12">
                     <table class="table">
@@ -98,6 +100,7 @@
                             <td> <%=carportCalc.partLists().get(i).getTotalPrice()%> kr.</td>
                         </tr>
                         <% }%>
+                        <% if (request.getAttribute("id") == null) {%>
                         <tr>
                             <td></td>
                             <td></td>
@@ -106,14 +109,22 @@
                             <td><b><i>Total price</i></b></td>
                             <td><b><i> <%= carportCalc.getPrice()%></i>,-</b></td>
                         </tr>
-
-
+                        <% } else {%>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><b><i>Total price</i></b></td>
+                            <td><b><i> <%= om.getOrder(id).getPrice()%></i>,-</b></td>
+                        </tr>
+                        <% } %>
                     </table>
 
                 </div>
             </main>
         </div>
-                <hr>
+        <hr>
         <div class="col-md-12 create">
             <div class="col-md-6 forms">
                 <% if (request.getAttribute("id") == null) { %>
