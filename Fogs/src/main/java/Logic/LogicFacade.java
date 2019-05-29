@@ -4,6 +4,11 @@ import Data.Carport;
 import Data.Order;
 import Data.User;
 
+/**
+ *
+ * @author Jacob, Renz, Vincent og Simon.
+ */
+
 public interface LogicFacade {
 
     Carport createSimpleCarport(int length, int width);

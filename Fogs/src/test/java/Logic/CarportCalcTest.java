@@ -6,6 +6,11 @@ import static org.hamcrest.CoreMatchers.is;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+/**
+ *
+ * @author Jacob, Renz, Vincent og Simon.
+ */
+
 public class CarportCalcTest {
 
     CarportCalc calc = new CarportCalc();

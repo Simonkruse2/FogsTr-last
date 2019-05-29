@@ -6,6 +6,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+ *
+ * @author Jacob, Renz, Vincent og Simon.
+ */
+
 public class MaterialMapper {
 
     private final int id;

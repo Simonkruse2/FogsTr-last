@@ -1,5 +1,9 @@
 package Data;
 
+/**
+ *
+ * @author Jacob, Renz, Vincent og Simon.
+ */
 public class Carport {
 
     private boolean roof; // Whether the carport has a roof or not - tag

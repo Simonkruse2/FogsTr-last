@@ -1,5 +1,10 @@
 package Data;
 
+/**
+ *
+ * @author Jacob, Renz, Vincent og Simon.
+ */
+
 public class Order {
 
     private int id_order;

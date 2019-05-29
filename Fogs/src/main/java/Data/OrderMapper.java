@@ -7,6 +7,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+/**
+ *
+ * @author Jacob, Renz, Vincent og Simon.
+ */
+
 public class OrderMapper {
 
     /**

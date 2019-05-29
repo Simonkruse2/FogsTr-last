@@ -8,6 +8,11 @@ import Data.User;
 import Data.UserMapper;
 import java.sql.SQLException;
 
+/**
+ *
+ * @author Jacob, Renz, Vincent og Simon.
+ */
+
 public class LogicFacade_Impl implements LogicFacade {
 
     @Override

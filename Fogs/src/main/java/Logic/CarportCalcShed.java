@@ -5,6 +5,11 @@ import Data.MaterialMapper;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ *
+ * @author Jacob, Renz, Vincent og Simon.
+ */
+
 public class CarportCalcShed {
 
     private ArrayList<Material> mArray = new ArrayList<>();

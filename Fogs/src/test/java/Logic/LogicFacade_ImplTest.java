@@ -5,6 +5,11 @@ import Data.User;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+/**
+ *
+ * @author Jacob, Renz, Vincent og Simon.
+ */
+
 public class LogicFacade_ImplTest {
 
     LogicFacade_Impl logic = new LogicFacade_Impl();

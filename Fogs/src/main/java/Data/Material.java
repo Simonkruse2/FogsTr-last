@@ -2,6 +2,11 @@ package Data;
 
 import java.util.Objects;
 
+/**
+ *
+ * @author Jacob, Renz, Vincent og Simon.
+ */
+
 public class Material {
 
     private int id; // unique id number for product
