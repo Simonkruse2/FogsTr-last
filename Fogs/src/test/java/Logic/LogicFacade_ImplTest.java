@@ -1,21 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Logic;
 
 import Data.Carport;
-import Data.MD5;
 import Data.User;
-import static org.hamcrest.CoreMatchers.is;
 import org.junit.Test;
 import static org.junit.Assert.*;
-
-/**
- *
- * @author vince
- */
 
 public class LogicFacade_ImplTest {
 
@@ -38,18 +26,18 @@ public class LogicFacade_ImplTest {
         User customer = logic.createCustomer(u);
         assertNotNull(customer);
     }
-    
+
     @Test
-    public void createEmployeeTest(){
+    public void createEmployeeTest() {
         User u = new User("carl", "carl123@hotmail.com");
         u.setPhone("11223344");
         User employee = logic.createCustomer(u);
         assertNotNull(employee);
     }
-    
+
     @Test
-    public void getCustomerTest(){
+    public void getCustomerTest() {
         assertNotNull(logic.getCustomer("renz@renz.dk"));
     }
-    
+
 }

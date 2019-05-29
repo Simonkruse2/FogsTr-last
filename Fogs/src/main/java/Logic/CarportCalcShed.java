@@ -7,11 +7,6 @@ import java.util.ArrayList;
 
 public class CarportCalcShed {
 
-    /**
-     *
-     * @author simon
-     * @param args
-     */
     private ArrayList<Material> mArray = new ArrayList<>();
     int id;
     MaterialMapper map = new MaterialMapper(id);
@@ -349,7 +344,6 @@ public class CarportCalcShed {
      * @throws SQLException
      * @throws ClassNotFoundException
      */
-
     public Material plastmoLong(int length, int width) throws SQLException, ClassNotFoundException {
         int id = 29;
         Material mat = new Material(map.getMaterialDescription(id), map.getMaterialPrice(id));

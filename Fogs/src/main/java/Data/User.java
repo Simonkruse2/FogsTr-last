@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Data;
 
-/**
- *
- * @author simon
- */
 public class User {
 
     private String name;
@@ -17,11 +8,13 @@ public class User {
     private String password;
     private String role;
     private int id;
-/**
- * this class is a constructor that contains two parameter
- * @param name
- * @param username 
- */
+
+    /**
+     * this class is a constructor that contains two parameter
+     *
+     * @param name
+     * @param username
+     */
     public User(String name, String username) {
         this.name = name;
         this.username = username;

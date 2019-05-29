@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Data;
 
 import java.sql.Connection;
@@ -12,17 +7,15 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-/**
- *
- * @author simon
- */
 public class OrderMapper {
-/**
- * this method makes it able for a customer to place an order without Shed.
- * @param order
- * @throws SQLException
- * @throws ClassNotFoundException 
- */
+
+    /**
+     * this method makes it able for a customer to place an order without Shed.
+     *
+     * @param order
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public void createOrder(Order order) throws SQLException, ClassNotFoundException {
         Connection con = DBConnector.connection();
         String SQL = "insert into `orders` (status, order_width, order_length, incline, "
@@ -37,12 +30,14 @@ public class OrderMapper {
         ps.setInt(7, order.getPrice());
         ps.executeUpdate();
     }
-/**
- * this method makes it able for a customer to place an order with shed. 
- * @param order
- * @throws SQLException
- * @throws ClassNotFoundException 
- */
+
+    /**
+     * this method makes it able for a customer to place an order with shed.
+     *
+     * @param order
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public void createOrderShed(Order order) throws SQLException, ClassNotFoundException {
         Connection con = DBConnector.connection();
         String SQL = "insert into `orders` (status, order_width, "
@@ -60,11 +55,13 @@ public class OrderMapper {
         ps.setInt(9, order.getPrice());
         ps.executeUpdate();
     }
-/**
- * this method returns a ArrayList.
- * @return
- * @throws OrderException 
- */
+
+    /**
+     * this method returns a ArrayList.
+     *
+     * @return
+     * @throws OrderException
+     */
     public ArrayList<Order> getOrders() throws OrderException {
         try {
             Connection con = DBConnector.connection();
@@ -97,12 +94,14 @@ public class OrderMapper {
             throw new OrderException(ex.getMessage());
         }
     }
-/**
- * this method returns an order based on id. 
- * @param id
- * @return
- * @throws OrderException 
- */
+
+    /**
+     * this method returns an order based on id.
+     *
+     * @param id
+     * @return
+     * @throws OrderException
+     */
     public Order getOrder(int id) throws OrderException {
         Order o = null;
         try {
@@ -136,12 +135,14 @@ public class OrderMapper {
             throw new OrderException(ex.getMessage());
         }
     }
-/**
- * this method updates the total price
- * @param id
- * @param newPrice
- * @throws OrderException 
- */
+
+    /**
+     * this method updates the total price
+     *
+     * @param id
+     * @param newPrice
+     * @throws OrderException
+     */
     public void updatePrice(int id, int newPrice) throws OrderException {
         try {
             Connection con = DBConnector.connection();
@@ -154,12 +155,14 @@ public class OrderMapper {
             throw new OrderException(ex.getMessage());
         }
     }
-/**
- * this method updates the status for orders. 
- * @param id
- * @param newStatus
- * @throws OrderException 
- */
+
+    /**
+     * this method updates the status for orders.
+     *
+     * @param id
+     * @param newStatus
+     * @throws OrderException
+     */
     public void updateStatus(int id, String newStatus) throws OrderException {
         try {
             Connection con = DBConnector.connection();

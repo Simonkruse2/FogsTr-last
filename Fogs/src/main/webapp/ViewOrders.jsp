@@ -1,8 +1,4 @@
-<%-- 
-    Document   : ViewOrders
-    Created on : 21-May-2019, 15:30:06
-    Author     : Simon
---%>
+
 <%@page import="Data.User"%>
 <%@page import="Data.OrderMapper"%>
 <%@page import="java.util.ArrayList"%>

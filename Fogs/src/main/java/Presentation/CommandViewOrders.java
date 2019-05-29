@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Presentation;
 
 import Data.Carport;
@@ -14,10 +9,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author simon
- */
 public class CommandViewOrders extends Command {
 
     public CommandViewOrders() {
@@ -33,7 +24,7 @@ public class CommandViewOrders extends Command {
         int width = logic.getOrder(id).getOrder_width();
         int shedlength = logic.getOrder(id).getOrder_length_shed();
         int shedwidth = logic.getOrder(id).getOrder_width_shed();
-        
+
         if (shedlength != 0 && shedwidth != 0) {
             Carport carport = logic.createSimpleCarportWithShed(length, width);
             CarportCalcShed CarportCalcShed = logic.createSimpleCarportCalcWithShed(length, width, shedlength, shedwidth);

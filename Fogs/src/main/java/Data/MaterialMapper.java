@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Data;
 
 import java.sql.Connection;
@@ -11,10 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/**
- *
- * @author jacobfolkehildebrandt
- */
 public class MaterialMapper {
 
     private final int id;
@@ -22,13 +13,15 @@ public class MaterialMapper {
     public MaterialMapper(int id) {
         this.id = id;
     }
-/**
- * this method returns the MaterialDescription
- * @param id
- * @return
- * @throws SQLException
- * @throws ClassNotFoundException 
- */
+
+    /**
+     * this method returns the MaterialDescription
+     *
+     * @param id
+     * @return
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public String getMaterialDescription(int id) throws SQLException, ClassNotFoundException {
         String description = "";
         try {
@@ -45,13 +38,15 @@ public class MaterialMapper {
             return null;
         }
     }
-/**
- * this method returns the materialPrice.
- * @param id
- * @return
- * @throws SQLException
- * @throws ClassNotFoundException 
- */
+
+    /**
+     * this method returns the materialPrice.
+     *
+     * @param id
+     * @return
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public double getMaterialPrice(int id) throws SQLException, ClassNotFoundException {
         double price = 0;
         try {
@@ -69,13 +64,15 @@ public class MaterialMapper {
         }
 
     }
-/**
- * This method returns the MaterialUnit.
- * @param id
- * @return
- * @throws SQLException
- * @throws ClassNotFoundException 
- */
+
+    /**
+     * This method returns the MaterialUnit.
+     *
+     * @param id
+     * @return
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public String getMaterialUnit(int id) throws SQLException, ClassNotFoundException {
         String unit = "";
         try {

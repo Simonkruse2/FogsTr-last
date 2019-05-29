@@ -1,16 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Data;
 
 import java.util.Objects;
 
-/**
- *
- * @author jacobfolkehildebrandt
- */
 public class Material {
 
     private int id; // unique id number for product
@@ -20,12 +11,14 @@ public class Material {
     private int amount; // quantity of product
     private int length; // length of product
     private String unit; // unit of product - stk, pakke...
-/**
- * Material class is a constructor for creating a material. 
- * eventhought it has more than one variable, it only contains two parameters. 
- * @param pname
- * @param price 
- */
+
+    /**
+     * Material class is a constructor for creating a material. eventhought it
+     * has more than one variable, it only contains two parameters.
+     *
+     * @param pname
+     * @param price
+     */
     public Material(String pname, double price) {
         this.pname = pname;
         this.price = price;
@@ -140,7 +133,5 @@ public class Material {
         }
         return true;
     }
-
-    
 
 }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Data;
 
 import java.sql.Connection;
@@ -11,19 +6,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/**
- *
- * @author simon
- */
 public class UserMapper {
 
     MD5 md5 = new MD5();
-/**
- * this method creates customers to the database.
- * @param u
- * @throws SQLException
- * @throws ClassNotFoundException 
- */
+
+    /**
+     * this method creates customers to the database.
+     *
+     * @param u
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public void createCustomer(User u) throws SQLException, ClassNotFoundException {
         Connection con = DBConnector.connection();
         String SQL = "insert into "
@@ -36,12 +29,14 @@ public class UserMapper {
         ps.setString(3, u.getUsername());
         ps.executeUpdate();
     }
-/**
- * this method create employees to the database. 
- * @param u
- * @throws SQLException
- * @throws ClassNotFoundException 
- */
+
+    /**
+     * this method create employees to the database.
+     *
+     * @param u
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public void createEmployee(User u) throws SQLException, ClassNotFoundException {
         Connection con = DBConnector.connection();
         String SQL = "insert into "
@@ -113,11 +108,13 @@ public class UserMapper {
             return null;
         }
     }
-/**
- * this method returns an employee.
- * @param un
- * @return 
- */
+
+    /**
+     * this method returns an employee.
+     *
+     * @param un
+     * @return
+     */
     public User getEmployee(String un) {
         User u = null;
         try {

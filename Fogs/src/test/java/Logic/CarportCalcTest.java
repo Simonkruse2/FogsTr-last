@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Logic;
 
 import Data.Material;
@@ -11,10 +6,6 @@ import static org.hamcrest.CoreMatchers.is;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author vince
- */
 public class CarportCalcTest {
 
     CarportCalc calc = new CarportCalc();
@@ -88,8 +79,9 @@ public class CarportCalcTest {
         Material actual = calc.portFittings(780, 600);
         assertEquals(expected, actual);
     }
+
     @Test
-    public void screwFittingsTest() throws SQLException, ClassNotFoundException{
+    public void screwFittingsTest() throws SQLException, ClassNotFoundException {
         Material expected = new Material("4,0 x 60 mm. beslagskruer 250 stk. - Carport - Stolpe- og spærbeslagsskruer", 50);
         expected.setAmount(1);
         expected.setTotalPrice(50 * 1);

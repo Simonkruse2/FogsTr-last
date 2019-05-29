@@ -1,8 +1,4 @@
-<%-- 
-    Document   : index
-    Created on : 28-Apr-2019, 18:30:38
-    Author     : simon
---%>
+
 <%@page import="Data.User"%>
 <html>
     <head>

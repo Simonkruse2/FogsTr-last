@@ -7,10 +7,6 @@ import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
-/**
- *
- * @author simon
- */
 public abstract class Command {
 
     private final static Command UNKNOWN = new CommandUnknown();

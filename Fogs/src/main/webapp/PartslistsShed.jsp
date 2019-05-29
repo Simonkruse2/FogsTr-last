@@ -1,8 +1,4 @@
-<%-- 
-    Document   : Partslists
-    Created on : 09-May-2019, 16:22:06
-    Author     : Renz
---%>
+
 <%@page import="Data.OrderMapper"%>
 <%@page import="Data.User"%>
 <%@page import="Logic.CarportCalcShed"%>

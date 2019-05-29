@@ -1,27 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Data;
 
-
 public class Carport {
+
     private boolean roof; // Whether the carport has a roof or not - tag
     private boolean shed; // Whether the carport has a shed or not - skur
     private int lengthOuter; // In cm
     private int widthOuter; // In cm
     private int shedlength;
     private int shedwidth;
-/**
- * /**
- * below is a constructor for building a carport. 
- * the constructor only contains 4 parameter. 
- * @param roof
- * @param shed
- * @param lengthOuter
- * @param widthOuter 
- */
+
+    /**
+     * /**
+     * below is a constructor for building a carport. the constructor only
+     * contains 4 parameter.
+     *
+     * @param roof
+     * @param shed
+     * @param lengthOuter
+     * @param widthOuter
+     */
     public Carport(boolean roof, boolean shed, int lengthOuter, int widthOuter) {
         this.roof = roof;
         this.shed = shed;
@@ -115,5 +112,4 @@ public class Carport {
         return "Carport{" + "roof=" + roof + ", shed=" + shed + ", lengthOuter=" + lengthOuter + ", widthOuter=" + widthOuter + ", shedlength=" + shedlength + ", shedwidth=" + shedwidth + '}';
     }
 
-    
 }
