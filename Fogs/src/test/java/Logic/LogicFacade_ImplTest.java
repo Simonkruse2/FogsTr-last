@@ -6,6 +6,7 @@
 package Logic;
 
 import Data.Carport;
+import Data.MD5;
 import Data.User;
 import static org.hamcrest.CoreMatchers.is;
 import org.junit.Test;
@@ -16,11 +17,11 @@ import static org.junit.Assert.*;
  * @author vince
  */
 
-public class LogicFacadeMockTest {
+public class LogicFacade_ImplTest {
 
     LogicFacade_Impl logic = new LogicFacade_Impl();
 
-    public LogicFacadeMockTest() {
+    public LogicFacade_ImplTest() {
     }
 
     @Test
@@ -47,8 +48,8 @@ public class LogicFacadeMockTest {
     }
     
     @Test
-    public void checkLoginTest(){
-        
+    public void getCustomerTest(){
+        assertNotNull(logic.getCustomer("renz@renz.dk"));
     }
     
 }

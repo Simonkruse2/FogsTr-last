@@ -88,6 +88,15 @@ public class CarportCalcTest {
         Material actual = calc.portFittings(780, 600);
         assertEquals(expected, actual);
     }
+    @Test
+    public void screwFittingsTest() throws SQLException, ClassNotFoundException{
+        Material expected = new Material("4,0 x 60 mm. beslagskruer 250 stk. - Carport - Stolpe- og spærbeslagsskruer", 50);
+        expected.setAmount(1);
+        expected.setTotalPrice(50 * 1);
+        expected.setUnit("Pakke");
+        Material actual = calc.screwFittings(780, 600);
+        assertEquals(expected, actual);
+    }
 
     @Test
     public void frameLengthTest() throws SQLException, ClassNotFoundException {
