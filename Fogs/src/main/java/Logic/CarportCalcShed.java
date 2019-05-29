@@ -23,15 +23,14 @@ public class CarportCalcShed {
      * roof can protrude in the front of the carport and the last 30 cm is the
      * length that the roof can protrude in the back. The length of the shed
      * (shedLength) is subtracted from the length, because the poles inside the
-     * shed is predefined.
-     * mat is a material with the parameters string description, double price 
-     * amount is initialised as 8 cause there is 2 poles at the front of the 
-     * carport and 6 inside the shed.
-     * extraamount will either remain 0 or it will be redefined as the
-     * innerLength divided by 310 cm (a predefined maximum distance allowed 
-     * between poles). 1 is subtracted from this number since poles are already 
-     * placed in each corder. This is multiplied by 2 because the poles needs 
-     * to be placed in both sides.
+     * shed is predefined. mat is a material with the parameters string
+     * description, double price amount is initialised as 8 cause there is 2
+     * poles at the front of the carport and 6 inside the shed. extraamount will
+     * either remain 0 or it will be redefined as the innerLength divided by 310
+     * cm (a predefined maximum distance allowed between poles). 1 is subtracted
+     * from this number since poles are already placed in each corder. This is
+     * multiplied by 2 because the poles needs to be placed in both sides.
+     *
      * @param length the length of the carport
      * @param width the width of the carport
      * @param shedlength the length of the shed
@@ -64,12 +63,12 @@ public class CarportCalcShed {
 
     /**
      * Calculates the amount of poles needed for a carport with shed in the
-     * drawing of a carport with shed (not yet implemented).
-     * the amount is the length of the carport minus 130 cm where 100 cm is the 
-     * length the roof can protrude in the front of the carport and the last 
-     * 30 cm is the length that the roof can protrude in the back. The length of
-     * the shed (shedLength) is subtracted from the length, because the poles 
-     * inside the shed is predefined. This is then divided by 310 cm (a predefined maximum
+     * drawing of a carport with shed (not yet implemented). the amount is the
+     * length of the carport minus 130 cm where 100 cm is the length the roof
+     * can protrude in the front of the carport and the last 30 cm is the length
+     * that the roof can protrude in the back. The length of the shed
+     * (shedLength) is subtracted from the length, because the poles inside the
+     * shed is predefined. This is then divided by 310 cm (a predefined maximum
      * distance allowed between poles).
      *
      * @param length length of the carport
@@ -84,13 +83,13 @@ public class CarportCalcShed {
 
     /**
      * Calculates the distance between poles for a carport with shed in the
-     * drawing of a carport with shed (not yet implemented).
-     * the distance is the length of the carport minus 130 cm where 100 cm is 
-     * the length the roof can protrude in the front of the carport and the last
-     * 30 cm is the length that the roof can protrude in the back
-     * the length of the shed (shedLength) is subtracted from the length, 
-     * because the poles inside the shed is predefined. This is then divided by 
-     * number of poles (polesDrawing)
+     * drawing of a carport with shed (not yet implemented). the distance is the
+     * length of the carport minus 130 cm where 100 cm is the length the roof
+     * can protrude in the front of the carport and the last 30 cm is the length
+     * that the roof can protrude in the back the length of the shed
+     * (shedLength) is subtracted from the length, because the poles inside the
+     * shed is predefined. This is then divided by number of poles
+     * (polesDrawing)
      *
      * @param length
      * @param shedlength
@@ -173,11 +172,10 @@ public class CarportCalcShed {
      * Calculates the amount of fittings for the port is needed for a carport
      * with shed. id is the id on the material in the database that is used as
      * fittings mat is a material with the parameters String description, double
-     *  price pamount is defined as number of poles but represents the
-     * number of fittings needed for the poles ramount is defined as 2 times the
-     * number of rafts but represents the number of fittings needed on each raft
-     * (1 on each side) amount is the total number of fittings needed for the
-     * carport
+     * price pamount is defined as number of poles but represents the number of
+     * fittings needed for the poles ramount is defined as 2 times the number of
+     * rafts but represents the number of fittings needed on each raft (1 on
+     * each side) amount is the total number of fittings needed for the carport
      *
      * @param length length of the carport
      * @param width width of the carport
@@ -203,9 +201,10 @@ public class CarportCalcShed {
     /**
      * Calculates the amount of screws needed for the fittings of the carport
      * with shed. id is the id on the material in the database that is used as
-     * screws for the fittings mat is a material with the parameters String description, double
-     * price amount is defined as 6 (number of screws per fitting) times
-     * the amount of portFittings 300 is the number of screws in a pack
+     * screws for the fittings mat is a material with the parameters String
+     * description, double price amount is defined as 6 (number of screws per
+     * fitting) times the amount of portFittings 300 is the number of screws in
+     * a pack
      *
      * @param length length of the carport
      * @param width with of the carport
@@ -280,13 +279,14 @@ public class CarportCalcShed {
     }
 
     /**
-     * Calculates the amount of screws needed for the frame of the carport with shed.
-     * id is the id on the material in the database that is used as screws for the frames
-     * mat is a material with the parameters string description, double price 
-     * lamount is initialised as 2 times 2 times the number of rafts because 
-     * there is 2 screws per raft but also in both sides.
-     * wamount is 2 times the width divided by 60, 2 represents 2 screws per position
+     * Calculates the amount of screws needed for the frame of the carport with
+     * shed. id is the id on the material in the database that is used as screws
+     * for the frames mat is a material with the parameters string description,
+     * double price lamount is initialised as 2 times 2 times the number of
+     * rafts because there is 2 screws per raft but also in both sides. wamount
+     * is 2 times the width divided by 60, 2 represents 2 screws per position
      * and the 60 is the distance between each position
+     *
      * @param length length of carport
      * @param width width of carport
      * @param shedlength length of shed
@@ -314,6 +314,18 @@ public class CarportCalcShed {
         return mat;
     }
 
+    /**
+     * PlastmoShort calculates the amount of plastmo, plastic roofcover, needed
+     * for the shed. The int carportSqrmtr is multiplied by 0.46, which is the
+     * percentage of plastmoShort needed for the roof cover.
+     *
+     * @param length length of carport
+     * @param width width of carport
+     * @return a material with a new Description, MaterialPrice, Unit and the
+     * new calculated Amount, TotalPrice
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public Material plastmoShort(int length, int width) throws SQLException, ClassNotFoundException {
         int id = 28;
         Material mat = new Material(map.getMaterialDescription(id), map.getMaterialPrice(id));
@@ -324,6 +336,19 @@ public class CarportCalcShed {
         mat.setUnit(map.getMaterialUnit(id));
         return mat;
     }
+
+    /**
+     * PlastmoLong calculates the amount of plastmo, plastic roofcover, needed
+     * for the shed. The int carportSqrmtr is multiplied by 0.77, which is the
+     * percentage of plastmoLong needed for the roof cover.
+     *
+     * @param length length of carport
+     * @param width width of carport
+     * @return a material with a new Description, MaterialPrice, Unit and the
+     * new calculated Amount, TotalPrice
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
 
     public Material plastmoLong(int length, int width) throws SQLException, ClassNotFoundException {
         int id = 29;
@@ -337,18 +362,19 @@ public class CarportCalcShed {
     }
 
     /**
-     * Calculates the amount needed in the skeleton of the shed's width. 
-     * id is the id on the material in the database that is used as skeleton
-     * mat is a material with the parameters string description, double price 
-     * amount is sat as 4 because the skeleton of shed's front and back requires
-     * 2 in the front and 2 in the back - 1 in middle and 1 at the bottom
+     * Calculates the amount needed in the skeleton of the shed's width. id is
+     * the id on the material in the database that is used as skeleton mat is a
+     * material with the parameters string description, double price amount is
+     * sat as 4 because the skeleton of shed's front and back requires 2 in the
+     * front and 2 in the back - 1 in middle and 1 at the bottom
+     *
      * @param length length of carport
      * @param width width of carport
      * @param shedwidth width of shed
      * @return a material with a new Description, MaterialPrice, Unit and the
      * new calculated Amount, TotalPrice
      * @throws SQLException
-     * @throws ClassNotFoundException 
+     * @throws ClassNotFoundException
      */
     public Material skeletonShedWidth(int length, int width, int shedwidth) throws SQLException, ClassNotFoundException {
         int id = 11;
@@ -360,21 +386,23 @@ public class CarportCalcShed {
         return mat;
 
     }
-        /**
-     * Calculates the amount needed in the skeleton of the shed's width. 
-     * id is the id on the material in the database that is used as skeleton
-     * mat is a material with the parameters string description, double price 
-     * amount is sat as 4 because the skeleton of shed's sides requires
-     * 2 in each side - 1 in middle and 1 at the bottom
- * @param length length of carport
- * @param width width of carport
- * @param shedlength length of shed
- * @param shedwidth width of shed
+
+    /**
+     * Calculates the amount needed in the skeleton of the shed's width. id is
+     * the id on the material in the database that is used as skeleton mat is a
+     * material with the parameters string description, double price amount is
+     * sat as 4 because the skeleton of shed's sides requires 2 in each side - 1
+     * in middle and 1 at the bottom
+     *
+     * @param length length of carport
+     * @param width width of carport
+     * @param shedlength length of shed
+     * @param shedwidth width of shed
      * @return a material with a new Description, MaterialPrice, Unit and the
      * new calculated Amount, TotalPrice
- * @throws SQLException
- * @throws ClassNotFoundException 
- */
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public Material skeletonShedLength(int length, int width, int shedlength, int shedwidth) throws SQLException, ClassNotFoundException {
         int id = 12;
         Material mat = new Material(map.getMaterialDescription(id), map.getMaterialPrice(id));
@@ -385,23 +413,25 @@ public class CarportCalcShed {
         return mat;
 
     }
-/**
+
+    /**
      * Calculates the amount of cover needed for a carport with shed. id is the
-     * id on the material in the database that is used as cover for the shed
-     * mat is a material with the parameters string description, double price
-     * shedlength is divided by the width of the cover material (10 cm) and 
-     * multiplied by 2 because the amount is for both sides.
-     * shedwidth is divided by the width of the cover material (10 cm) and 
-     * multiplied by 2 because the amount is for both ends.
- * @param length
- * @param width
- * @param shedlength
- * @param shedwidth
- * @return a material with a new Description, MaterialPrice, Unit and the
+     * id on the material in the database that is used as cover for the shed mat
+     * is a material with the parameters string description, double price
+     * shedlength is divided by the width of the cover material (10 cm) and
+     * multiplied by 2 because the amount is for both sides. shedwidth is
+     * divided by the width of the cover material (10 cm) and multiplied by 2
+     * because the amount is for both ends.
+     *
+     * @param length
+     * @param width
+     * @param shedlength
+     * @param shedwidth
+     * @return a material with a new Description, MaterialPrice, Unit and the
      * new calculated Amount, TotalPrice
- * @throws SQLException
- * @throws ClassNotFoundException 
- */
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public Material shedCover(int length, int width, int shedlength, int shedwidth) throws SQLException, ClassNotFoundException {
         int id = 11;
         Material mat = new Material(map.getMaterialDescription(id), map.getMaterialPrice(id));
@@ -413,24 +443,25 @@ public class CarportCalcShed {
         mat.setUnit(map.getMaterialUnit(id));
         return mat;
     }
-/**
-     * Calculates the amount of screws needed for the cover of the shed.
-     * id is the id on the material in the database that is used as screws for 
-     * the cover of the shed
-     * mat is a material with the parameters string description, double price
-     * amount is initialised as the amount of cover for the shed multiplied by
-     * 6 which represents the amount of screws needed per cover
-     * this is multiplied by 18 which is the amount of screws estimated for the
-     * door of the shed
- * @param length length of carport
- * @param width width of carport
- * @param shedlength length of shed
- * @param shedwidth width of shed
- * @return a material with a new Description, MaterialPrice, Unit and the
+
+    /**
+     * Calculates the amount of screws needed for the cover of the shed. id is
+     * the id on the material in the database that is used as screws for the
+     * cover of the shed mat is a material with the parameters string
+     * description, double price amount is initialised as the amount of cover
+     * for the shed multiplied by 6 which represents the amount of screws needed
+     * per cover this is multiplied by 18 which is the amount of screws
+     * estimated for the door of the shed
+     *
+     * @param length length of carport
+     * @param width width of carport
+     * @param shedlength length of shed
+     * @param shedwidth width of shed
+     * @return a material with a new Description, MaterialPrice, Unit and the
      * new calculated Amount, TotalPrice
- * @throws SQLException
- * @throws ClassNotFoundException 
- */
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public Material shedCoverScrews(int length, int width, int shedlength, int shedwidth) throws SQLException, ClassNotFoundException {
         int id = 9;
         Material mat = new Material(map.getMaterialDescription(id), map.getMaterialPrice(id));
@@ -446,18 +477,20 @@ public class CarportCalcShed {
         mat.setUnit(map.getMaterialUnit(id));
         return mat;
     }
-/**
-     * Calculates the amount of t-hinges needed for the shed door. 
-     * id is the id on the material in the database that is used as t-hinges for the door
-     * mat is a material with the parameters string description, double price
-     * amount is sat as 2 since there is 2 t-hinges for the door
- * @param length length of carport
- * @param width width of carport
- * @return a material with a new Description, MaterialPrice, Unit and the
+
+    /**
+     * Calculates the amount of t-hinges needed for the shed door. id is the id
+     * on the material in the database that is used as t-hinges for the door mat
+     * is a material with the parameters string description, double price amount
+     * is sat as 2 since there is 2 t-hinges for the door
+     *
+     * @param length length of carport
+     * @param width width of carport
+     * @return a material with a new Description, MaterialPrice, Unit and the
      * new calculated Amount, TotalPrice
- * @throws SQLException
- * @throws ClassNotFoundException 
- */
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public Material shedDoor(int length, int width) throws SQLException, ClassNotFoundException {
         int id = 27;
         Material mat = new Material(map.getMaterialDescription(id), map.getMaterialPrice(id));
@@ -467,20 +500,20 @@ public class CarportCalcShed {
         return mat;
     }
 
- 
-/**
-     * Calculates the skeleton needed for the shed door.
-     * id is the id on the material in the database that is used as skeleton.
-     * mat is a material with the parameters string description, double price 
-     * amount is sat as 1 and length of the material is sat as 300 cm, this is assuming the customer
-     * is cutting this material into the Z-skeleton for the door
- * @param length length of carport
- * @param width width of carport
- * @return a material with a new Description, MaterialPrice, Unit and the
+    /**
+     * Calculates the skeleton needed for the shed door. id is the id on the
+     * material in the database that is used as skeleton. mat is a material with
+     * the parameters string description, double price amount is sat as 1 and
+     * length of the material is sat as 300 cm, this is assuming the customer is
+     * cutting this material into the Z-skeleton for the door
+     *
+     * @param length length of carport
+     * @param width width of carport
+     * @return a material with a new Description, MaterialPrice, Unit and the
      * new calculated Amount, TotalPrice
- * @throws SQLException
- * @throws ClassNotFoundException 
- */
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public Material doorSkeleton(int length, int width) throws SQLException, ClassNotFoundException {
         int id = 18;
         Material mat = new Material(map.getMaterialDescription(id), map.getMaterialPrice(id));
@@ -492,16 +525,17 @@ public class CarportCalcShed {
     }
 
     /**
-     * Calculates the amount of doorknobs needed for the shed door.
-     * id is the id on the material in the database that is used as doorknob.
-     * mat is a material with the parameters string description, double price 
-     * amount is sat as 1 
+     * Calculates the amount of doorknobs needed for the shed door. id is the id
+     * on the material in the database that is used as doorknob. mat is a
+     * material with the parameters string description, double price amount is
+     * sat as 1
+     *
      * @param length length of carport
      * @param width width of carport
      * @return a material with a new Description, MaterialPrice, Unit and the
      * new calculated Amount, TotalPrice
      * @throws SQLException
-     * @throws ClassNotFoundException 
+     * @throws ClassNotFoundException
      */
     public Material doorKnob(int length, int width) throws SQLException, ClassNotFoundException {
         int id = 26;
@@ -513,14 +547,15 @@ public class CarportCalcShed {
     }
 
     /**
-     * runs and adds all the calculation methods that returns a material to the 
+     * runs and adds all the calculation methods that returns a material to the
      * Material ArrayList
+     *
      * @param length length of carport
      * @param width width of carport
      * @param shedlength length of shed
      * @param shedwidth length of carport
      * @throws SQLException
-     * @throws ClassNotFoundException 
+     * @throws ClassNotFoundException
      */
     public void runCalc(int length, int width, int shedlength, int shedwidth) throws SQLException, ClassNotFoundException {
         mArray.add(poles(length, width, shedlength, shedwidth));
@@ -544,15 +579,18 @@ public class CarportCalcShed {
 
     /**
      * Returns the Material ArrayList
+     *
      * @return mArray Material ArrayList
      */
     public ArrayList<Material> partLists() {
         return mArray;
     }
-/**
- * Calculates a total price for the whole carport with shed.
- * @return price Total price of all materials calculated
- */
+
+    /**
+     * Calculates a total price for the whole carport with shed.
+     *
+     * @return price Total price of all materials calculated
+     */
     public int getPrice() {
         int price = 0;
         for (int i = 0; i < partLists().size(); i++) {
