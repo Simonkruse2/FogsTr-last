@@ -76,13 +76,13 @@
                                     Shed Length
                                 </th>
                                 <th>
-                                    Roof Incline
-                                </th>
-                                <th>
                                     Customer name
                                 </th>
                                 <th>
                                     Customer ID
+                                </th>
+                                <th>
+                                    Employee name
                                 </th>
                                 <th>
                                     Employee ID
@@ -102,9 +102,9 @@
                             <td> <%=om.getOrders().get(i).getOrder_length()%></td>
                             <td> <%=om.getOrders().get(i).getOrder_width_shed()%></td>
                             <td> <%=om.getOrders().get(i).getOrder_length_shed()%> </td>
-                            <td> <%=om.getOrders().get(i).getIncline()%></td>
-                            <td> <%=om.getOrders().get(i).getCustomer_name() %></td>
+                            <td> <%=om.getOrders().get(i).getCustomer_name()%></td>
                             <td> <%=om.getOrders().get(i).getId_customer()%></td>
+                            <td> <%=om.getOrders().get(i).getEmployee_name()%></td>
                             <td> <%=om.getOrders().get(i).getId_employee()%></td>
                             <td> <%=om.getOrders().get(i).getPrice()%></td>
 

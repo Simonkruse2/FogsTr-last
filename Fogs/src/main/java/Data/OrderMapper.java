@@ -65,6 +65,7 @@ public class OrderMapper {
                 int incline = rs.getInt("incline");
                 String customer_name = rs.getString("customer_name");
                 int id_customer = rs.getInt("id_customer");
+                String employee_name = rs.getString("name");
                 int id_employee = rs.getInt("id_employee");
                 int price = rs.getInt("price");
                 int order_width_shed = rs.getInt("order_width_shed");
@@ -74,6 +75,7 @@ public class OrderMapper {
                 o.setOrder_width_shed(order_width_shed);
                 o.setOrder_length_shed(order_length_shed);
                 o.setCustomer_name(customer_name);
+                o.setEmployee_name(employee_name);
                 orders.add(o);
             }
             return orders;
@@ -99,6 +101,7 @@ public class OrderMapper {
                 int id_customer = rs.getInt("id_customer");
                 String customer_name = rs.getString("customer_name");
                 int id_employee = rs.getInt("id_employee");
+                String employee_name = rs.getString("name");
                 int price = rs.getInt("price");
                 int order_width_shed = rs.getInt("order_width_shed");
                 int order_length_shed = rs.getInt("order_length_shed");
@@ -107,6 +110,7 @@ public class OrderMapper {
                 o.setOrder_width_shed(order_width_shed);
                 o.setOrder_length_shed(order_length_shed);
                 o.setCustomer_name(customer_name);
+                o.setEmployee_name(employee_name);
             }
             return o;
         } catch (SQLException | ClassNotFoundException ex) {

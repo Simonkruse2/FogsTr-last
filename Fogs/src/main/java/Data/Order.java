@@ -19,6 +19,7 @@ public class Order {
     private int order_length_shed;
     private int incline;
     private String customer_name;
+    private String employee_name;
     private int id_customer;
     private int id_employee;
     private int price;
@@ -31,6 +32,14 @@ public class Order {
         this.id_customer = id_customer;
         this.id_employee = id_employee;
         this.price = price;
+    }
+
+    public String getEmployee_name() {
+        return employee_name;
+    }
+
+    public void setEmployee_name(String employee_name) {
+        this.employee_name = employee_name;
     }
 
     public String getCustomer_name() {
@@ -125,5 +134,5 @@ public class Order {
     public String toString() {
         return "Order{" + "status=" + status + ", order_width=" + order_width + ", order_length=" + order_length + ", incline=" + incline + ", id_customer=" + id_customer + ", id_employee=" + id_employee + ", price=" + price + '}';
     }
-        
+
 }

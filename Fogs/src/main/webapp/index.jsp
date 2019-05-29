@@ -9,7 +9,7 @@
         <img width="100%" src="image/FOG_forside.png" alt=""/>
         <div class="row-no-gutters">
             <div class="main">
-                <i><p class="centre">Login using salesperson or admin as username. Salesperson or admin as password</p></i>
+                <i><p class="centre">Login using salesperson/admin as username. salesperson/admin as password</p></i>
                 <div class="col-md-4 ">
                 <h1>Login as employee</h1>
                     <form  action="FrontController" method="post">
