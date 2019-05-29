@@ -9,7 +9,6 @@ import static org.junit.Assert.*;
  *
  * @author Jacob, Renz, Vincent og Simon.
  */
-
 public class LogicFacade_ImplTest {
 
     LogicFacade_Impl logic = new LogicFacade_Impl();
@@ -25,6 +24,14 @@ public class LogicFacade_ImplTest {
     }
 
     @Test
+    public void createEmployeeTest() {
+        User u = new User("carl", "carl123@hotmail.com");
+        u.setPhone("11223344");
+        User employee = logic.createCustomer(u);
+        assertNotNull(employee);
+    }
+/*
+    @Test
     public void createCustomerTest() {
         User u = new User("carl", "carl123@hotmail.com");
         u.setPhone("11223344");
@@ -32,17 +39,10 @@ public class LogicFacade_ImplTest {
         assertNotNull(customer);
     }
 
-    @Test
-    public void createEmployeeTest() {
-        User u = new User("carl", "carl123@hotmail.com");
-        u.setPhone("11223344");
-        User employee = logic.createCustomer(u);
-        assertNotNull(employee);
-    }
 
     @Test
     public void getCustomerTest() {
         assertNotNull(logic.getCustomer("renz@renz.dk"));
     }
-
+*/
 }
