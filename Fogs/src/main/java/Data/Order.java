@@ -23,7 +23,16 @@ public class Order {
     private int id_customer;
     private int id_employee;
     private int price;
-
+/**
+ * this constructor contains 7 parameter.
+ * @param status
+ * @param order_width
+ * @param order_length
+ * @param incline
+ * @param id_customer
+ * @param id_employee
+ * @param price 
+ */
     public Order(String status, int order_width, int order_length, int incline, int id_customer, int id_employee, int price) {
         this.status = status;
         this.order_width = order_width;

@@ -20,7 +20,12 @@ public class Material {
     private int amount; // quantity of product
     private int length; // length of product
     private String unit; // unit of product - stk, pakke...
-
+/**
+ * Material class is a constructor for creating a material. 
+ * eventhought it has more than one variable, it only contains two parameters. 
+ * @param pname
+ * @param price 
+ */
     public Material(String pname, double price) {
         this.pname = pname;
         this.price = price;

@@ -17,7 +17,11 @@ public class User {
     private String password;
     private String role;
     private int id;
-
+/**
+ * this class is a constructor that contains two parameter
+ * @param name
+ * @param username 
+ */
     public User(String name, String username) {
         this.name = name;
         this.username = username;

@@ -22,7 +22,13 @@ public class MaterialMapper {
     public MaterialMapper(int id) {
         this.id = id;
     }
-
+/**
+ * this method returns the MaterialDescription
+ * @param id
+ * @return
+ * @throws SQLException
+ * @throws ClassNotFoundException 
+ */
     public String getMaterialDescription(int id) throws SQLException, ClassNotFoundException {
         String description = "";
         try {
@@ -39,7 +45,13 @@ public class MaterialMapper {
             return null;
         }
     }
-
+/**
+ * this method returns the materialPrice.
+ * @param id
+ * @return
+ * @throws SQLException
+ * @throws ClassNotFoundException 
+ */
     public double getMaterialPrice(int id) throws SQLException, ClassNotFoundException {
         double price = 0;
         try {
@@ -57,7 +69,13 @@ public class MaterialMapper {
         }
 
     }
-
+/**
+ * This method returns the MaterialUnit.
+ * @param id
+ * @return
+ * @throws SQLException
+ * @throws ClassNotFoundException 
+ */
     public String getMaterialUnit(int id) throws SQLException, ClassNotFoundException {
         String unit = "";
         try {
