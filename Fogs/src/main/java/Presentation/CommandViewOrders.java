@@ -1,6 +1,7 @@
 package Presentation;
 
 import Data.Carport;
+import Data.OrderException;
 import Logic.CarportCalc;
 import Logic.CarportCalcShed;
 import Logic.LogicFacade;
@@ -22,18 +23,29 @@ public class CommandViewOrders extends Command {
     @Override
     public String execute(HttpServletRequest request, LogicFacade logic) throws ServletException, IOException {
         HttpSession session = request.getSession();
+        int length;
+        int width;
+        int shedlength;
+        int shedwidth;
         int id;
         try {
-            if (null == request.getParameter("id")) {
-                throw new NullPointerException("Order ID doesn't exist");
-            } else {
+            if("".equals(request.getParameter("id"))){
+                throw new OrderException("ID must be filled out");
+            }
+            if (Integer.parseInt(request.getParameter("id")) == 0) {
+                throw new OrderException("ID cant be zero");
+            }else{
                 id = Integer.parseInt(request.getParameter("id"));
             }
-            session.setAttribute("id", id);
-            int length = logic.getOrder(id).getOrder_length();
-            int width = logic.getOrder(id).getOrder_width();
-            int shedlength = logic.getOrder(id).getOrder_length_shed();
-            int shedwidth = logic.getOrder(id).getOrder_width_shed();
+            if (logic.getOrder(id) == null) {
+                throw new OrderException("Order ID doesn't exist");
+            } else {
+                session.setAttribute("id", id);
+                length = logic.getOrder(id).getOrder_length();
+                width = logic.getOrder(id).getOrder_width();
+                shedlength = logic.getOrder(id).getOrder_length_shed();
+                shedwidth = logic.getOrder(id).getOrder_width_shed();
+            }
 
             if (shedlength != 0 && shedwidth != 0) {
                 Carport carport = logic.createSimpleCarportWithShed(length, width);
@@ -56,8 +68,8 @@ public class CommandViewOrders extends Command {
                         "CarportCalc", CarportCalc);
                 return "Partslists.jsp";
             }
-        } catch (NullPointerException ne) {
-            session.setAttribute("error", ne.getMessage());
+        } catch (OrderException oe) {
+            session.setAttribute("Error", oe.getMessage());
             return "ViewOrders.jsp";
         }
     }
