@@ -34,23 +34,21 @@
                         <button type="button" name="back" onclick="history.back()">Back</button>
                     </form>
                 </li>
-                <li>
-                    <a href="ViewOrders.jsp" >click here to view previous orders</a>
-                </li>
             </ul>
         </nav>
         <h1>Type an order ID.</h1>
         <form action="FrontController" method="post">
             ID<br>
-            <input type="text" name="id"><br><br>
-
+            <input type="number" min="0" name="id"><br><br>
             <input type="hidden" name="command" value="ViewOrders"/>
             <input type="submit" value="View Partslist"/>  
         </form>
         <br>
-        <% if (!((request.getSession().getAttribute("error")) == null)) {%>
-        * <%= request.getSession().getAttribute("error")%>
-        <% request.removeAttribute("error"); %> 
+
+        <% if (!(session.getAttribute("Error") == null)) {%>
+        * <%= session.getAttribute("Error")%>
+        <br>
+        <% session.removeAttribute("Error"); %> 
         <% } %> 
         <div id="wrapper">
             <main clas="container-fluid">
