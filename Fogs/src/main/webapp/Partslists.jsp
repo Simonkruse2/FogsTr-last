@@ -150,7 +150,7 @@
                 <div class="col-md-12">
                     <form class="col-md-6 one" action="FrontController" method="post">
                         <p>Update total price</p>
-                        <input class="col-md-8" type="number" value="<%= om.getOrder(id).getPrice()%>" name="price"><br><br>
+                        <input class="col-md-8" type="number" min="0" value="<%= om.getOrder(id).getPrice()%>" name="price"><br><br>
                         <input type="hidden" name="command" value="UpdatePrice"/>
                         <input class="col-md-8" type="submit" value="Update price"/>  
                     </form>
@@ -158,6 +158,7 @@
                     <form class="col-md-6 one" action="FrontController" method="post">
                         <p>Update status</p>
                         <select class="col-md-8" name="newStatus">
+                            <option hidden> <%= om.getOrder(id).getStatus().toString() %> </option>
                             <option value="In progress">In progress</option>
                             <option value="Shipped">Shipped</option>
                             <option value="Pending payment">Pending payment</option>

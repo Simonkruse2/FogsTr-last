@@ -23,6 +23,7 @@ public class LogicFacade_ImplTest {
         assertEquals(expected, actual);
     }
 
+/*
     @Test
     public void createEmployeeTest() {
         User u = new User("carl", "carl123@hotmail.com");
@@ -30,7 +31,6 @@ public class LogicFacade_ImplTest {
         User employee = logic.createCustomer(u);
         assertNotNull(employee);
     }
-/*
     @Test
     public void createCustomerTest() {
         User u = new User("carl", "carl123@hotmail.com");

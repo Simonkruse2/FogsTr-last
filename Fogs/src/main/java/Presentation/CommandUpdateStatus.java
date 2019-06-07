@@ -1,5 +1,7 @@
 package Presentation;
 
+import Data.OrderException;
+import Data.UserException;
 import Logic.LogicFacade;
 import java.io.IOException;
 import javax.servlet.ServletException;

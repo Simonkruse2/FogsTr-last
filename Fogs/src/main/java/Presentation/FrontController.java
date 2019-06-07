@@ -1,5 +1,8 @@
 package Presentation;
 
+import Data.DimensionsException;
+import Data.OrderException;
+import Data.UserException;
 import Logic.LogicFacade;
 import Logic.LogicFacade_Impl;
 import java.io.IOException;
@@ -13,7 +16,6 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Jacob, Renz, Vincent og Simon.
  */
-
 @WebServlet(name = "FrontController", urlPatterns = {"/FrontController"})
 public class FrontController extends HttpServlet {
 
@@ -27,18 +29,20 @@ public class FrontController extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
-     * @throws Presentation.UserException
-     * @throws Presentation.OrderException
-     * @throws Presentation.DimensionsException
+     * @throws Data.UserException
+     * @throws Data.OrderException
+     * @throws Data.DimensionsException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, UserException, OrderException, DimensionsException {
-        Command c = Command.from(request);
-        String target = c.execute(request, logic);
-        if (target.isEmpty()) {
+        try {
+
+            Command c = Command.from(request);
+            String target = c.execute(request, logic);
+            request.getRequestDispatcher(target).forward(request, response);
+        } catch (DimensionsException | OrderException | UserException | IOException | ServletException e) {
             throw new UserException("An unknown error occured");
         }
-        request.getRequestDispatcher(target).forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -55,11 +59,8 @@ public class FrontController extends HttpServlet {
         try {
             processRequest(request, response);
 
-        } catch (UserException ex) {
+        } catch (UserException | OrderException | DimensionsException ex) {
 
-        } catch (OrderException oe) {
-
-        } catch (DimensionsException ex) {
         }
 
     }
@@ -76,9 +77,7 @@ public class FrontController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (UserException ex) {
-        } catch (OrderException oe) {
-        } catch (DimensionsException ex) {
+        } catch (UserException | OrderException | DimensionsException ex) {
         }
     }
 

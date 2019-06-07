@@ -1,5 +1,8 @@
 package Presentation;
 
+import Data.DimensionsException;
+import Data.OrderException;
+import Data.UserException;
 import Logic.LogicFacade;
 import java.io.IOException;
 import java.util.HashMap;

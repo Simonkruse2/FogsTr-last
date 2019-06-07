@@ -1,5 +1,6 @@
 package Presentation;
 
+import Data.UserException;
 import Data.User;
 import Data.UserMapper;
 import Logic.LogicFacade;

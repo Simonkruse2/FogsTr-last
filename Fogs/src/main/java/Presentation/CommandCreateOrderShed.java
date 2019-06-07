@@ -2,6 +2,7 @@ package Presentation;
 
 import Data.Carport;
 import Data.Order;
+import Data.OrderException;
 import Data.User;
 import Logic.CarportCalcShed;
 import Logic.LogicFacade;

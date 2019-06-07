@@ -1,5 +1,6 @@
 package Presentation;
 
+import Data.DimensionsException;
 import Data.Carport;
 import Logic.CarportCalc;
 import Logic.CarportCalcShed;

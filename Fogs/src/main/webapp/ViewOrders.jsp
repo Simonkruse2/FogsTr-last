@@ -47,6 +47,11 @@
             <input type="hidden" name="command" value="ViewOrders"/>
             <input type="submit" value="View Partslist"/>  
         </form>
+        <br>
+        <% if (!((request.getSession().getAttribute("error")) == null)) {%>
+        * <%= request.getSession().getAttribute("error")%>
+        <% request.removeAttribute("error"); %> 
+        <% } %> 
         <div id="wrapper">
             <main clas="container-fluid">
                 <div class="col-md-12">
@@ -94,10 +99,22 @@
                         <tr>
                             <td> <%=om.getOrders().get(i).getId_order()%></td>
                             <td> <%=om.getOrders().get(i).getStatus()%></td>
-                            <td> <%=om.getOrders().get(i).getOrder_width()%></td>
-                            <td> <%=om.getOrders().get(i).getOrder_length()%></td>
-                            <td> <%=om.getOrders().get(i).getOrder_width_shed()%></td>
-                            <td> <%=om.getOrders().get(i).getOrder_length_shed()%> </td>
+                            <td> <%=om.getOrders().get(i).getOrder_width()%> cm</td>
+                            <td> <%=om.getOrders().get(i).getOrder_length()%> cm</td>
+                            <td>
+                                <% if (om.getOrders().get(i).getOrder_width_shed() == 0) { %>
+                                -
+                                <% } else {%>
+                                <%=om.getOrders().get(i).getOrder_width_shed()%> cm
+                                <% }%> 
+                            </td>
+                            <td>
+                                <% if (om.getOrders().get(i).getOrder_length_shed() == 0) { %>
+                                -
+                                <% } else {%>
+                                <%=om.getOrders().get(i).getOrder_length_shed()%> cm
+                                <% }%> 
+                            </td>
                             <td> <%=om.getOrders().get(i).getCustomer_name()%></td>
                             <td> <%=om.getOrders().get(i).getId_customer()%></td>
                             <td> <%=om.getOrders().get(i).getEmployee_name()%></td>
