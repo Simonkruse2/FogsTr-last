@@ -138,8 +138,18 @@
                             <td></td>
                             <td></td>
                             <td><b><i>Total price</i></b></td>
-                            <td><b><i> <%= om.getOrder(id).getPrice()%></i>,-</b></td>
+                            <td><b><i> <%= carportCalcShed.getPrice()%> </i>,-</b></td>
                         </tr>
+                        <% if (om.getOrder(id).getPrice() != carportCalcShed.getPrice()) {%>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><b><i>Negotiated final price</i></b></td>
+                            <td><b><i class="underline"> <%= om.getOrder(id).getPrice()%> </i>,-</b></td>
+                        </tr>
+                        <% } %>
                         <% } %>
 
                     </table>

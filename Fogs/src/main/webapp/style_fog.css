@@ -78,3 +78,6 @@ li a{
     padding-top: 1em;
     text-align: center;
 }
+.underline{
+    border-bottom: 3px double;
+}

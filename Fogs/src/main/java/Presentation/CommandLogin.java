@@ -54,7 +54,7 @@ public class CommandLogin extends Command {
         } catch (IllegalArgumentException iae) {
             throw new IllegalArgumentException("Illegal imput");
         } catch (UserException ue) {
-            session.setAttribute("error", ue.getMessage());
+            session.setAttribute("loginerror", ue.getMessage());
             return "index.jsp";
 
         }

@@ -11,14 +11,14 @@
             <div class="main">
                 <i><p class="centre">Login using salesperson/admin as username. salesperson/admin as password</p></i>
                 <div class="col-md-4 ">
-                <h1>Login as employee</h1>
+                    <h1>Login as employee</h1>
                     <form  action="FrontController" method="post">
                         Username<br>
                         <input class="col-md-12" type="text" name="username" ><br><br>
                         Password:<br>
                         <input class="col-md-12" type="password" name="password" ><br><br>
-                        <% if (!((request.getSession().getAttribute("error")) == null)) {%>
-                        * <%= request.getSession().getAttribute("error")%> <br>
+                        <% if (!((request.getSession().getAttribute("loginerror")) == null)) {%>
+                        * <%= request.getSession().getAttribute("loginerror")%> <br>
                         <% } %>
                         <% request.getSession().invalidate();%>
                         <input type="hidden" name="command" value="Login"/>
