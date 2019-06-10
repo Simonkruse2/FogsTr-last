@@ -86,24 +86,40 @@
 
                             </tr>
                         </thead>
-
-                        <% for (int i = 0; i < carportCalcShed.partLists().size(); i++) {%>
                         <tr>
+                            <td> <b> Carport </b></td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>  </td>
+                        </tr>
+                        <tr>
+                            <% for (int i = 0; i < carportCalcShed.partLists().size(); i++) {%>
                             <td> <%=carportCalcShed.partLists().get(i).getPname()%></td>
                             <td> <%=carportCalcShed.partLists().get(i).getUnit()%></td>
-                            <td> 
+                            <td>
                                 <% if (carportCalcShed.partLists().get(i).getLength() == 0) { %>
                                 -
                                 <% } else {%>
                                 <%=carportCalcShed.partLists().get(i).getLength()%> cm
-                                <% }%> 
+                                <% }%>
                             </td>
                             <td> <%=carportCalcShed.partLists().get(i).getAmount()%></td>
                             <td> <%=carportCalcShed.partLists().get(i).getPrice()%> kr.</td>
                             <td> <%=carportCalcShed.partLists().get(i).getTotalPrice()%> kr.</td>
+                            <% if (carportCalcShed.partLists().get(i).getPname().equals("Plastmo Exolite blåtonet - Kort")) { %>
+                        <tr>
+                            <td> <b> Shed </b> </td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>  </td>
+                            <td>  </td>
+                        </tr>
+                        <% } %>
                         </tr>
                         <% }%>
-                        </tr>
                         <% if (request.getAttribute("id") == null) {%>
                         <tr>
                             <td></td>
@@ -159,9 +175,9 @@
 
                     <form class="col-md-6 one" action="FrontController" method="post">
                         <p>Update status</p>
-                        
+
                         <select class="col-md-8" name="newStatus">
-                            <option hidden> <%= om.getOrder(id).getStatus().toString() %> </option>
+                            <option hidden> <%= om.getOrder(id).getStatus().toString()%> </option>
                             <option value="In progress">In progress</option>
                             <option value="Shipped">Shipped</option>
                             <option value="Pending payment">Pending payment</option>

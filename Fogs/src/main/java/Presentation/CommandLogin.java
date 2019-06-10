@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
  *
  * @author Jacob, Renz, Vincent og Simon.
  */
-
 public class CommandLogin extends Command {
 
     HttpSession session;

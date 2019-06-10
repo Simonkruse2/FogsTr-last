@@ -136,7 +136,7 @@
                     <input class="col-md-6" type="email" name="email" ><br><br>
                     Phone number (0-9)<br>
                     <input class="col-md-6" type="tel" name="phone" pattern="[0-9]{8}" required><br><br>
-                    <% if (!((request.getSession().getAttribute("error")) == null)) {%>
+                    <% if (!(request.getSession().getAttribute("error") == null)) {%>
                     * <%= request.getSession().getAttribute("error")%>
                     <% request.removeAttribute("error"); %> 
                     <% } %> 
@@ -158,7 +158,7 @@
                     <form class="col-md-6 one" action="FrontController" method="post">
                         <p>Update status</p>
                         <select class="col-md-8" name="newStatus">
-                            <option hidden> <%= om.getOrder(id).getStatus().toString() %> </option>
+                            <option hidden> <%= om.getOrder(id).getStatus().toString()%> </option>
                             <option value="In progress">In progress</option>
                             <option value="Shipped">Shipped</option>
                             <option value="Pending payment">Pending payment</option>
